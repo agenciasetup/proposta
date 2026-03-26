@@ -10,25 +10,16 @@ function fmt(val: number) {
 
 export default function Pricing() {
   const [mode, setMode] = useState<PaymentMode>("avista");
-  const [parcelaEntrada, setParcelaEntrada] = useState(1);
-  const [parcelaFinal, setParcelaFinal] = useState(1);
   const [manutencao, setManutencao] = useState(false);
-  const [showParcelaEntrada, setShowParcelaEntrada] = useState(false);
-  const [showParcelaFinal, setShowParcelaFinal] = useState(false);
 
   const total = PRICING.total;
   const desconto = total * PRICING.descontoAVista;
   const valorAVista = total - desconto;
   const metade = total / 2;
 
-  const jurosEntrada = PRICING.parcelamento.find((p) => p.vezes === parcelaEntrada)?.juros ?? 0;
-  const jurosFinal = PRICING.parcelamento.find((p) => p.vezes === parcelaFinal)?.juros ?? 0;
-  const totalEntrada = metade * (1 + jurosEntrada);
-  const totalFinal = metade * (1 + jurosFinal);
-
   const whatsappUrl = useMemo(
-    () => buildWhatsAppURL({ mode, parcelaEntrada: mode === "parcelado" ? parcelaEntrada : undefined, parcelaFinal: mode === "parcelado" ? parcelaFinal : undefined, manutencao }),
-    [mode, parcelaEntrada, parcelaFinal, manutencao]
+    () => buildWhatsAppURL({ mode, manutencao }),
+    [mode, manutencao]
   );
 
   return (
@@ -45,7 +36,7 @@ export default function Pricing() {
             </h2>
           </Reveal>
           <Reveal>
-            <p className="text-[15px] leading-[1.8] text-[var(--m)]">Escolha a forma de pagamento que funciona melhor para você.</p>
+            <p className="text-[15px] leading-[1.8] text-[var(--m)]">Escolha a forma de pagamento que funciona melhor pra você.</p>
           </Reveal>
         </div>
 
@@ -70,7 +61,7 @@ export default function Pricing() {
               </button>
               <button className={`tab-btn ${mode === "parcelado" ? "active" : ""}`} onClick={() => setMode("parcelado")}>
                 📋 50 / 50
-                {mode === "parcelado" && <span className="block text-[11px] text-[var(--gd)] font-bold mt-0.5">Podendo parcelar cada metade</span>}
+                {mode === "parcelado" && <span className="block text-[11px] text-[var(--gd)] font-bold mt-0.5">Cada metade pode ser parcelada</span>}
               </button>
             </div>
           </Reveal>
@@ -104,33 +95,18 @@ export default function Pricing() {
               <Reveal>
                 <div className="bg-[var(--k)] rounded-2xl p-6 relative overflow-hidden h-full">
                   <div className="absolute -top-2 -right-1.5 font-serif text-[84px] font-bold opacity-5 text-white leading-none pointer-events-none">50%</div>
-                  <span className="text-[10px] tracking-[2.5px] uppercase font-semibold text-[rgba(246,244,238,.3)] block mb-3">Entrada — na assinatura</span>
-                  <div className="font-serif text-[clamp(28px,6vw,36px)] font-bold text-white leading-none tracking-[-0.5px] mb-1">
-                    {parcelaEntrada === 1 ? fmt(metade) : `${parcelaEntrada}× ${fmt(totalEntrada / parcelaEntrada)}`}
+                  <span className="text-[10px] tracking-[2.5px] uppercase font-semibold text-[rgba(246,244,238,.3)] block mb-3">Entrada (na assinatura)</span>
+                  <div className="font-serif text-[clamp(28px,6vw,36px)] font-bold text-white leading-none tracking-[-0.5px] mb-3">
+                    {fmt(metade)}
                   </div>
-                  {parcelaEntrada > 1 && jurosEntrada > 0 && <p className="text-[11px] text-[rgba(246,244,238,.35)] mb-2">Total: {fmt(totalEntrada)}</p>}
 
-                  <button onClick={() => setShowParcelaEntrada(!showParcelaEntrada)} className="flex items-center gap-2 cursor-pointer mt-3 mb-3">
-                    <span className="text-[11px] text-[rgba(246,244,238,.45)] font-medium">Parcelar?</span>
-                    <div className={`toggle-track ${showParcelaEntrada ? "active" : ""} shimmer-hint relative pulse-ring`}><div className="toggle-thumb" /></div>
-                  </button>
-
-                  {showParcelaEntrada && (
-                    <div className="pt-3 border-t border-[rgba(246,244,238,.08)] mb-3">
-                      <p className="text-[9px] tracking-[1.5px] uppercase text-[rgba(246,244,238,.3)] font-semibold mb-2.5">Escolha o parcelamento</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {PRICING.parcelamento.map((p) => (
-                          <button key={p.vezes} onClick={() => setParcelaEntrada(p.vezes)}
-                            className={`px-3 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer border ${parcelaEntrada === p.vezes ? "bg-[var(--g)] text-[var(--k)] border-[var(--g)]" : "bg-[rgba(246,244,238,.06)] text-[rgba(246,244,238,.4)] border-[rgba(246,244,238,.1)] hover:border-[var(--g)] hover:text-[var(--g)]"}`}>
-                            {p.label}{p.juros > 0 && <span className="block text-[8px] opacity-60 mt-0.5">+{p.juros * 100}%</span>}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="pt-3 border-t border-[rgba(246,244,238,.08)] mb-3">
+                    <p className="text-[11px] text-[rgba(246,244,238,.45)] font-medium">{PRICING.parcelamentoTexto}</p>
+                    <p className="text-[9px] text-[rgba(246,244,238,.3)] mt-1">{PRICING.parcelamentoNota}</p>
+                  </div>
 
                   <div className="flex flex-col gap-1.5 mt-3">
-                    {["Projeto começa imediatamente", "Design aprovado antes de codar", "Acompanhamento semanal", "Revisões ilimitadas no design"].map((item, i) => (
+                    {["Projeto começa na hora", "Design aprovado antes de codar", "Acompanhamento semanal", "Revisões ilimitadas no design"].map((item, i) => (
                       <div key={i} className="flex gap-2 items-start text-[12px] text-[rgba(246,244,238,.5)]">
                         <span className="text-[var(--g)] font-bold shrink-0">✓</span>{item}
                       </div>
@@ -144,29 +120,14 @@ export default function Pricing() {
                 <div className="bg-[var(--g)] rounded-2xl p-6 relative overflow-hidden h-full">
                   <div className="absolute -top-2 -right-1.5 font-serif text-[84px] font-bold opacity-5 text-[var(--k)] leading-none pointer-events-none">50%</div>
                   <span className="text-[10px] tracking-[2.5px] uppercase font-semibold text-[rgba(20,20,16,.4)] block mb-3">Na entrega do site</span>
-                  <div className="font-serif text-[clamp(28px,6vw,36px)] font-bold text-[var(--k)] leading-none tracking-[-0.5px] mb-1">
-                    {parcelaFinal === 1 ? fmt(metade) : `${parcelaFinal}× ${fmt(totalFinal / parcelaFinal)}`}
+                  <div className="font-serif text-[clamp(28px,6vw,36px)] font-bold text-[var(--k)] leading-none tracking-[-0.5px] mb-3">
+                    {fmt(metade)}
                   </div>
-                  {parcelaFinal > 1 && jurosFinal > 0 && <p className="text-[11px] text-[rgba(20,20,16,.4)] mb-2">Total: {fmt(totalFinal)}</p>}
 
-                  <button onClick={() => setShowParcelaFinal(!showParcelaFinal)} className="flex items-center gap-2 cursor-pointer mt-3 mb-3">
-                    <span className="text-[11px] text-[rgba(20,20,16,.5)] font-medium">Parcelar?</span>
-                    <div className={`toggle-track ${showParcelaFinal ? "active" : ""} relative`}><div className="toggle-thumb" /></div>
-                  </button>
-
-                  {showParcelaFinal && (
-                    <div className="pt-3 border-t border-[rgba(20,20,16,.1)] mb-3">
-                      <p className="text-[9px] tracking-[1.5px] uppercase text-[rgba(20,20,16,.4)] font-semibold mb-2.5">Escolha o parcelamento</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {PRICING.parcelamento.map((p) => (
-                          <button key={p.vezes} onClick={() => setParcelaFinal(p.vezes)}
-                            className={`px-3 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer border ${parcelaFinal === p.vezes ? "bg-[var(--k)] text-white border-[var(--k)]" : "bg-[rgba(20,20,16,.06)] text-[rgba(20,20,16,.5)] border-[rgba(20,20,16,.15)] hover:border-[var(--k)] hover:text-[var(--k)]"}`}>
-                            {p.label}{p.juros > 0 && <span className="block text-[8px] opacity-60 mt-0.5">+{p.juros * 100}%</span>}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="pt-3 border-t border-[rgba(20,20,16,.1)] mb-3">
+                    <p className="text-[11px] text-[rgba(20,20,16,.5)] font-medium">{PRICING.parcelamentoTexto}</p>
+                    <p className="text-[9px] text-[rgba(20,20,16,.35)] mt-1">{PRICING.parcelamentoNota}</p>
+                  </div>
 
                   <div className="flex flex-col gap-1.5 mt-3">
                     {["Todas as integrações ativas", "Treinamento do painel com a equipe", "30 dias de suporte incluídos", "Domínio e código em nome de vocês"].map((item, i) => (
@@ -222,7 +183,7 @@ export default function Pricing() {
               <div className="flex flex-col gap-2.5 mb-6">
                 <div className="flex justify-between text-[15px]">
                   <span className="text-[rgba(246,244,238,.5)]">Projeto</span>
-                  <span className="text-white font-semibold">{mode === "avista" ? fmt(valorAVista) : fmt(totalEntrada + totalFinal)}</span>
+                  <span className="text-white font-semibold">{mode === "avista" ? fmt(valorAVista) : fmt(total)}</span>
                 </div>
                 {mode === "avista" && (
                   <div className="flex justify-between text-[13px]">
@@ -233,13 +194,14 @@ export default function Pricing() {
                 {mode === "parcelado" && (
                   <>
                     <div className="flex justify-between text-[13px] text-[rgba(246,244,238,.35)]">
-                      <span>↳ Entrada: {parcelaEntrada === 1 ? "à vista" : `${parcelaEntrada}×`}</span>
-                      <span>{fmt(totalEntrada)}</span>
+                      <span>Entrada (50%)</span>
+                      <span>{fmt(metade)}</span>
                     </div>
                     <div className="flex justify-between text-[13px] text-[rgba(246,244,238,.35)]">
-                      <span>↳ Na entrega: {parcelaFinal === 1 ? "à vista" : `${parcelaFinal}×`}</span>
-                      <span>{fmt(totalFinal)}</span>
+                      <span>Na entrega (50%)</span>
+                      <span>{fmt(metade)}</span>
                     </div>
+                    <p className="text-[10px] text-[rgba(246,244,238,.25)]">{PRICING.parcelamentoNota}</p>
                   </>
                 )}
                 {manutencao && (

@@ -9,16 +9,9 @@ export const PRICING = {
   /** Desconto à vista (decimal) */
   descontoAVista: 0.10, // 10%
 
-  /** Parcelas disponíveis para cada metade (50/50) */
-  parcelamento: [
-    { vezes: 1, label: "À vista",   juros: 0 },
-    { vezes: 2, label: "2× sem juros", juros: 0 },
-    { vezes: 3, label: "3× sem juros", juros: 0 },
-    { vezes: 4, label: "4× s/ juros",  juros: 0 },
-    { vezes: 6, label: "6×",           juros: 0.05 },
-    { vezes: 10, label: "10×",         juros: 0.10 },
-    { vezes: 12, label: "12×",         juros: 0.15 },
-  ],
+  /** Texto do parcelamento */
+  parcelamentoTexto: "Parcelamento em até 12×",
+  parcelamentoNota: "* juros de parcelamento a consultar",
 
   /** Manutenção mensal (order bump) */
   manutencao: {

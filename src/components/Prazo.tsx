@@ -15,7 +15,7 @@ export default function Prazo() {
                 Em 45 dias, o site está no ar.
               </h3>
               <p className="text-[14px] text-[rgba(20,20,16,.5)] leading-[1.75] max-w-md">
-                Acompanhamento semanal e aprovação em cada etapa. Você não fica no escuro, cada entrega é validada antes da próxima começar.
+                Acompanhamento semanal e aprovação em cada etapa. Vocês acompanham tudo, e cada entrega é validada antes da próxima começar.
               </p>
             </div>
             <div className="mt-8 lg:mt-0 lg:flex lg:justify-end">
