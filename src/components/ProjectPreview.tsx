@@ -13,8 +13,8 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8" onClick={onClose}>
-      {/* Backdrop — ocean tint */}
-      <div className="absolute inset-0 bg-[var(--ocean)]/40 backdrop-blur-sm" />
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-[var(--k)]/50 backdrop-blur-sm" />
 
       {/* Modal */}
       <div
@@ -22,21 +22,21 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header — warm sand */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--sand-dark)]/40 bg-[var(--sand-light)]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--k)]/5 bg-[var(--off)]">
           <div>
-            <p className="text-[9px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold">Prévia do projeto</p>
-            <h3 className="font-serif text-lg font-bold text-[var(--ocean-deep)]">Como o site vai ficar</h3>
+            <p className="text-[9px] tracking-[2px] uppercase text-[var(--k)]/40 font-semibold">Prévia do projeto</p>
+            <h3 className="font-serif text-lg font-bold text-[var(--k)]">Como o site vai ficar</h3>
           </div>
-          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--sand)] flex items-center justify-center text-[var(--ocean-deep)] hover:bg-[var(--sand-dark)] transition-colors cursor-pointer text-lg">×</button>
+          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--k)]/5 flex items-center justify-center text-[var(--k)] hover:bg-[var(--k)]/10 transition-colors cursor-pointer text-lg">×</button>
         </div>
 
         {/* Tab bar */}
-        <div className="flex gap-1 px-6 pt-4 pb-2 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/40">
+        <div className="flex gap-1 px-6 pt-4 pb-2 bg-[var(--off)] border-b border-[var(--k)]/5">
           {tabs.map((t, i) => (
             <button
               key={t}
               onClick={() => setActiveTab(i)}
-              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--ocean)] text-white" : "text-[var(--ml)] hover:bg-[var(--sand)]"}`}
+              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--k)] text-[var(--bossa)]" : "text-[var(--ml)] hover:bg-[var(--sand)]"}`}
             >
               {t}
             </button>
@@ -67,134 +67,275 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
    ════════════════════════════════════════════════ */
 function HomePreview() {
   return (
-    <div className="space-y-4">
-      <BrowserFrame url="bossaeletricas.com.br">
-        {/* Nav — warm sand */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
-          <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
-          <div className="flex gap-4">
-            {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-              <span key={l} className="text-[8px] text-[var(--sand-dark)]">{l}</span>
+    <div className="space-y-5">
+
+      {/* ── Intro note ── */}
+      <div className="bg-[var(--bossa)]/15 border border-[var(--bossa)]/40 rounded-xl p-4 text-center">
+        <p className="text-[11px] text-[var(--k)] leading-relaxed">
+          Isso aqui é só um exemplo dos <b>elementos que teremos na página</b>, pensando nas cores da marca e na comunicação carioca. Não é o layout final — é a <b>direção visual</b>.
+        </p>
+      </div>
+
+      {/* ── Paleta de cores + praia HTML ── */}
+      <SectionLabel label="Paleta do site" desc="As cores que vão guiar todo o design" />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
+        {/* Mini beach scene with the 3 colors */}
+        <div className="h-28 relative" style={{ background: "linear-gradient(180deg, #f7f5ef 0%, #f0eee0 30%, var(--bossa) 50%, var(--bossa-dark) 65%, var(--sand) 80%, var(--sand-dark) 100%)" }}>
+          <div className="absolute top-3 right-6 w-10 h-10 rounded-full bg-[var(--bossa)] shadow-[0_0_30px_rgba(229,229,67,.5)]" />
+          {/* Cristo */}
+          <svg className="absolute bottom-8 left-[20%] opacity-20" width="40" height="55" viewBox="0 0 40 55">
+            <circle cx="20" cy="5" r="3" fill="white" />
+            <line x1="20" y1="8" x2="20" y2="32" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="16" x2="32" y2="16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+            <path d="M12,55 Q20,30 28,55Z" fill="white" />
+          </svg>
+          {/* Palm */}
+          <svg className="absolute bottom-0 right-4 opacity-25" width="35" height="50" viewBox="0 0 35 50">
+            <path d="M15,50 Q14,30 17,12" stroke="var(--k)" strokeWidth="2" fill="none" />
+            <path d="M17,12 Q5,6 1,10" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M17,12 Q10,2 4,0" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M17,12 Q27,4 33,8" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+          </svg>
+          {/* Waves */}
+          <svg className="absolute bottom-[38%] left-0 right-0 h-3 opacity-30" viewBox="0 0 400 12" preserveAspectRatio="none">
+            <path d="M0,6 Q20,0 40,6 Q60,12 80,6 Q100,0 120,6 Q140,12 160,6 Q180,0 200,6 Q220,12 240,6 Q260,0 280,6 Q300,12 320,6 Q340,0 360,6 Q380,12 400,6" fill="none" stroke="white" strokeWidth="1.5" />
+          </svg>
+          {/* Copacabana sidewalk */}
+          <svg className="absolute bottom-0 left-0 right-0 h-4 opacity-15" viewBox="0 0 200 10" preserveAspectRatio="none">
+            <pattern id="copa-pal" width="20" height="10" patternUnits="userSpaceOnUse">
+              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--k)" strokeWidth="1" />
+            </pattern>
+            <rect width="200" height="10" fill="url(#copa-pal)" />
+          </svg>
+        </div>
+        {/* Color swatches */}
+        <div className="grid grid-cols-3 bg-white">
+          <div className="p-3 text-center border-r border-[var(--sand-dark)]/20">
+            <div className="w-8 h-8 rounded-full bg-[var(--bossa)] mx-auto mb-1.5 shadow-sm" />
+            <p className="text-[8px] font-bold text-[var(--k)]">Verde Bossa</p>
+            <p className="text-[7px] text-[var(--ml)]">#E5E543</p>
+          </div>
+          <div className="p-3 text-center border-r border-[var(--sand-dark)]/20">
+            <div className="w-8 h-8 rounded-full bg-[var(--k)] mx-auto mb-1.5 shadow-sm" />
+            <p className="text-[8px] font-bold text-[var(--k)]">Preto Bossa</p>
+            <p className="text-[7px] text-[var(--ml)]">#141410</p>
+          </div>
+          <div className="p-3 text-center">
+            <div className="w-8 h-8 rounded-full bg-[var(--sand)] mx-auto mb-1.5 shadow-sm border border-[var(--sand-dark)]/30" />
+            <p className="text-[8px] font-bold text-[var(--k)]">Off-white / Areia</p>
+            <p className="text-[7px] text-[var(--ml)]">#F5E6C8</p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── HERO concept ── */}
+      <SectionLabel label="Hero — Banner principal" desc="Primeira coisa que o visitante vê. Praia, marca e CTA." />
+      <div className="rounded-xl overflow-hidden border border-[var(--k)]/10 relative">
+        <div className="h-48 relative bg-[var(--off)] overflow-hidden">
+          {/* Bossa green glow top-right */}
+          <div className="absolute -top-6 -right-6 w-44 h-44 rounded-full opacity-20" style={{ background: "radial-gradient(circle, var(--bossa) 0%, transparent 70%)" }} />
+          {/* Sand gradient at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-12" style={{ background: "linear-gradient(to top, var(--sand) 0%, transparent 100%)" }} />
+          {/* Cristo silhouette */}
+          <svg className="absolute bottom-8 left-[12%] opacity-[.07]" width="50" height="75" viewBox="0 0 50 75">
+            <circle cx="25" cy="6" r="3.5" fill="var(--k)" />
+            <line x1="25" y1="10" x2="25" y2="40" stroke="var(--k)" strokeWidth="3" strokeLinecap="round" />
+            <line x1="10" y1="20" x2="40" y2="20" stroke="var(--k)" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M16,75 Q25,38 34,75Z" fill="var(--k)" />
+          </svg>
+          {/* Palm silhouette */}
+          <svg className="absolute bottom-0 right-4 opacity-[.06]" width="40" height="60" viewBox="0 0 40 60">
+            <path d="M18,60 Q16,35 20,15" stroke="var(--k)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M20,15 Q7,8 2,14" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M20,15 Q12,2 5,0" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M20,15 Q30,3 38,6" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+          </svg>
+          {/* Copacabana wave pattern */}
+          <svg className="absolute bottom-2 left-0 right-0 h-4 opacity-[.05]" viewBox="0 0 200 10" preserveAspectRatio="none">
+            <pattern id="copa-hero" width="20" height="10" patternUnits="userSpaceOnUse">
+              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--k)" strokeWidth="1" />
+            </pattern>
+            <rect width="200" height="10" fill="url(#copa-hero)" />
+          </svg>
+          {/* Content */}
+          <div className="relative z-10 px-5 pt-8">
+            <div className="flex items-center gap-1.5 mb-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[var(--bossa)]" style={{ animation: "blink 1.5s infinite" }} />
+              <span className="text-[7px] tracking-[2px] uppercase text-[var(--k)]/40 font-semibold">Menos trânsito, mais pôr do sol</span>
+            </div>
+            <h2 className="font-serif text-[24px] md:text-[32px] font-bold leading-[.9] tracking-[-1px] mb-2">
+              <span className="text-[var(--k)] block">Liberdade</span>
+              <span className="text-[var(--bossa)] italic block">Elétrica.</span>
+            </h2>
+            <p className="text-[9px] text-[var(--k)]/40 max-w-[180px] leading-relaxed mb-3">Criada no Rio, para os cariocas.</p>
+            <div className="flex gap-2">
+              <div className="bg-[var(--bossa)] text-[var(--k)] text-[8px] font-bold px-2.5 py-1.5 rounded-lg">Encontre sua Bossa →</div>
+              <div className="border border-[var(--k)]/15 text-[var(--k)]/50 text-[8px] px-2.5 py-1.5 rounded-lg">Test Drive</div>
+            </div>
+          </div>
+        </div>
+        <ConceptTag>Fundo off-white da marca. Verde Bossa e preto como destaque. Silhuetas de Copacabana, Cristo, palmeiras. Também pode ser um slide com fotos REAIS da Bossa.</ConceptTag>
+      </div>
+
+      {/* ── PRODUTOS em Polaroids ── */}
+      <SectionLabel label="Produtos — Polaroids com fita" desc="Cada modelo vai aparecer como uma foto polaroid, com rotação e fita adesiva." />
+      <div className="bg-gradient-to-b from-[var(--sand)] to-[var(--sand-light)] rounded-xl p-5 border border-[var(--sand-dark)]/30">
+        <div className="grid grid-cols-4 gap-3 pt-1">
+          {[
+            { name: "Bossa City", price: "12× R$ 770", emoji: "🚲", cat: "500W" },
+            { name: "Bossa Vip", price: "12× R$ 880", emoji: "🚲", cat: "1000W" },
+            { name: "Bossa Pro Duo", price: "12× R$ 1.075", emoji: "🚲", cat: "1000W" },
+            { name: "Bossa Pro", price: "12× R$ 905", emoji: "🚲", cat: "1000W" },
+          ].map((p, i) => (
+            <PolaroidCard key={p.name} {...p} index={i} />
+          ))}
+        </div>
+        <ConceptTag>Produtos reais da Bossa. Fotos de verdade no lugar dos emojis. Hover com rotação e zoom.</ConceptTag>
+      </div>
+
+      {/* ── CALCULADORA DE ECONOMIA ── */}
+      <SectionLabel label="Calculadora de Economia" desc="O visitante descobre quanto economiza saindo da gasolina." />
+      <div className="rounded-xl overflow-hidden border border-[var(--bossa)]/30 bg-gradient-to-br from-[var(--bossa)]/10 via-white to-[var(--bossa-light)]/20">
+        <div className="p-5">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-8 h-8 rounded-full bg-[var(--bossa)]/20 flex items-center justify-center text-sm">⚡</div>
+            <div>
+              <p className="text-[11px] font-bold text-[var(--k)]">Quanto você economiza?</p>
+              <p className="text-[8px] text-[var(--ml)]">Compare gasolina vs elétrica</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-2.5 mb-3">
+            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--k)]/20">
+              <p className="text-[7px] text-[var(--ml)] mb-1">Gasolina/mês</p>
+              <p className="text-[16px] font-bold text-[var(--k)]">R$ 480</p>
+              <div className="w-full h-1 rounded-full bg-[var(--k)]/20 mt-1.5"><div className="w-[85%] h-full rounded-full bg-[var(--k)]" /></div>
+            </div>
+            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--bossa)]/30">
+              <p className="text-[7px] text-[var(--ml)] mb-1">Elétrica/mês</p>
+              <p className="text-[16px] font-bold text-[var(--gd)]">R$ 35</p>
+              <div className="w-full h-1 rounded-full bg-[var(--gd)]/20 mt-1.5"><div className="w-[7%] h-full rounded-full bg-[var(--gd)]" /></div>
+            </div>
+            <div className="bg-[var(--k)] rounded-xl p-3 text-center shadow-sm">
+              <p className="text-[7px] text-[var(--off)]/50 mb-1">Economia/ano</p>
+              <p className="text-[16px] font-bold text-[var(--bossa)]">R$ 5.340</p>
+              <p className="text-[7px] text-[var(--bossa)] font-bold mt-1">93% menos!</p>
+            </div>
+          </div>
+        </div>
+        <ConceptTag>Interativo: o visitante coloca o km/dia e vê a economia real. Visual com barras comparativas.</ConceptTag>
+      </div>
+
+      {/* ── SOBRE A MARCA ── */}
+      <SectionLabel label="Sobre a Bossa" desc="Seção contando a história da marca, com fotos das motos na praia." />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30 bg-[var(--sand-light)]">
+        <div className="md:flex">
+          <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/40 to-[var(--sand)] p-5 flex items-center justify-center min-h-[120px] relative">
+            {/* Polaroid-style photo */}
+            <div className="bg-white p-2 pb-5 shadow-[3px_4px_14px_rgba(139,94,60,.15)] rotate-[-2deg]">
+              <div className="w-28 h-20 bg-gradient-to-br from-[var(--bossa)] to-[var(--sand)] rounded-sm flex items-center justify-center relative overflow-hidden">
+                <span className="text-[32px]">🛵</span>
+                <svg className="absolute bottom-0 left-0 right-0 h-3 opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0,5 Q12,0 25,5 Q38,10 50,5 Q62,0 75,5 Q88,10 100,5 L100,10 L0,10Z" fill="var(--bossa-dark)" />
+                </svg>
+              </div>
+              <p className="text-[7px] text-center text-[var(--k)] mt-1 font-serif italic">Bossa na orla</p>
+            </div>
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-3 bg-[var(--bossa)]/40 rounded-sm" />
+          </div>
+          <div className="md:w-1/2 p-5">
+            <p className="text-[8px] text-[var(--bossa)] font-bold tracking-[2px] uppercase mb-1">Desde 2021</p>
+            <p className="font-serif text-[16px] font-bold text-[var(--k)] leading-tight mb-2">O que torna a <i className="text-[var(--k)]">Bossa</i> única?</p>
+            <p className="text-[9px] text-[var(--m)] leading-relaxed">
+              Nascida em Copacabana com DNA carioca. A primeira marca de bikes elétricas que entende o Rio de verdade.
+            </p>
+            <div className="flex gap-2 mt-3">
+              <div className="bg-[var(--bossa)]/15 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--k)]">Rio de Janeiro</div>
+              <div className="bg-[var(--bossa-light)]/40 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--k)]">Copacabana</div>
+              <div className="bg-[var(--sand)] rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--k)]">Desde 2021</div>
+            </div>
+          </div>
+        </div>
+        <ConceptTag>Fotos reais da equipe e das motos na praia. Storytelling carioca. Identidade visual do Rio.</ConceptTag>
+      </div>
+
+      {/* ── DEPOIMENTOS ── */}
+      <SectionLabel label="Depoimentos" desc="Feedback real de quem já comprou. Gera confiança." />
+      <div className="grid grid-cols-2 gap-3">
+        {[
+          { name: "Marina R.", local: "Copacabana", texto: "Melhor compra que fiz! Uso todo dia pra ir trabalhar na Zona Sul.", stars: 5 },
+          { name: "Carlos F.", local: "Ipanema", texto: "Economizei mais de R$ 400/mês de gasolina. Não volto mais.", stars: 5 },
+        ].map((d) => (
+          <div key={d.name} className="bg-white rounded-xl p-3.5 border border-[var(--sand-dark)]/25 shadow-sm">
+            <div className="flex gap-1 mb-2">
+              {Array.from({ length: d.stars }).map((_, i) => (
+                <span key={i} className="text-[10px] text-[var(--bossa)]">★</span>
+              ))}
+            </div>
+            <p className="text-[9px] text-[var(--m)] leading-relaxed mb-2 italic">&ldquo;{d.texto}&rdquo;</p>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-[var(--bossa-light)] flex items-center justify-center text-[7px] font-bold text-[var(--k)]">{d.name[0]}</div>
+              <div>
+                <p className="text-[8px] font-bold text-[var(--k)]">{d.name}</p>
+                <p className="text-[7px] text-[var(--ml)]">{d.local}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+        <ConceptTag className="col-span-2">Depoimentos reais com foto, nome e bairro. Carrossel com animação suave.</ConceptTag>
+      </div>
+
+      {/* ── AUTORIDADE — números e notícias ── */}
+      <SectionLabel label="Autoridade" desc="Números da marca, notícias, parceiros. Gera credibilidade." />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
+        {/* Numbers */}
+        <div className="grid grid-cols-4 gap-0 bg-[var(--k)]">
+          {[
+            { num: "2.500+", label: "Bikes vendidas" },
+            { num: "4.8", label: "Nota Google" },
+            { num: "6", label: "Modelos" },
+            { num: "2021", label: "Fundação" },
+          ].map((n) => (
+            <div key={n.label} className="p-3 text-center border-r border-white/10 last:border-0">
+              <p className="text-[14px] font-bold text-[var(--bossa)]">{n.num}</p>
+              <p className="text-[7px] text-white/60">{n.label}</p>
+            </div>
+          ))}
+        </div>
+        {/* News / press */}
+        <div className="p-4 bg-white">
+          <p className="text-[8px] text-[var(--ml)] font-semibold mb-2">Na mídia</p>
+          <div className="flex gap-2">
+            {["Globo", "Veja Rio", "TechTudo"].map((m) => (
+              <div key={m} className="flex-1 bg-[var(--sand-light)] rounded-lg p-2 text-center border border-[var(--sand-dark)]/20">
+                <p className="text-[9px] font-bold text-[var(--k)]">{m}</p>
+                <p className="text-[7px] text-[var(--ml)]">Matéria publicada</p>
+              </div>
             ))}
           </div>
-          <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[7px] font-bold px-2.5 py-1 rounded-md">Agendar Test Drive</div>
         </div>
+        <ConceptTag>Números reais da Bossa + logos de mídia/parceiros. Seção para gerar autoridade e confiança.</ConceptTag>
+      </div>
 
-        {/* Hero — beach scene */}
-        <div className="relative overflow-hidden">
-          <div className="h-56 md:h-72 relative" style={{ background: "linear-gradient(170deg, var(--sky-light) 0%, var(--sky) 35%, var(--ocean) 65%, var(--sand) 85%, var(--sand-dark) 100%)" }}>
-
-            {/* Sun with glow */}
-            <div className="absolute top-5 right-10 w-12 h-12 rounded-full bg-[var(--y)] shadow-[0_0_40px_rgba(247,178,103,.6),0_0_80px_rgba(240,224,48,.3)]" />
-
-            {/* Cristo Redentor silhouette */}
-            <svg className="absolute bottom-12 left-[15%] opacity-[.15]" width="60" height="90" viewBox="0 0 60 90">
-              <circle cx="30" cy="8" r="4" fill="var(--ocean-deep)" />
-              <line x1="30" y1="12" x2="30" y2="50" stroke="var(--ocean-deep)" strokeWidth="3.5" strokeLinecap="round" />
-              <line x1="12" y1="25" x2="48" y2="25" stroke="var(--ocean-deep)" strokeWidth="3" strokeLinecap="round" />
-              <path d="M20,90 Q30,45 40,90Z" fill="var(--ocean-deep)" />
-            </svg>
-
-            {/* Palm tree left */}
-            <svg className="absolute bottom-0 left-1 opacity-20" width="50" height="80" viewBox="0 0 50 80">
-              <path d="M22,80 Q20,50 25,25" stroke="var(--palm)" strokeWidth="3" fill="none" strokeLinecap="round" />
-              <path d="M25,25 Q10,15 2,22" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q15,10 5,8" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q35,10 45,12" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q38,18 48,25" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q20,8 18,2" stroke="var(--palm)" strokeWidth="2" fill="none" />
-            </svg>
-
-            {/* Palm tree right */}
-            <svg className="absolute bottom-0 right-2 opacity-15" width="45" height="70" viewBox="0 0 45 70">
-              <path d="M25,70 Q27,42 22,18" stroke="var(--palm)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-              <path d="M22,18 Q8,10 2,16" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-              <path d="M22,18 Q12,5 5,2" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-              <path d="M22,18 Q32,5 40,8" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-              <path d="M22,18 Q35,12 42,18" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-            </svg>
-
-            {/* Ocean waves */}
-            <svg className="absolute bottom-6 left-0 right-0 h-5 opacity-30" viewBox="0 0 400 20" preserveAspectRatio="none">
-              <path d="M0,10 Q25,2 50,10 Q75,18 100,10 Q125,2 150,10 Q175,18 200,10 Q225,2 250,10 Q275,18 300,10 Q325,2 350,10 Q375,18 400,10 L400,20 L0,20Z" fill="white" />
-            </svg>
-            <svg className="absolute bottom-3 left-0 right-0 h-5 opacity-20" viewBox="0 0 400 20" preserveAspectRatio="none">
-              <path d="M0,12 Q30,4 60,12 Q90,20 120,12 Q150,4 180,12 Q210,20 240,12 Q270,4 300,12 Q330,20 360,12 Q390,4 400,12 L400,20 L0,20Z" fill="white" />
-            </svg>
-
-            {/* Calçadão de Copacabana pattern — sand area */}
-            <svg className="absolute bottom-0 left-0 right-0 h-6 opacity-20" viewBox="0 0 200 12" preserveAspectRatio="none">
-              <pattern id="copa" width="24" height="12" patternUnits="userSpaceOnUse">
-                <path d="M0,6 Q6,0 12,6 Q18,12 24,6" fill="none" stroke="var(--ocean-deep)" strokeWidth="1.2" />
-              </pattern>
-              <rect width="200" height="12" fill="url(#copa)" />
-            </svg>
-
-            {/* Content */}
-            <div className="relative z-10 px-6 pt-10 md:pt-14 md:px-10">
-              <div className="flex items-center gap-1.5 mb-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-[var(--y)]" style={{ animation: "blink 1.5s infinite" }} />
-                <span className="text-[7px] tracking-[2px] uppercase text-white/80 font-semibold drop-shadow-sm">Menos trânsito, mais pôr do sol</span>
-              </div>
-              <h2 className="font-serif text-[28px] md:text-[40px] font-bold leading-[.9] tracking-[-1px] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,.15)]">
-                <span className="text-white block">Liberdade</span>
-                <span className="text-[var(--y)] italic block">Elétrica.</span>
-              </h2>
-              <p className="text-[10px] text-white/70 max-w-[200px] leading-relaxed mb-4 drop-shadow-sm">
-                Criada no Rio, para os cariocas. Encontre sua Bossa perfeita.
-              </p>
-              <div className="flex gap-2">
-                <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[9px] font-bold px-3 py-2 rounded-lg shadow-md">Encontre sua Bossa →</div>
-                <div className="border border-white/40 text-white/80 text-[9px] px-3 py-2 rounded-lg backdrop-blur-sm bg-white/10">Agendar Test Drive</div>
-              </div>
+      {/* ── Blog preview ── */}
+      <SectionLabel label="Blog Bossa" desc="Conteúdo para SEO e engajamento. Lifestyle carioca + mobilidade." />
+      <div className="grid grid-cols-3 gap-2">
+        {[
+          { title: "5 trilhas elétricas no Rio", tag: "Lifestyle" },
+          { title: "Guia: como escolher sua bike", tag: "Guia" },
+          { title: "Manutenção: cuidados básicos", tag: "Dica" },
+        ].map((post) => (
+          <div key={post.title} className="bg-white rounded-xl overflow-hidden border border-[var(--sand-dark)]/25 shadow-sm">
+            <div className="h-14 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)]/60 flex items-center justify-center">
+              <span className="text-[18px]">📝</span>
+            </div>
+            <div className="p-2">
+              <span className="text-[6px] font-bold px-1.5 py-0.5 rounded bg-[var(--bossa)]/20 text-[var(--k)]">{post.tag}</span>
+              <p className="text-[8px] font-bold text-[var(--k)] mt-1 leading-snug">{post.title}</p>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* Nossos Modelos — polaroids on sand */}
-        <div className="px-4 py-5 bg-gradient-to-b from-[var(--sand)] to-[var(--sand-light)]">
-          <p className="text-[8px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold mb-4">Nossos modelos</p>
-          <div className="grid grid-cols-4 gap-3 pt-2">
-            {[
-              { name: "Prime T", price: "R$ 12.990", emoji: "🛵", cat: "Scooter" },
-              { name: "Bossa Neo", price: "R$ 9.990", emoji: "🛵", cat: "Scooter" },
-              { name: "Bossa Grid", price: "R$ 7.990", emoji: "🚲", cat: "E-Bike" },
-              { name: "Bossa Cargo", price: "R$ 14.990", emoji: "🛵", cat: "Cargo" },
-            ].map((p, i) => (
-              <PolaroidCard key={p.name} {...p} index={i} />
-            ))}
-          </div>
-        </div>
-
-        {/* Quiz CTA — sunset warm */}
-        <div className="mx-4 mb-4 p-4 bg-gradient-to-r from-[var(--sunset)] to-[var(--sunset-warm)] rounded-xl flex items-center gap-3 shadow-md">
-          <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-lg">🏖️</div>
-          <div className="flex-1">
-            <p className="text-[10px] font-bold text-[var(--ocean-deep)]">Encontre sua Bossa Perfeita</p>
-            <p className="text-[8px] text-[var(--ocean-deep)]/60">Quiz interativo com filtros guiados</p>
-          </div>
-          <div className="text-[8px] text-[var(--ocean-deep)] font-bold">Começar →</div>
-        </div>
-
-        {/* Calculator — sky light */}
-        <div className="mx-4 mb-4 p-4 bg-gradient-to-br from-[var(--sky-soft)]/40 to-[var(--sand-light)] rounded-xl border border-[var(--sky-soft)]">
-          <p className="text-[9px] font-bold text-[var(--ocean)] mb-2">⚡ Calculadora de Economia</p>
-          <div className="grid grid-cols-3 gap-2">
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
-              <p className="text-[7px] text-[var(--ml)]">Gasolina/mês</p>
-              <p className="text-[12px] font-bold text-[var(--coral)]">-R$ 480</p>
-            </div>
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
-              <p className="text-[7px] text-[var(--ml)]">Elétrica/mês</p>
-              <p className="text-[12px] font-bold text-[var(--ocean)]">R$ 35</p>
-            </div>
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
-              <p className="text-[7px] text-[var(--ml)]">Economia/ano</p>
-              <p className="text-[12px] font-bold text-[var(--ocean)]">R$ 5.340</p>
-            </div>
-          </div>
-        </div>
-      </BrowserFrame>
     </div>
   );
 }
@@ -205,12 +346,11 @@ function HomePreview() {
 function CatalogoPreview() {
   return (
     <BrowserFrame url="bossaeletricas.com.br/modelos">
-      {/* Nav mini */}
       <MiniNav active="Modelos" />
 
       <div className="flex">
         {/* Sidebar filters */}
-        <div className="w-44 bg-white border-r border-[var(--w3)] p-3 hidden md:block">
+        <div className="w-44 bg-[var(--sand-light)] border-r border-[var(--sand-dark)]/30 p-3 hidden md:block">
           <p className="text-[9px] font-bold text-[var(--k)] mb-3">Filtros</p>
 
           <FilterGroup title="Categoria" options={["Scooter", "E-Bike", "Cargo"]} active={[0]} />
@@ -218,19 +358,19 @@ function CatalogoPreview() {
           <FilterGroup title="Autonomia" options={["Até 40km", "40–80km", "80km+"]} active={[2]} />
           <FilterGroup title="Características" options={["Dobrável", "Bat. removível", "NFC", "Bluetooth"]} active={[0, 3]} />
 
-          <div className="mt-3 pt-3 border-t border-[var(--w3)]">
+          <div className="mt-3 pt-3 border-t border-[var(--sand-dark)]/30">
             <p className="text-[7px] text-[var(--ml)]">30+ filtros disponíveis</p>
-            <p className="text-[7px] text-[var(--gd)] font-semibold">Ver todos os filtros ↓</p>
+            <p className="text-[7px] text-[var(--k)] font-semibold">Ver todos os filtros ↓</p>
           </div>
         </div>
 
         {/* Products grid */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-4 bg-gradient-to-b from-white to-[var(--sand-light)]">
           <div className="flex items-center justify-between mb-3">
             <p className="text-[9px] text-[var(--ml)]">Mostrando <b className="text-[var(--k)]">8 modelos</b></p>
             <div className="flex gap-1">
-              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--g)] text-[var(--k)] font-semibold">Scooter</span>
-              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--w2)] text-[var(--ml)]">Dobrável</span>
+              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--bossa-dark)] text-white font-semibold">Scooter</span>
+              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--sand)] text-[var(--k)]">Dobrável</span>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -262,30 +402,31 @@ function ProdutoPreview() {
       <MiniNav active="Modelos" />
 
       <div className="md:flex">
-        {/* Image carousel */}
-        <div className="md:w-1/2 bg-[var(--gll)] p-6 flex items-center justify-center min-h-[200px] relative">
+        {/* Image carousel — sand/sky background */}
+        <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)] p-6 flex items-center justify-center min-h-[200px] relative">
           <span className="text-[64px]">🛵</span>
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
             {[0, 1, 2, 3].map((d) => (
-              <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--g)]" : "bg-[var(--w3)]"}`} />
+              <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--bossa-dark)]" : "bg-[var(--sand-dark)]"}`} />
             ))}
           </div>
           {/* Polaroid frame */}
-          <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-md rounded-sm">
-            <div className="w-12 h-12 bg-[var(--gll)] rounded-sm flex items-center justify-center text-lg">🛵</div>
-            <p className="text-[5px] text-center text-[var(--m)] mt-0.5 font-serif italic">Prime T</p>
+          <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-[2px_3px_10px_rgba(139,94,60,.15)] rounded-sm">
+            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-[var(--bossa)]/40 rounded-sm z-10" />
+            <div className="w-12 h-12 bg-gradient-to-br from-[var(--bossa-light)] to-[var(--sand)] rounded-sm flex items-center justify-center text-lg">🛵</div>
+            <p className="text-[5px] text-center text-[var(--k)] mt-0.5 font-serif italic">Prime T</p>
           </div>
         </div>
 
         {/* Product info */}
-        <div className="md:w-1/2 p-5">
-          <p className="text-[8px] text-[var(--gd)] font-semibold mb-1">SCOOTER ELÉTRICA</p>
+        <div className="md:w-1/2 p-5 bg-[var(--sand-light)]">
+          <p className="text-[8px] text-[var(--k)] font-semibold mb-1">SCOOTER ELÉTRICA</p>
           <h3 className="font-serif text-[24px] font-bold text-[var(--k)] leading-tight mb-2">Bossa Prime T</h3>
 
           <div className="flex items-baseline gap-3 mb-4">
             <div>
-              <p className="text-[8px] text-[var(--gd)] font-semibold">PIX</p>
-              <p className="font-serif text-[22px] font-bold text-[var(--gd)]">R$ 12.490</p>
+              <p className="text-[8px] text-[var(--k)] font-semibold">PIX</p>
+              <p className="font-serif text-[22px] font-bold text-[var(--k)]">R$ 12.490</p>
             </div>
             <div>
               <p className="text-[8px] text-[var(--ml)]">OU</p>
@@ -294,9 +435,9 @@ function ProdutoPreview() {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1 mb-3 border-b border-[var(--w3)]">
+          <div className="flex gap-1 mb-3 border-b border-[var(--sand-dark)]/30">
             {["Descrição", "Especificações", "Agendar"].map((t, i) => (
-              <button key={t} onClick={() => setTab(i)} className={`px-3 py-2 text-[9px] font-semibold cursor-pointer border-b-2 transition-colors ${tab === i ? "border-[var(--g)] text-[var(--k)]" : "border-transparent text-[var(--ml)]"}`}>{t}</button>
+              <button key={t} onClick={() => setTab(i)} className={`px-3 py-2 text-[9px] font-semibold cursor-pointer border-b-2 transition-colors ${tab === i ? "border-[var(--k)]/20 text-[var(--k)]" : "border-transparent text-[var(--ml)]"}`}>{t}</button>
             ))}
           </div>
 
@@ -318,7 +459,7 @@ function ProdutoPreview() {
                 ["Freio", "Disco"],
                 ["NFC", "Sim"],
               ].map(([k, v]) => (
-                <div key={k} className="bg-[var(--w2)] rounded-md px-2 py-1.5 border border-[var(--w3)]">
+                <div key={k} className="bg-white rounded-md px-2 py-1.5 border border-[var(--sand-dark)]/30">
                   <p className="text-[7px] text-[var(--ml)]">{k}</p>
                   <p className="text-[10px] font-semibold text-[var(--k)]">{v}</p>
                 </div>
@@ -328,17 +469,17 @@ function ProdutoPreview() {
 
           {tab === 2 && (
             <div className="space-y-2">
-              <div className="bg-[var(--g)] text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Agendar Test Drive</div>
-              <div className="border border-[var(--w3)] text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Reservar / Encomendar</div>
+              <div className="bg-[var(--bossa)] text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Agendar Test Drive</div>
+              <div className="border border-[var(--k)]/20 text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Reservar / Encomendar</div>
             </div>
           )}
 
           {/* Related */}
-          <div className="mt-5 pt-4 border-t border-[var(--w3)]">
-            <p className="text-[8px] text-[var(--ml)] font-semibold mb-2">Você também pode gostar</p>
+          <div className="mt-5 pt-4 border-t border-[var(--sand-dark)]/30">
+            <p className="text-[8px] text-[var(--k)] font-semibold mb-2">Você também pode gostar</p>
             <div className="flex gap-2">
               {[{ name: "Bossa Neo", emoji: "🛵" }, { name: "Bossa Grid", emoji: "🚲" }].map((r) => (
-                <div key={r.name} className="flex-1 bg-[var(--w2)] rounded-lg p-2 text-center border border-[var(--w3)]">
+                <div key={r.name} className="flex-1 bg-white rounded-lg p-2 text-center border border-[var(--sand-dark)]/30">
                   <span className="text-lg">{r.emoji}</span>
                   <p className="text-[8px] font-semibold text-[var(--k)]">{r.name}</p>
                 </div>
@@ -358,10 +499,10 @@ function AdminPreview() {
   return (
     <BrowserFrame url="admin.bossaeletricas.com.br">
       <div className="flex min-h-[350px]">
-        {/* Sidebar */}
-        <div className="w-14 md:w-44 bg-[var(--k)] flex flex-col border-r border-[rgba(246,244,238,.04)]">
+        {/* Sidebar — Bossa preto + verde */}
+        <div className="w-14 md:w-44 bg-[var(--k)] flex flex-col border-r border-white/10">
           <div className="px-3 py-4 hidden md:block">
-            <span className="font-serif text-[12px] text-[var(--g)] italic font-bold">Bossa Admin</span>
+            <span className="font-serif text-[12px] text-[var(--bossa)] italic font-bold">Bossa Admin</span>
           </div>
           <div className="flex flex-col gap-1 px-2 mt-2 md:mt-0">
             {[
@@ -372,7 +513,7 @@ function AdminPreview() {
               { icon: "📝", label: "Blog", active: false },
               { icon: "⚙️", label: "Config", active: false },
             ].map((item) => (
-              <div key={item.label} className={`flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] ${item.active ? "bg-[var(--g)] text-[var(--k)] font-bold" : "text-[rgba(246,244,238,.3)]"}`}>
+              <div key={item.label} className={`flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] ${item.active ? "bg-[var(--bossa)] text-[var(--k)] font-bold" : "text-white/40"}`}>
                 <span className="text-sm">{item.icon}</span>
                 <span className="hidden md:inline">{item.label}</span>
               </div>
@@ -381,24 +522,24 @@ function AdminPreview() {
         </div>
 
         {/* Main */}
-        <div className="flex-1 p-4 bg-[var(--w)]">
+        <div className="flex-1 p-4 bg-[var(--sand-light)]">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-[8px] text-[var(--ml)]">Bem-vinda de volta!</p>
               <h4 className="text-[14px] font-bold text-[var(--k)]">Dashboard</h4>
             </div>
-            <div className="bg-[var(--g)] text-[var(--k)] text-[8px] font-bold px-3 py-1.5 rounded-lg">+ Novo produto</div>
+            <div className="bg-[var(--bossa)] text-[var(--k)] text-[8px] font-bold px-3 py-1.5 rounded-lg">+ Novo produto</div>
           </div>
 
           {/* KPIs */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
             {[
               { label: "Produtos ativos", value: "24", color: "text-[var(--gd)]" },
-              { label: "Leads hoje", value: "7", color: "text-[var(--b)]" },
-              { label: "Test drives agendados", value: "3", color: "text-[var(--ydk)]" },
+              { label: "Leads hoje", value: "7", color: "text-[var(--k)]" },
+              { label: "Test drives agendados", value: "3", color: "text-[var(--k)]" },
               { label: "Visitas/mês", value: "2.4k", color: "text-[var(--k)]" },
             ].map((kpi) => (
-              <div key={kpi.label} className="bg-white rounded-xl p-3 border border-[var(--w3)]">
+              <div key={kpi.label} className="bg-white rounded-xl p-3 border border-[var(--sand-dark)]/30">
                 <p className="text-[7px] text-[var(--ml)] mb-1">{kpi.label}</p>
                 <p className={`text-[18px] font-bold ${kpi.color}`}>{kpi.value}</p>
               </div>
@@ -406,10 +547,10 @@ function AdminPreview() {
           </div>
 
           {/* Products table */}
-          <div className="bg-white rounded-xl border border-[var(--w3)] overflow-hidden">
-            <div className="px-3 py-2 border-b border-[var(--w3)] flex items-center justify-between">
+          <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden">
+            <div className="px-3 py-2 border-b border-[var(--sand-dark)]/20 flex items-center justify-between">
               <p className="text-[9px] font-bold text-[var(--k)]">Produtos recentes</p>
-              <p className="text-[8px] text-[var(--gd)] font-semibold">Ver todos →</p>
+              <p className="text-[8px] text-[var(--k)] font-semibold">Ver todos →</p>
             </div>
             {[
               { name: "Bossa Prime T", price: "R$ 12.990", status: "Ativo", emoji: "🛵" },
@@ -417,20 +558,20 @@ function AdminPreview() {
               { name: "Bossa Grid", price: "R$ 7.990", status: "Ativo", emoji: "🚲" },
               { name: "Bossa X", price: "R$ 18.990", status: "Sob encomenda", emoji: "🛵" },
             ].map((row) => (
-              <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--w3)] last:border-0 hover:bg-[var(--gll)] transition-colors">
+              <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--sand-dark)]/15 last:border-0 hover:bg-[var(--sand-light)] transition-colors">
                 <span className="text-sm">{row.emoji}</span>
                 <span className="text-[10px] font-medium text-[var(--k)] flex-1">{row.name}</span>
-                <span className="text-[10px] text-[var(--gd)] font-semibold">{row.price}</span>
-                <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--bl)] text-[var(--b)] border border-[#c0d8f0]"}`}>{row.status}</span>
-                <span className="text-[8px] text-[var(--gd)] font-semibold">Editar</span>
+                <span className="text-[10px] text-[var(--k)] font-semibold">{row.price}</span>
+                <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--bossa-light)]/40 text-[var(--k)] border border-[var(--bossa-light)]"}`}>{row.status}</span>
+                <span className="text-[8px] text-[var(--k)] font-semibold">Editar</span>
               </div>
             ))}
           </div>
 
           {/* Sync status */}
-          <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-[var(--gll)] rounded-xl border border-[var(--gl)]">
-            <div className="w-2 h-2 rounded-full bg-[var(--g)]" style={{ animation: "pls 1.5s infinite" }} />
-            <p className="text-[9px] text-[var(--gd)] font-semibold">SprintHub + Bling sincronizados</p>
+          <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-[var(--bossa-light)]/30 rounded-xl border border-[var(--bossa-light)]">
+            <div className="w-2 h-2 rounded-full bg-[var(--bossa-dark)]" style={{ animation: "pls 1.5s infinite" }} />
+            <p className="text-[9px] text-[var(--k)] font-semibold">SprintHub + Bling sincronizados</p>
             <span className="text-[8px] text-[var(--ml)] ml-auto">Última sync: agora</span>
           </div>
         </div>
@@ -464,11 +605,11 @@ function BrowserFrame({ url, children }: { url: string; children: React.ReactNod
 
 function MiniNav({ active }: { active: string }) {
   return (
-    <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
-      <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
+    <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--off)] border-b border-[var(--k)]/5">
+      <span className="font-serif text-[13px] font-bold text-[var(--k)] italic">Bossa</span>
       <div className="flex gap-4">
         {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--ocean)] font-semibold" : "text-[var(--sand-dark)]"}`}>{l}</span>
+          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--k)] font-semibold" : "text-[var(--ml)]"}`}>{l}</span>
         ))}
       </div>
     </div>
@@ -482,37 +623,57 @@ function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; pr
   return (
     <div className={`bg-white rounded-sm p-1.5 pb-3 shadow-[2px_3px_12px_rgba(139,94,60,.15)] ${rot} hover:rotate-0 hover:scale-110 transition-all duration-200 cursor-pointer relative`}>
       {/* Tape */}
-      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--sunset)]/40 rounded-sm z-10" />
-      <div className="bg-gradient-to-br from-[var(--sky-soft)] to-[var(--sand)] rounded-sm h-16 flex items-center justify-center mb-1.5">
+      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--bossa)]/40 rounded-sm z-10" />
+      <div className="bg-[var(--off)] rounded-sm h-16 flex items-center justify-center mb-1.5 border border-[var(--w3)]">
         <span className="text-[24px] drop-shadow-sm">{emoji}</span>
       </div>
-      <p className="text-[8px] font-serif font-bold text-[var(--ocean-deep)] italic text-center">{name}</p>
-      <p className="text-[7px] text-[var(--sand-dark)] text-center">{cat}</p>
-      <p className="text-[9px] text-[var(--ocean)] font-bold text-center">{price}</p>
+      <p className="text-[8px] font-serif font-bold text-[var(--k)] italic text-center">{name}</p>
+      <p className="text-[7px] text-[var(--ml)] text-center">{cat}</p>
+      <p className="text-[9px] text-[var(--k)] font-bold text-center">{price}</p>
     </div>
   );
 }
 
 function CatalogCard({ name, price, parcela, emoji, badge }: { name: string; price: string; parcela: string; emoji: string; badge: string | null }) {
   return (
-    <div className="bg-white rounded-xl border border-[var(--w3)] overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-      <div className="bg-[var(--gll)] h-20 flex items-center justify-center relative">
+    <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+      <div className="bg-gradient-to-br from-[var(--bossa-light)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative">
         <span className="text-[28px] group-hover:scale-110 transition-transform">{emoji}</span>
         {badge && (
-          <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--bl)] text-[var(--b)]" : "bg-[var(--y)] text-[var(--k)]"}`}>
+          <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--bossa-light)] text-[var(--k)]" : "bg-[var(--bossa)] text-[var(--k)]"}`}>
             {badge}
           </span>
         )}
       </div>
       <div className="p-2">
         <p className="text-[9px] font-bold text-[var(--k)]">{name}</p>
-        <p className="text-[10px] font-bold text-[var(--gd)]">{price}</p>
+        <p className="text-[10px] font-bold text-[var(--k)]">{price}</p>
         <p className="text-[7px] text-[var(--ml)]">{parcela}</p>
         <div className="flex gap-1 mt-2">
-          <div className="flex-1 bg-[var(--g)] text-[var(--k)] text-[7px] font-bold text-center py-1 rounded-md">Test Drive</div>
-          <div className="flex-1 border border-[var(--w3)] text-[var(--m)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
+          <div className="flex-1 bg-[var(--bossa)] text-[var(--k)] text-[7px] font-bold text-center py-1 rounded-md">Test Drive</div>
+          <div className="flex-1 border border-[var(--k)]/20/30 text-[var(--k)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function SectionLabel({ label, desc }: { label: string; desc: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <div className="w-1.5 h-1.5 rounded-full bg-[var(--bossa)]" />
+      <div>
+        <p className="text-[10px] font-bold text-[var(--k)]">{label}</p>
+        <p className="text-[8px] text-[var(--ml)]">{desc}</p>
+      </div>
+    </div>
+  );
+}
+
+function ConceptTag({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`px-4 py-2 bg-[var(--bossa)]/8 border-t border-[var(--bossa)]/20 ${className}`}>
+      <p className="text-[8px] text-[var(--k)]/70 italic leading-relaxed">{children}</p>
     </div>
   );
 }

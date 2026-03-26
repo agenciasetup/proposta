@@ -25,19 +25,15 @@
   --ml: #9A9880;
   --shadow: 0 1px 4px rgba(20,20,16,.07), 0 4px 16px rgba(20,20,16,.05);
 
-  /* Beach palette */
-  --sky: #4DA8DA;
-  --sky-light: #87CEEB;
-  --sky-soft: #B8DFF0;
+  /* Bossa brand — verde + preto + off-white + praia */
+  --bossa: #E5E543;
+  --bossa-dark: #c8c830;
+  --bossa-light: #f4f4a0;
+  --bossa-glow: rgba(229,229,67,.25);
   --sand: #F5E6C8;
-  --sand-dark: #E8D5A3;
+  --sand-dark: #E0D0A8;
   --sand-light: #FFF8ED;
-  --ocean: #1B9AAA;
-  --ocean-deep: #0E6B7A;
-  --sunset: #F7B267;
-  --sunset-warm: #F79D65;
-  --coral: #FF7F6B;
-  --palm: #4A7C2E;
+  --off: #F7F3EB;
 }
 
 @theme inline {
@@ -58,6 +54,19 @@ body {
   color: var(--k);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
+}
+
+/* Sand noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: .04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
 }
 
 /* ==============================
