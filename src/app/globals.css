@@ -4,11 +4,12 @@
    DESIGN TOKENS (Bossa palette)
    ============================== */
 :root {
-  --g: #7DC242;
-  --gd: #5a9e2a;
-  --gl: #c6e89a;
-  --gll: #edf7d8;
-  --glll: #f5fbee;
+  /* Bossa brand green — from the official logo (#E5E543) */
+  --g: #E5E543;
+  --gd: #c8c830;
+  --gl: #f4f4a0;
+  --gll: #fafacc;
+  --glll: #fdfde6;
   --y: #F0E030;
   --ydk: #b8ab00;
   --b: #1A4A7A;
@@ -135,7 +136,7 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(125,194,66,.15) 50%,
+    rgba(229,229,67,.15) 50%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -155,7 +156,7 @@ body::after {
   position: absolute;
   inset: -4px;
   border-radius: inherit;
-  border: 2px solid var(--g);
+  border: 2px solid var(--bossa);
   animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   pointer-events: none;
 }

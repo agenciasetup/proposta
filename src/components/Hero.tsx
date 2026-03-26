@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { HERO } from "@/data/content";
 import Reveal from "./RevealOnScroll";
 
@@ -71,36 +72,39 @@ export default function Hero() {
               </Reveal>
             </div>
 
-            {/* Right card — desktop only */}
-            <div className="hidden lg:block">
+            {/* Right — moto image (desktop) */}
+            <div className="hidden lg:flex lg:justify-center">
               <Reveal delay={0.28}>
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-[var(--k)]/5 shadow-[0_4px_24px_rgba(20,20,16,.06)]">
-                  <p className="text-[14px] text-[var(--m)] leading-[1.7] mb-5">
-                    {HERO.greeting.split("Entendemos o que a Bossa precisa").map((part, i) =>
-                      i === 0 ? <span key={i}>{part}<b className="text-[var(--k)] font-medium">Entendemos o que a Bossa precisa</b></span> : <span key={i}>{part}</span>
-                    )}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {HERO.tags.map((tag, i) => {
-                      const c = tagColors[i % tagColors.length];
-                      const cls = {
-                        bossa: "bg-[var(--bossa)]/15 text-[var(--bossa-dark)] border-[var(--bossa)]/25",
-                        dark: "bg-[var(--k)]/5 text-[var(--k)]/50 border-[var(--k)]/10",
-                        muted: "bg-[var(--w2)] text-[var(--m)] border-[var(--w3)]",
-                      }[c];
-                      return <span key={i} className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold border ${cls}`}>{tag}</span>;
-                    })}
-                  </div>
-                </div>
+                <Image
+                  src="/moto.png"
+                  alt="Bossa Elétrica"
+                  width={500}
+                  height={500}
+                  className="w-full max-w-[460px] h-auto drop-shadow-[0_12px_40px_rgba(20,20,16,.12)]"
+                  priority
+                />
               </Reveal>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Light card — mobile/tablet only */}
+      {/* Mobile moto + greeting card */}
       <div className="bg-[var(--w)] px-6 -mt-6 rounded-t-[20px] relative z-10 pb-12 lg:hidden">
         <Reveal>
+          <div className="flex justify-center -mt-8 mb-4">
+            <Image
+              src="/moto.png"
+              alt="Bossa Elétrica"
+              width={320}
+              height={320}
+              className="w-[70%] max-w-[280px] h-auto drop-shadow-[0_8px_24px_rgba(20,20,16,.1)]"
+              priority
+            />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.07}>
           <div className="bg-white rounded-2xl p-5 shadow-[var(--shadow)] border border-[var(--k)]/5 max-w-lg mx-auto">
             <p className="text-[13px] text-[var(--m)] leading-[1.7] mb-4">
               {HERO.greeting.split("Entendemos o que a Bossa precisa").map((part, i) =>

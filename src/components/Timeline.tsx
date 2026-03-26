@@ -21,7 +21,7 @@ export default function Timeline() {
               <h2 className="font-serif text-[clamp(32px,7vw,52px)] font-bold leading-[.97] tracking-[-1.5px] text-[var(--k)] mb-4">
                 {TIMELINE.titulo}
                 <br />
-                <i className="text-[var(--b)] italic">{TIMELINE.tituloDestaque}</i>
+                <i className="text-[var(--gd)] italic">{TIMELINE.tituloDestaque}</i>
               </h2>
             </Reveal>
             <Reveal>
@@ -42,7 +42,7 @@ export default function Timeline() {
                     onClick={() => setActive(i)}
                     className="flex gap-5 pb-8 last:pb-0 cursor-pointer text-left w-full"
                   >
-                    <div className={`w-[44px] h-[44px] rounded-full border-[1.5px] flex items-center justify-center shrink-0 relative z-[1] transition-all duration-300 ${isAct ? "bg-[var(--g)] border-[var(--g)] scale-[1.08] shadow-[0_3px_14px_rgba(125,194,66,.28)]" : "bg-[var(--w2)] border-[var(--w3)]"}`}>
+                    <div className={`w-[44px] h-[44px] rounded-full border-[1.5px] flex items-center justify-center shrink-0 relative z-[1] transition-all duration-300 ${isAct ? "bg-[var(--g)] border-[var(--g)] scale-[1.08] shadow-[0_3px_14px_rgba(229,229,67,.28)]" : "bg-[var(--w2)] border-[var(--w3)]"}`}>
                       <span className={`font-serif text-[17px] font-bold transition-colors ${isAct ? "text-[var(--k)]" : "text-[var(--ml)]"}`}>
                         {i + 1}
                       </span>

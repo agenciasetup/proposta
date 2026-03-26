@@ -24,7 +24,7 @@ export default function Briefing() {
                 <h2 className="font-serif text-[clamp(32px,7vw,52px)] font-bold leading-[.97] tracking-[-1.5px] text-[var(--k)] mb-4">
                   {BRIEFING.titulo}
                   <br />
-                  <i className="text-[var(--b)] italic">{BRIEFING.tituloDestaque}</i> {BRIEFING.tituloFim}
+                  <i className="text-[var(--gd)] italic">{BRIEFING.tituloDestaque}</i> {BRIEFING.tituloFim}
                 </h2>
               </Reveal>
               <Reveal>

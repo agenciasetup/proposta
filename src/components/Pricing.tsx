@@ -41,7 +41,7 @@ export default function Pricing() {
           </Reveal>
           <Reveal>
             <h2 className="font-serif text-[clamp(32px,7vw,52px)] font-bold leading-[.97] tracking-[-1.5px] text-[var(--k)] mb-4">
-              Transparente do início <i className="text-[var(--b)] italic">ao fim</i>
+              Transparente do início <i className="text-[var(--gd)] italic">ao fim</i>
             </h2>
           </Reveal>
           <Reveal>
@@ -70,7 +70,7 @@ export default function Pricing() {
               </button>
               <button className={`tab-btn ${mode === "parcelado" ? "active" : ""}`} onClick={() => setMode("parcelado")}>
                 📋 50 / 50
-                {mode === "parcelado" && <span className="block text-[11px] text-[var(--b)] font-bold mt-0.5">Podendo parcelar cada metade</span>}
+                {mode === "parcelado" && <span className="block text-[11px] text-[var(--gd)] font-bold mt-0.5">Podendo parcelar cada metade</span>}
               </button>
             </div>
           </Reveal>
@@ -183,14 +183,14 @@ export default function Pricing() {
           {/* Order bump */}
           <Reveal delay={0.14}>
             <button onClick={() => setManutencao(!manutencao)}
-              className={`w-full text-left rounded-2xl p-6 transition-all duration-300 cursor-pointer border-2 ${manutencao ? "bg-[var(--bl)] border-[var(--b)] shadow-lg" : "bg-white border-[var(--w3)] hover:border-[var(--b)] hover:shadow-md"}`}>
+              className={`w-full text-left rounded-2xl p-6 transition-all duration-300 cursor-pointer border-2 ${manutencao ? "bg-[var(--gll)] border-[var(--gd)] shadow-lg" : "bg-white border-[var(--w3)] hover:border-[var(--gd)] hover:shadow-md"}`}>
               <div className="flex items-start gap-4">
-                <div className={`w-7 h-7 rounded-lg border-2 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 ${manutencao ? "bg-[var(--b)] border-[var(--b)]" : "border-[var(--w4)] shimmer-hint"}`}>
+                <div className={`w-7 h-7 rounded-lg border-2 flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 ${manutencao ? "bg-[var(--gd)] border-[var(--gd)]" : "border-[var(--w4)] shimmer-hint"}`}>
                   {manutencao && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] font-bold tracking-[1.5px] uppercase text-[var(--b)]">Adicionar</span>
+                    <span className="text-[10px] font-bold tracking-[1.5px] uppercase text-[var(--gd)]">Adicionar</span>
                     {!manutencao && <span className="text-[9px] px-2 py-0.5 rounded-full bg-[var(--y)] text-[var(--k)] font-bold animate-pulse">RECOMENDADO</span>}
                   </div>
                   <h4 className="font-serif text-xl font-bold text-[var(--k)] mb-1">Manutenção Mensal</h4>
@@ -198,14 +198,14 @@ export default function Pricing() {
                     Hospedagem, monitoramento, segurança, ajustes mensais, subpáginas regionais e SEO contínuo para atrair mais pesquisas locais.
                   </p>
                   <div className="flex items-baseline gap-1 mb-3">
-                    <strong className="font-serif text-[32px] font-bold text-[var(--b)]">{fmt(PRICING.manutencao.valor)}</strong>
+                    <strong className="font-serif text-[32px] font-bold text-[var(--gd)]">{fmt(PRICING.manutencao.valor)}</strong>
                     <span className="text-[14px] text-[var(--ml)]">/mês</span>
                   </div>
                   {manutencao && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-3 border-t border-[rgba(26,74,122,.15)]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-3 border-t border-[var(--gd)]/15">
                       {PRICING.manutencao.beneficios.map((b, i) => (
                         <div key={i} className="flex gap-2 items-start text-[12px] text-[var(--m)]">
-                          <span className="text-[var(--b)] font-bold shrink-0">✓</span>{b}
+                          <span className="text-[var(--gd)] font-bold shrink-0">✓</span>{b}
                         </div>
                       ))}
                     </div>
