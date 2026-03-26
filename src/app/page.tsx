@@ -11,18 +11,17 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="wrapper">
+    <>
       <ProgressBar />
       <Nav />
       <Hero />
       <Stats />
       <Briefing />
-      <div className="h-px bg-[var(--w3)] mx-6" />
       <Entregas />
       <Prazo />
       <Timeline />
       <Pricing />
       <Footer />
-    </div>
+    </>
   );
 }
