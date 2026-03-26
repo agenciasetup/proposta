@@ -13,8 +13,8 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8" onClick={onClose}>
-      {/* Backdrop — ocean tint */}
-      <div className="absolute inset-0 bg-[var(--ocean)]/40 backdrop-blur-sm" />
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-[var(--k)]/50 backdrop-blur-sm" />
 
       {/* Modal */}
       <div
@@ -24,10 +24,10 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
         {/* Header — warm sand */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--sand-dark)]/40 bg-[var(--sand-light)]">
           <div>
-            <p className="text-[9px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold">Prévia do projeto</p>
-            <h3 className="font-serif text-lg font-bold text-[var(--ocean-deep)]">Como o site vai ficar</h3>
+            <p className="text-[9px] tracking-[2px] uppercase text-[var(--bossa-dark)] font-semibold">Prévia do projeto</p>
+            <h3 className="font-serif text-lg font-bold text-[var(--k)]">Como o site vai ficar</h3>
           </div>
-          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--sand)] flex items-center justify-center text-[var(--ocean-deep)] hover:bg-[var(--sand-dark)] transition-colors cursor-pointer text-lg">×</button>
+          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--sand)] flex items-center justify-center text-[var(--k)] hover:bg-[var(--sand-dark)] transition-colors cursor-pointer text-lg">×</button>
         </div>
 
         {/* Tab bar */}
@@ -36,7 +36,7 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
             <button
               key={t}
               onClick={() => setActiveTab(i)}
-              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--ocean)] text-white" : "text-[var(--ml)] hover:bg-[var(--sand)]"}`}
+              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--k)] text-[var(--bossa)]" : "text-[var(--ml)] hover:bg-[var(--sand)]"}`}
             >
               {t}
             </button>
@@ -71,7 +71,7 @@ function HomePreview() {
 
       {/* ── Intro note ── */}
       <div className="bg-[var(--bossa)]/15 border border-[var(--bossa)]/40 rounded-xl p-4 text-center">
-        <p className="text-[11px] text-[var(--ocean-deep)] leading-relaxed">
+        <p className="text-[11px] text-[var(--k)] leading-relaxed">
           Isso aqui é só um exemplo dos <b>elementos que teremos na página</b>, pensando nas cores da marca e na comunicação carioca. Não é o layout final — é a <b>direção visual</b>.
         </p>
       </div>
@@ -80,7 +80,7 @@ function HomePreview() {
       <SectionLabel label="Paleta do site" desc="As cores que vão guiar todo o design" />
       <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
         {/* Mini beach scene with the 3 colors */}
-        <div className="h-28 relative" style={{ background: "linear-gradient(180deg, var(--sky) 0%, var(--sky-light) 40%, var(--ocean) 55%, var(--ocean) 60%, var(--sand) 65%, var(--sand-dark) 100%)" }}>
+        <div className="h-28 relative" style={{ background: "linear-gradient(180deg, #f7f5ef 0%, #f0eee0 30%, var(--bossa) 50%, var(--bossa-dark) 65%, var(--sand) 80%, var(--sand-dark) 100%)" }}>
           <div className="absolute top-3 right-6 w-10 h-10 rounded-full bg-[var(--bossa)] shadow-[0_0_30px_rgba(229,229,67,.5)]" />
           {/* Cristo */}
           <svg className="absolute bottom-8 left-[20%] opacity-20" width="40" height="55" viewBox="0 0 40 55">
@@ -91,10 +91,10 @@ function HomePreview() {
           </svg>
           {/* Palm */}
           <svg className="absolute bottom-0 right-4 opacity-25" width="35" height="50" viewBox="0 0 35 50">
-            <path d="M15,50 Q14,30 17,12" stroke="var(--palm)" strokeWidth="2" fill="none" />
-            <path d="M17,12 Q5,6 1,10" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-            <path d="M17,12 Q10,2 4,0" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-            <path d="M17,12 Q27,4 33,8" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+            <path d="M15,50 Q14,30 17,12" stroke="var(--k)" strokeWidth="2" fill="none" />
+            <path d="M17,12 Q5,6 1,10" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M17,12 Q10,2 4,0" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M17,12 Q27,4 33,8" stroke="var(--k)" strokeWidth="1.5" fill="none" />
           </svg>
           {/* Waves */}
           <svg className="absolute bottom-[38%] left-0 right-0 h-3 opacity-30" viewBox="0 0 400 12" preserveAspectRatio="none">
@@ -103,7 +103,7 @@ function HomePreview() {
           {/* Copacabana sidewalk */}
           <svg className="absolute bottom-0 left-0 right-0 h-4 opacity-15" viewBox="0 0 200 10" preserveAspectRatio="none">
             <pattern id="copa-pal" width="20" height="10" patternUnits="userSpaceOnUse">
-              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--ocean-deep)" strokeWidth="1" />
+              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--k)" strokeWidth="1" />
             </pattern>
             <rect width="200" height="10" fill="url(#copa-pal)" />
           </svg>
@@ -112,17 +112,17 @@ function HomePreview() {
         <div className="grid grid-cols-3 bg-white">
           <div className="p-3 text-center border-r border-[var(--sand-dark)]/20">
             <div className="w-8 h-8 rounded-full bg-[var(--bossa)] mx-auto mb-1.5 shadow-sm" />
-            <p className="text-[8px] font-bold text-[var(--ocean-deep)]">Verde Bossa</p>
+            <p className="text-[8px] font-bold text-[var(--k)]">Verde Bossa</p>
             <p className="text-[7px] text-[var(--ml)]">#E5E543</p>
           </div>
           <div className="p-3 text-center border-r border-[var(--sand-dark)]/20">
             <div className="w-8 h-8 rounded-full bg-[var(--sand)] mx-auto mb-1.5 shadow-sm border border-[var(--sand-dark)]/30" />
-            <p className="text-[8px] font-bold text-[var(--ocean-deep)]">Areia</p>
+            <p className="text-[8px] font-bold text-[var(--k)]">Areia</p>
             <p className="text-[7px] text-[var(--ml)]">#F5E6C8</p>
           </div>
           <div className="p-3 text-center">
-            <div className="w-8 h-8 rounded-full bg-[var(--sky)] mx-auto mb-1.5 shadow-sm" />
-            <p className="text-[8px] font-bold text-[var(--ocean-deep)]">Céu / Oceano</p>
+            <div className="w-8 h-8 rounded-full bg-[var(--bossa)] mx-auto mb-1.5 shadow-sm" />
+            <p className="text-[8px] font-bold text-[var(--k)]">Céu / Oceano</p>
             <p className="text-[7px] text-[var(--ml)]">#4DA8DA</p>
           </div>
         </div>
@@ -131,7 +131,7 @@ function HomePreview() {
       {/* ── HERO concept ── */}
       <SectionLabel label="Hero — Banner principal" desc="Primeira coisa que o visitante vê. Praia, marca e CTA." />
       <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30 relative">
-        <div className="h-44 relative" style={{ background: "linear-gradient(170deg, var(--sky-light) 0%, var(--sky) 35%, var(--ocean) 65%, var(--sand) 85%, var(--sand-dark) 100%)" }}>
+        <div className="h-44 relative" style={{ background: "linear-gradient(170deg, var(--off) 0%, var(--bossa-light) 25%, var(--bossa) 50%, var(--sand) 80%, var(--sand-dark) 100%)" }}>
           <div className="absolute top-4 right-8 w-10 h-10 rounded-full bg-[var(--bossa)] shadow-[0_0_30px_rgba(229,229,67,.5)]" />
           {/* Cristo */}
           <svg className="absolute bottom-10 left-[12%] opacity-15" width="50" height="75" viewBox="0 0 50 75">
@@ -152,7 +152,7 @@ function HomePreview() {
             </h2>
             <p className="text-[9px] text-white/70 max-w-[180px] leading-relaxed mb-3">Criada no Rio, para os cariocas.</p>
             <div className="flex gap-2">
-              <div className="bg-[var(--bossa)] text-[var(--ocean-deep)] text-[8px] font-bold px-2.5 py-1.5 rounded-lg shadow-md">Encontre sua Bossa →</div>
+              <div className="bg-[var(--bossa)] text-[var(--k)] text-[8px] font-bold px-2.5 py-1.5 rounded-lg shadow-md">Encontre sua Bossa →</div>
               <div className="border border-white/40 text-white/80 text-[8px] px-2.5 py-1.5 rounded-lg bg-white/10">Test Drive</div>
             </div>
           </div>
@@ -178,29 +178,29 @@ function HomePreview() {
 
       {/* ── CALCULADORA DE ECONOMIA ── */}
       <SectionLabel label="Calculadora de Economia" desc="O visitante descobre quanto economiza saindo da gasolina." />
-      <div className="rounded-xl overflow-hidden border border-[var(--bossa)]/30 bg-gradient-to-br from-[var(--bossa)]/10 via-white to-[var(--sky-soft)]/20">
+      <div className="rounded-xl overflow-hidden border border-[var(--bossa)]/30 bg-gradient-to-br from-[var(--bossa)]/10 via-white to-[var(--bossa-light)]/20">
         <div className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-[var(--bossa)]/20 flex items-center justify-center text-sm">⚡</div>
             <div>
-              <p className="text-[11px] font-bold text-[var(--ocean-deep)]">Quanto você economiza?</p>
+              <p className="text-[11px] font-bold text-[var(--k)]">Quanto você economiza?</p>
               <p className="text-[8px] text-[var(--ml)]">Compare gasolina vs elétrica</p>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-2.5 mb-3">
-            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--coral)]/20">
+            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--k)]/20">
               <p className="text-[7px] text-[var(--ml)] mb-1">Gasolina/mês</p>
-              <p className="text-[16px] font-bold text-[var(--coral)]">R$ 480</p>
-              <div className="w-full h-1 rounded-full bg-[var(--coral)]/20 mt-1.5"><div className="w-[85%] h-full rounded-full bg-[var(--coral)]" /></div>
+              <p className="text-[16px] font-bold text-[var(--k)]">R$ 480</p>
+              <div className="w-full h-1 rounded-full bg-[var(--k)]/20 mt-1.5"><div className="w-[85%] h-full rounded-full bg-[var(--k)]" /></div>
             </div>
-            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--ocean)]/20">
+            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--bossa-dark)]/20">
               <p className="text-[7px] text-[var(--ml)] mb-1">Elétrica/mês</p>
-              <p className="text-[16px] font-bold text-[var(--ocean)]">R$ 35</p>
-              <div className="w-full h-1 rounded-full bg-[var(--ocean)]/20 mt-1.5"><div className="w-[7%] h-full rounded-full bg-[var(--ocean)]" /></div>
+              <p className="text-[16px] font-bold text-[var(--bossa-dark)]">R$ 35</p>
+              <div className="w-full h-1 rounded-full bg-[var(--bossa-dark)]/20 mt-1.5"><div className="w-[7%] h-full rounded-full bg-[var(--bossa-dark)]" /></div>
             </div>
             <div className="bg-[var(--bossa)]/10 rounded-xl p-3 text-center shadow-sm border border-[var(--bossa)]/30">
-              <p className="text-[7px] text-[var(--ocean)] mb-1">Economia/ano</p>
-              <p className="text-[16px] font-bold text-[var(--ocean-deep)]">R$ 5.340</p>
+              <p className="text-[7px] text-[var(--bossa-dark)] mb-1">Economia/ano</p>
+              <p className="text-[16px] font-bold text-[var(--k)]">R$ 5.340</p>
               <p className="text-[7px] text-[var(--bossa)] font-bold mt-1">93% menos!</p>
             </div>
           </div>
@@ -212,29 +212,29 @@ function HomePreview() {
       <SectionLabel label="Sobre a Bossa" desc="Seção contando a história da marca, com fotos das motos na praia." />
       <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30 bg-[var(--sand-light)]">
         <div className="md:flex">
-          <div className="md:w-1/2 bg-gradient-to-br from-[var(--sky-soft)]/40 to-[var(--sand)] p-5 flex items-center justify-center min-h-[120px] relative">
+          <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/40 to-[var(--sand)] p-5 flex items-center justify-center min-h-[120px] relative">
             {/* Polaroid-style photo */}
             <div className="bg-white p-2 pb-5 shadow-[3px_4px_14px_rgba(139,94,60,.15)] rotate-[-2deg]">
-              <div className="w-28 h-20 bg-gradient-to-br from-[var(--sky-light)] to-[var(--sand)] rounded-sm flex items-center justify-center relative overflow-hidden">
+              <div className="w-28 h-20 bg-gradient-to-br from-[var(--bossa)] to-[var(--sand)] rounded-sm flex items-center justify-center relative overflow-hidden">
                 <span className="text-[32px]">🛵</span>
                 <svg className="absolute bottom-0 left-0 right-0 h-3 opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0,5 Q12,0 25,5 Q38,10 50,5 Q62,0 75,5 Q88,10 100,5 L100,10 L0,10Z" fill="var(--ocean)" />
+                  <path d="M0,5 Q12,0 25,5 Q38,10 50,5 Q62,0 75,5 Q88,10 100,5 L100,10 L0,10Z" fill="var(--bossa-dark)" />
                 </svg>
               </div>
-              <p className="text-[7px] text-center text-[var(--ocean)] mt-1 font-serif italic">Bossa na orla</p>
+              <p className="text-[7px] text-center text-[var(--bossa-dark)] mt-1 font-serif italic">Bossa na orla</p>
             </div>
             <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-3 bg-[var(--bossa)]/40 rounded-sm" />
           </div>
           <div className="md:w-1/2 p-5">
             <p className="text-[8px] text-[var(--bossa)] font-bold tracking-[2px] uppercase mb-1">Desde 2021</p>
-            <p className="font-serif text-[16px] font-bold text-[var(--ocean-deep)] leading-tight mb-2">O que torna a <i className="text-[var(--ocean)]">Bossa</i> única?</p>
+            <p className="font-serif text-[16px] font-bold text-[var(--k)] leading-tight mb-2">O que torna a <i className="text-[var(--bossa-dark)]">Bossa</i> única?</p>
             <p className="text-[9px] text-[var(--m)] leading-relaxed">
               Nascida em Copacabana com DNA carioca. A primeira marca de bikes elétricas que entende o Rio de verdade.
             </p>
             <div className="flex gap-2 mt-3">
-              <div className="bg-[var(--bossa)]/15 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--ocean-deep)]">Rio de Janeiro</div>
-              <div className="bg-[var(--sky-soft)]/40 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--ocean)]">Copacabana</div>
-              <div className="bg-[var(--sand)] rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--ocean-deep)]">Desde 2021</div>
+              <div className="bg-[var(--bossa)]/15 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--k)]">Rio de Janeiro</div>
+              <div className="bg-[var(--bossa-light)]/40 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--bossa-dark)]">Copacabana</div>
+              <div className="bg-[var(--sand)] rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--k)]">Desde 2021</div>
             </div>
           </div>
         </div>
@@ -256,9 +256,9 @@ function HomePreview() {
             </div>
             <p className="text-[9px] text-[var(--m)] leading-relaxed mb-2 italic">&ldquo;{d.texto}&rdquo;</p>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-[var(--sky-soft)] flex items-center justify-center text-[7px] font-bold text-[var(--ocean)]">{d.name[0]}</div>
+              <div className="w-5 h-5 rounded-full bg-[var(--bossa-light)] flex items-center justify-center text-[7px] font-bold text-[var(--bossa-dark)]">{d.name[0]}</div>
               <div>
-                <p className="text-[8px] font-bold text-[var(--ocean-deep)]">{d.name}</p>
+                <p className="text-[8px] font-bold text-[var(--k)]">{d.name}</p>
                 <p className="text-[7px] text-[var(--ml)]">{d.local}</p>
               </div>
             </div>
@@ -271,7 +271,7 @@ function HomePreview() {
       <SectionLabel label="Autoridade" desc="Números da marca, notícias, parceiros. Gera credibilidade." />
       <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
         {/* Numbers */}
-        <div className="grid grid-cols-4 gap-0 bg-gradient-to-r from-[var(--ocean-deep)] to-[var(--ocean)]">
+        <div className="grid grid-cols-4 gap-0 bg-[var(--k)]">
           {[
             { num: "2.500+", label: "Bikes vendidas" },
             { num: "4.8", label: "Nota Google" },
@@ -290,7 +290,7 @@ function HomePreview() {
           <div className="flex gap-2">
             {["Globo", "Veja Rio", "TechTudo"].map((m) => (
               <div key={m} className="flex-1 bg-[var(--sand-light)] rounded-lg p-2 text-center border border-[var(--sand-dark)]/20">
-                <p className="text-[9px] font-bold text-[var(--ocean-deep)]">{m}</p>
+                <p className="text-[9px] font-bold text-[var(--k)]">{m}</p>
                 <p className="text-[7px] text-[var(--ml)]">Matéria publicada</p>
               </div>
             ))}
@@ -308,12 +308,12 @@ function HomePreview() {
           { title: "Manutenção: cuidados básicos", tag: "Dica" },
         ].map((post) => (
           <div key={post.title} className="bg-white rounded-xl overflow-hidden border border-[var(--sand-dark)]/25 shadow-sm">
-            <div className="h-14 bg-gradient-to-br from-[var(--sky-soft)]/50 to-[var(--sand)]/60 flex items-center justify-center">
+            <div className="h-14 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)]/60 flex items-center justify-center">
               <span className="text-[18px]">📝</span>
             </div>
             <div className="p-2">
-              <span className="text-[6px] font-bold px-1.5 py-0.5 rounded bg-[var(--bossa)]/20 text-[var(--ocean-deep)]">{post.tag}</span>
-              <p className="text-[8px] font-bold text-[var(--ocean-deep)] mt-1 leading-snug">{post.title}</p>
+              <span className="text-[6px] font-bold px-1.5 py-0.5 rounded bg-[var(--bossa)]/20 text-[var(--k)]">{post.tag}</span>
+              <p className="text-[8px] font-bold text-[var(--k)] mt-1 leading-snug">{post.title}</p>
             </div>
           </div>
         ))}
@@ -334,7 +334,7 @@ function CatalogoPreview() {
       <div className="flex">
         {/* Sidebar filters */}
         <div className="w-44 bg-[var(--sand-light)] border-r border-[var(--sand-dark)]/30 p-3 hidden md:block">
-          <p className="text-[9px] font-bold text-[var(--ocean-deep)] mb-3">Filtros</p>
+          <p className="text-[9px] font-bold text-[var(--k)] mb-3">Filtros</p>
 
           <FilterGroup title="Categoria" options={["Scooter", "E-Bike", "Cargo"]} active={[0]} />
           <FilterGroup title="Preço" options={["Até R$ 8k", "R$ 8k–12k", "Acima de R$ 12k"]} active={[1]} />
@@ -343,17 +343,17 @@ function CatalogoPreview() {
 
           <div className="mt-3 pt-3 border-t border-[var(--sand-dark)]/30">
             <p className="text-[7px] text-[var(--ml)]">30+ filtros disponíveis</p>
-            <p className="text-[7px] text-[var(--ocean)] font-semibold">Ver todos os filtros ↓</p>
+            <p className="text-[7px] text-[var(--bossa-dark)] font-semibold">Ver todos os filtros ↓</p>
           </div>
         </div>
 
         {/* Products grid */}
         <div className="flex-1 p-4 bg-gradient-to-b from-white to-[var(--sand-light)]">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-[9px] text-[var(--ml)]">Mostrando <b className="text-[var(--ocean-deep)]">8 modelos</b></p>
+            <p className="text-[9px] text-[var(--ml)]">Mostrando <b className="text-[var(--k)]">8 modelos</b></p>
             <div className="flex gap-1">
-              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--ocean)] text-white font-semibold">Scooter</span>
-              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--sand)] text-[var(--ocean-deep)]">Dobrável</span>
+              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--bossa-dark)] text-white font-semibold">Scooter</span>
+              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--sand)] text-[var(--k)]">Dobrável</span>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -386,41 +386,41 @@ function ProdutoPreview() {
 
       <div className="md:flex">
         {/* Image carousel — sand/sky background */}
-        <div className="md:w-1/2 bg-gradient-to-br from-[var(--sky-soft)]/50 to-[var(--sand)] p-6 flex items-center justify-center min-h-[200px] relative">
+        <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)] p-6 flex items-center justify-center min-h-[200px] relative">
           <span className="text-[64px]">🛵</span>
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
             {[0, 1, 2, 3].map((d) => (
-              <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--ocean)]" : "bg-[var(--sand-dark)]"}`} />
+              <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--bossa-dark)]" : "bg-[var(--sand-dark)]"}`} />
             ))}
           </div>
           {/* Polaroid frame */}
           <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-[2px_3px_10px_rgba(139,94,60,.15)] rounded-sm">
-            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-[var(--sunset)]/40 rounded-sm z-10" />
-            <div className="w-12 h-12 bg-gradient-to-br from-[var(--sky-soft)] to-[var(--sand)] rounded-sm flex items-center justify-center text-lg">🛵</div>
-            <p className="text-[5px] text-center text-[var(--ocean)] mt-0.5 font-serif italic">Prime T</p>
+            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-[var(--bossa)]/40 rounded-sm z-10" />
+            <div className="w-12 h-12 bg-gradient-to-br from-[var(--bossa-light)] to-[var(--sand)] rounded-sm flex items-center justify-center text-lg">🛵</div>
+            <p className="text-[5px] text-center text-[var(--bossa-dark)] mt-0.5 font-serif italic">Prime T</p>
           </div>
         </div>
 
         {/* Product info */}
         <div className="md:w-1/2 p-5 bg-[var(--sand-light)]">
-          <p className="text-[8px] text-[var(--ocean)] font-semibold mb-1">SCOOTER ELÉTRICA</p>
-          <h3 className="font-serif text-[24px] font-bold text-[var(--ocean-deep)] leading-tight mb-2">Bossa Prime T</h3>
+          <p className="text-[8px] text-[var(--bossa-dark)] font-semibold mb-1">SCOOTER ELÉTRICA</p>
+          <h3 className="font-serif text-[24px] font-bold text-[var(--k)] leading-tight mb-2">Bossa Prime T</h3>
 
           <div className="flex items-baseline gap-3 mb-4">
             <div>
-              <p className="text-[8px] text-[var(--ocean)] font-semibold">PIX</p>
-              <p className="font-serif text-[22px] font-bold text-[var(--ocean)]">R$ 12.490</p>
+              <p className="text-[8px] text-[var(--bossa-dark)] font-semibold">PIX</p>
+              <p className="font-serif text-[22px] font-bold text-[var(--bossa-dark)]">R$ 12.490</p>
             </div>
             <div>
               <p className="text-[8px] text-[var(--ml)]">OU</p>
-              <p className="text-[14px] font-bold text-[var(--ocean-deep)]">12× R$ 1.249</p>
+              <p className="text-[14px] font-bold text-[var(--k)]">12× R$ 1.249</p>
             </div>
           </div>
 
           {/* Tabs */}
           <div className="flex gap-1 mb-3 border-b border-[var(--sand-dark)]/30">
             {["Descrição", "Especificações", "Agendar"].map((t, i) => (
-              <button key={t} onClick={() => setTab(i)} className={`px-3 py-2 text-[9px] font-semibold cursor-pointer border-b-2 transition-colors ${tab === i ? "border-[var(--ocean)] text-[var(--ocean-deep)]" : "border-transparent text-[var(--ml)]"}`}>{t}</button>
+              <button key={t} onClick={() => setTab(i)} className={`px-3 py-2 text-[9px] font-semibold cursor-pointer border-b-2 transition-colors ${tab === i ? "border-[var(--bossa-dark)] text-[var(--k)]" : "border-transparent text-[var(--ml)]"}`}>{t}</button>
             ))}
           </div>
 
@@ -444,7 +444,7 @@ function ProdutoPreview() {
               ].map(([k, v]) => (
                 <div key={k} className="bg-white rounded-md px-2 py-1.5 border border-[var(--sand-dark)]/30">
                   <p className="text-[7px] text-[var(--ml)]">{k}</p>
-                  <p className="text-[10px] font-semibold text-[var(--ocean-deep)]">{v}</p>
+                  <p className="text-[10px] font-semibold text-[var(--k)]">{v}</p>
                 </div>
               ))}
             </div>
@@ -452,19 +452,19 @@ function ProdutoPreview() {
 
           {tab === 2 && (
             <div className="space-y-2">
-              <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-center py-2.5 rounded-lg text-[10px] font-bold">Agendar Test Drive</div>
-              <div className="border border-[var(--ocean)] text-[var(--ocean)] text-center py-2.5 rounded-lg text-[10px] font-bold">Reservar / Encomendar</div>
+              <div className="bg-[var(--bossa)] text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Agendar Test Drive</div>
+              <div className="border border-[var(--bossa-dark)] text-[var(--bossa-dark)] text-center py-2.5 rounded-lg text-[10px] font-bold">Reservar / Encomendar</div>
             </div>
           )}
 
           {/* Related */}
           <div className="mt-5 pt-4 border-t border-[var(--sand-dark)]/30">
-            <p className="text-[8px] text-[var(--ocean)] font-semibold mb-2">Você também pode gostar</p>
+            <p className="text-[8px] text-[var(--bossa-dark)] font-semibold mb-2">Você também pode gostar</p>
             <div className="flex gap-2">
               {[{ name: "Bossa Neo", emoji: "🛵" }, { name: "Bossa Grid", emoji: "🚲" }].map((r) => (
                 <div key={r.name} className="flex-1 bg-white rounded-lg p-2 text-center border border-[var(--sand-dark)]/30">
                   <span className="text-lg">{r.emoji}</span>
-                  <p className="text-[8px] font-semibold text-[var(--ocean-deep)]">{r.name}</p>
+                  <p className="text-[8px] font-semibold text-[var(--k)]">{r.name}</p>
                 </div>
               ))}
             </div>
@@ -482,10 +482,10 @@ function AdminPreview() {
   return (
     <BrowserFrame url="admin.bossaeletricas.com.br">
       <div className="flex min-h-[350px]">
-        {/* Sidebar — ocean blue */}
-        <div className="w-14 md:w-44 bg-[var(--ocean-deep)] flex flex-col border-r border-white/10">
+        {/* Sidebar — Bossa preto + verde */}
+        <div className="w-14 md:w-44 bg-[var(--k)] flex flex-col border-r border-white/10">
           <div className="px-3 py-4 hidden md:block">
-            <span className="font-serif text-[12px] text-[var(--y)] italic font-bold">Bossa Admin</span>
+            <span className="font-serif text-[12px] text-[var(--bossa)] italic font-bold">Bossa Admin</span>
           </div>
           <div className="flex flex-col gap-1 px-2 mt-2 md:mt-0">
             {[
@@ -496,7 +496,7 @@ function AdminPreview() {
               { icon: "📝", label: "Blog", active: false },
               { icon: "⚙️", label: "Config", active: false },
             ].map((item) => (
-              <div key={item.label} className={`flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] ${item.active ? "bg-[var(--y)] text-[var(--ocean-deep)] font-bold" : "text-white/40"}`}>
+              <div key={item.label} className={`flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] ${item.active ? "bg-[var(--bossa)] text-[var(--k)] font-bold" : "text-white/40"}`}>
                 <span className="text-sm">{item.icon}</span>
                 <span className="hidden md:inline">{item.label}</span>
               </div>
@@ -509,18 +509,18 @@ function AdminPreview() {
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-[8px] text-[var(--ml)]">Bem-vinda de volta!</p>
-              <h4 className="text-[14px] font-bold text-[var(--ocean-deep)]">Dashboard</h4>
+              <h4 className="text-[14px] font-bold text-[var(--k)]">Dashboard</h4>
             </div>
-            <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[8px] font-bold px-3 py-1.5 rounded-lg">+ Novo produto</div>
+            <div className="bg-[var(--bossa)] text-[var(--k)] text-[8px] font-bold px-3 py-1.5 rounded-lg">+ Novo produto</div>
           </div>
 
           {/* KPIs */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
             {[
               { label: "Produtos ativos", value: "24", color: "text-[var(--gd)]" },
-              { label: "Leads hoje", value: "7", color: "text-[var(--ocean)]" },
-              { label: "Test drives agendados", value: "3", color: "text-[var(--sunset-warm)]" },
-              { label: "Visitas/mês", value: "2.4k", color: "text-[var(--ocean-deep)]" },
+              { label: "Leads hoje", value: "7", color: "text-[var(--bossa-dark)]" },
+              { label: "Test drives agendados", value: "3", color: "text-[var(--bossa-dark)]" },
+              { label: "Visitas/mês", value: "2.4k", color: "text-[var(--k)]" },
             ].map((kpi) => (
               <div key={kpi.label} className="bg-white rounded-xl p-3 border border-[var(--sand-dark)]/30">
                 <p className="text-[7px] text-[var(--ml)] mb-1">{kpi.label}</p>
@@ -532,8 +532,8 @@ function AdminPreview() {
           {/* Products table */}
           <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden">
             <div className="px-3 py-2 border-b border-[var(--sand-dark)]/20 flex items-center justify-between">
-              <p className="text-[9px] font-bold text-[var(--ocean-deep)]">Produtos recentes</p>
-              <p className="text-[8px] text-[var(--ocean)] font-semibold">Ver todos →</p>
+              <p className="text-[9px] font-bold text-[var(--k)]">Produtos recentes</p>
+              <p className="text-[8px] text-[var(--bossa-dark)] font-semibold">Ver todos →</p>
             </div>
             {[
               { name: "Bossa Prime T", price: "R$ 12.990", status: "Ativo", emoji: "🛵" },
@@ -543,18 +543,18 @@ function AdminPreview() {
             ].map((row) => (
               <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--sand-dark)]/15 last:border-0 hover:bg-[var(--sand-light)] transition-colors">
                 <span className="text-sm">{row.emoji}</span>
-                <span className="text-[10px] font-medium text-[var(--ocean-deep)] flex-1">{row.name}</span>
-                <span className="text-[10px] text-[var(--ocean)] font-semibold">{row.price}</span>
-                <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--sky-soft)]/40 text-[var(--ocean)] border border-[var(--sky-soft)]"}`}>{row.status}</span>
-                <span className="text-[8px] text-[var(--ocean)] font-semibold">Editar</span>
+                <span className="text-[10px] font-medium text-[var(--k)] flex-1">{row.name}</span>
+                <span className="text-[10px] text-[var(--bossa-dark)] font-semibold">{row.price}</span>
+                <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--bossa-light)]/40 text-[var(--bossa-dark)] border border-[var(--bossa-light)]"}`}>{row.status}</span>
+                <span className="text-[8px] text-[var(--bossa-dark)] font-semibold">Editar</span>
               </div>
             ))}
           </div>
 
           {/* Sync status */}
-          <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-[var(--sky-soft)]/30 rounded-xl border border-[var(--sky-soft)]">
-            <div className="w-2 h-2 rounded-full bg-[var(--ocean)]" style={{ animation: "pls 1.5s infinite" }} />
-            <p className="text-[9px] text-[var(--ocean)] font-semibold">SprintHub + Bling sincronizados</p>
+          <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-[var(--bossa-light)]/30 rounded-xl border border-[var(--bossa-light)]">
+            <div className="w-2 h-2 rounded-full bg-[var(--bossa-dark)]" style={{ animation: "pls 1.5s infinite" }} />
+            <p className="text-[9px] text-[var(--bossa-dark)] font-semibold">SprintHub + Bling sincronizados</p>
             <span className="text-[8px] text-[var(--ml)] ml-auto">Última sync: agora</span>
           </div>
         </div>
@@ -589,10 +589,10 @@ function BrowserFrame({ url, children }: { url: string; children: React.ReactNod
 function MiniNav({ active }: { active: string }) {
   return (
     <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
-      <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
+      <span className="font-serif text-[13px] font-bold text-[var(--bossa-dark)] italic">Bossa</span>
       <div className="flex gap-4">
         {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--ocean)] font-semibold" : "text-[var(--sand-dark)]"}`}>{l}</span>
+          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--bossa-dark)] font-semibold" : "text-[var(--sand-dark)]"}`}>{l}</span>
         ))}
       </div>
     </div>
@@ -606,13 +606,13 @@ function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; pr
   return (
     <div className={`bg-white rounded-sm p-1.5 pb-3 shadow-[2px_3px_12px_rgba(139,94,60,.15)] ${rot} hover:rotate-0 hover:scale-110 transition-all duration-200 cursor-pointer relative`}>
       {/* Tape */}
-      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--sunset)]/40 rounded-sm z-10" />
-      <div className="bg-gradient-to-br from-[var(--sky-soft)] to-[var(--sand)] rounded-sm h-16 flex items-center justify-center mb-1.5">
+      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--bossa)]/40 rounded-sm z-10" />
+      <div className="bg-gradient-to-br from-[var(--bossa-light)] to-[var(--sand)] rounded-sm h-16 flex items-center justify-center mb-1.5">
         <span className="text-[24px] drop-shadow-sm">{emoji}</span>
       </div>
-      <p className="text-[8px] font-serif font-bold text-[var(--ocean-deep)] italic text-center">{name}</p>
+      <p className="text-[8px] font-serif font-bold text-[var(--k)] italic text-center">{name}</p>
       <p className="text-[7px] text-[var(--sand-dark)] text-center">{cat}</p>
-      <p className="text-[9px] text-[var(--ocean)] font-bold text-center">{price}</p>
+      <p className="text-[9px] text-[var(--bossa-dark)] font-bold text-center">{price}</p>
     </div>
   );
 }
@@ -620,21 +620,21 @@ function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; pr
 function CatalogCard({ name, price, parcela, emoji, badge }: { name: string; price: string; parcela: string; emoji: string; badge: string | null }) {
   return (
     <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-      <div className="bg-gradient-to-br from-[var(--sky-soft)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative">
+      <div className="bg-gradient-to-br from-[var(--bossa-light)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative">
         <span className="text-[28px] group-hover:scale-110 transition-transform">{emoji}</span>
         {badge && (
-          <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--sky-soft)] text-[var(--ocean-deep)]" : "bg-[var(--y)] text-[var(--ocean-deep)]"}`}>
+          <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--bossa-light)] text-[var(--k)]" : "bg-[var(--bossa)] text-[var(--k)]"}`}>
             {badge}
           </span>
         )}
       </div>
       <div className="p-2">
-        <p className="text-[9px] font-bold text-[var(--ocean-deep)]">{name}</p>
-        <p className="text-[10px] font-bold text-[var(--ocean)]">{price}</p>
+        <p className="text-[9px] font-bold text-[var(--k)]">{name}</p>
+        <p className="text-[10px] font-bold text-[var(--bossa-dark)]">{price}</p>
         <p className="text-[7px] text-[var(--ml)]">{parcela}</p>
         <div className="flex gap-1 mt-2">
-          <div className="flex-1 bg-[var(--y)] text-[var(--ocean-deep)] text-[7px] font-bold text-center py-1 rounded-md">Test Drive</div>
-          <div className="flex-1 border border-[var(--ocean)]/30 text-[var(--ocean)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
+          <div className="flex-1 bg-[var(--bossa)] text-[var(--k)] text-[7px] font-bold text-center py-1 rounded-md">Test Drive</div>
+          <div className="flex-1 border border-[var(--bossa-dark)]/30 text-[var(--bossa-dark)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
         </div>
       </div>
     </div>
@@ -646,7 +646,7 @@ function SectionLabel({ label, desc }: { label: string; desc: string }) {
     <div className="flex items-center gap-2">
       <div className="w-1.5 h-1.5 rounded-full bg-[var(--bossa)]" />
       <div>
-        <p className="text-[10px] font-bold text-[var(--ocean-deep)]">{label}</p>
+        <p className="text-[10px] font-bold text-[var(--k)]">{label}</p>
         <p className="text-[8px] text-[var(--ml)]">{desc}</p>
       </div>
     </div>
@@ -656,7 +656,7 @@ function SectionLabel({ label, desc }: { label: string; desc: string }) {
 function ConceptTag({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`px-4 py-2 bg-[var(--bossa)]/8 border-t border-[var(--bossa)]/20 ${className}`}>
-      <p className="text-[8px] text-[var(--ocean-deep)]/70 italic leading-relaxed">{children}</p>
+      <p className="text-[8px] text-[var(--k)]/70 italic leading-relaxed">{children}</p>
     </div>
   );
 }
