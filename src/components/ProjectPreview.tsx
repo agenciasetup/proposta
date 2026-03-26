@@ -358,10 +358,10 @@ function AdminPreview() {
   return (
     <BrowserFrame url="admin.bossaeletricas.com.br">
       <div className="flex min-h-[350px]">
-        {/* Sidebar */}
-        <div className="w-14 md:w-44 bg-[var(--k)] flex flex-col border-r border-[rgba(246,244,238,.04)]">
+        {/* Sidebar — ocean blue */}
+        <div className="w-14 md:w-44 bg-[var(--ocean-deep)] flex flex-col border-r border-white/10">
           <div className="px-3 py-4 hidden md:block">
-            <span className="font-serif text-[12px] text-[var(--g)] italic font-bold">Bossa Admin</span>
+            <span className="font-serif text-[12px] text-[var(--y)] italic font-bold">Bossa Admin</span>
           </div>
           <div className="flex flex-col gap-1 px-2 mt-2 md:mt-0">
             {[
@@ -372,7 +372,7 @@ function AdminPreview() {
               { icon: "📝", label: "Blog", active: false },
               { icon: "⚙️", label: "Config", active: false },
             ].map((item) => (
-              <div key={item.label} className={`flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] ${item.active ? "bg-[var(--g)] text-[var(--k)] font-bold" : "text-[rgba(246,244,238,.3)]"}`}>
+              <div key={item.label} className={`flex items-center gap-2 px-2 py-2 rounded-lg text-[10px] ${item.active ? "bg-[var(--y)] text-[var(--ocean-deep)] font-bold" : "text-white/40"}`}>
                 <span className="text-sm">{item.icon}</span>
                 <span className="hidden md:inline">{item.label}</span>
               </div>
@@ -381,24 +381,24 @@ function AdminPreview() {
         </div>
 
         {/* Main */}
-        <div className="flex-1 p-4 bg-[var(--w)]">
+        <div className="flex-1 p-4 bg-[var(--sand-light)]">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-[8px] text-[var(--ml)]">Bem-vinda de volta!</p>
-              <h4 className="text-[14px] font-bold text-[var(--k)]">Dashboard</h4>
+              <h4 className="text-[14px] font-bold text-[var(--ocean-deep)]">Dashboard</h4>
             </div>
-            <div className="bg-[var(--g)] text-[var(--k)] text-[8px] font-bold px-3 py-1.5 rounded-lg">+ Novo produto</div>
+            <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[8px] font-bold px-3 py-1.5 rounded-lg">+ Novo produto</div>
           </div>
 
           {/* KPIs */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
             {[
               { label: "Produtos ativos", value: "24", color: "text-[var(--gd)]" },
-              { label: "Leads hoje", value: "7", color: "text-[var(--b)]" },
-              { label: "Test drives agendados", value: "3", color: "text-[var(--ydk)]" },
-              { label: "Visitas/mês", value: "2.4k", color: "text-[var(--k)]" },
+              { label: "Leads hoje", value: "7", color: "text-[var(--ocean)]" },
+              { label: "Test drives agendados", value: "3", color: "text-[var(--sunset-warm)]" },
+              { label: "Visitas/mês", value: "2.4k", color: "text-[var(--ocean-deep)]" },
             ].map((kpi) => (
-              <div key={kpi.label} className="bg-white rounded-xl p-3 border border-[var(--w3)]">
+              <div key={kpi.label} className="bg-white rounded-xl p-3 border border-[var(--sand-dark)]/30">
                 <p className="text-[7px] text-[var(--ml)] mb-1">{kpi.label}</p>
                 <p className={`text-[18px] font-bold ${kpi.color}`}>{kpi.value}</p>
               </div>
@@ -406,10 +406,10 @@ function AdminPreview() {
           </div>
 
           {/* Products table */}
-          <div className="bg-white rounded-xl border border-[var(--w3)] overflow-hidden">
-            <div className="px-3 py-2 border-b border-[var(--w3)] flex items-center justify-between">
-              <p className="text-[9px] font-bold text-[var(--k)]">Produtos recentes</p>
-              <p className="text-[8px] text-[var(--gd)] font-semibold">Ver todos →</p>
+          <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden">
+            <div className="px-3 py-2 border-b border-[var(--sand-dark)]/20 flex items-center justify-between">
+              <p className="text-[9px] font-bold text-[var(--ocean-deep)]">Produtos recentes</p>
+              <p className="text-[8px] text-[var(--ocean)] font-semibold">Ver todos →</p>
             </div>
             {[
               { name: "Bossa Prime T", price: "R$ 12.990", status: "Ativo", emoji: "🛵" },
@@ -417,20 +417,20 @@ function AdminPreview() {
               { name: "Bossa Grid", price: "R$ 7.990", status: "Ativo", emoji: "🚲" },
               { name: "Bossa X", price: "R$ 18.990", status: "Sob encomenda", emoji: "🛵" },
             ].map((row) => (
-              <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--w3)] last:border-0 hover:bg-[var(--gll)] transition-colors">
+              <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--sand-dark)]/15 last:border-0 hover:bg-[var(--sand-light)] transition-colors">
                 <span className="text-sm">{row.emoji}</span>
-                <span className="text-[10px] font-medium text-[var(--k)] flex-1">{row.name}</span>
-                <span className="text-[10px] text-[var(--gd)] font-semibold">{row.price}</span>
-                <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--bl)] text-[var(--b)] border border-[#c0d8f0]"}`}>{row.status}</span>
-                <span className="text-[8px] text-[var(--gd)] font-semibold">Editar</span>
+                <span className="text-[10px] font-medium text-[var(--ocean-deep)] flex-1">{row.name}</span>
+                <span className="text-[10px] text-[var(--ocean)] font-semibold">{row.price}</span>
+                <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--sky-soft)]/40 text-[var(--ocean)] border border-[var(--sky-soft)]"}`}>{row.status}</span>
+                <span className="text-[8px] text-[var(--ocean)] font-semibold">Editar</span>
               </div>
             ))}
           </div>
 
           {/* Sync status */}
-          <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-[var(--gll)] rounded-xl border border-[var(--gl)]">
-            <div className="w-2 h-2 rounded-full bg-[var(--g)]" style={{ animation: "pls 1.5s infinite" }} />
-            <p className="text-[9px] text-[var(--gd)] font-semibold">SprintHub + Bling sincronizados</p>
+          <div className="mt-3 flex items-center gap-2 px-3 py-2 bg-[var(--sky-soft)]/30 rounded-xl border border-[var(--sky-soft)]">
+            <div className="w-2 h-2 rounded-full bg-[var(--ocean)]" style={{ animation: "pls 1.5s infinite" }} />
+            <p className="text-[9px] text-[var(--ocean)] font-semibold">SprintHub + Bling sincronizados</p>
             <span className="text-[8px] text-[var(--ml)] ml-auto">Última sync: agora</span>
           </div>
         </div>
