@@ -13,30 +13,30 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8" onClick={onClose}>
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      {/* Backdrop — ocean tint */}
+      <div className="absolute inset-0 bg-[var(--ocean)]/40 backdrop-blur-sm" />
 
       {/* Modal */}
       <div
         className="relative w-full max-w-4xl max-h-[90vh] bg-[var(--w)] rounded-3xl overflow-hidden shadow-2xl animate-[slideUp_.4s_ease]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--w3)] bg-white">
+        {/* Header — warm sand */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--sand-dark)]/40 bg-[var(--sand-light)]">
           <div>
-            <p className="text-[9px] tracking-[2px] uppercase text-[var(--gd)] font-semibold">Prévia do projeto</p>
-            <h3 className="font-serif text-lg font-bold text-[var(--k)]">Como o site vai ficar</h3>
+            <p className="text-[9px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold">Prévia do projeto</p>
+            <h3 className="font-serif text-lg font-bold text-[var(--ocean-deep)]">Como o site vai ficar</h3>
           </div>
-          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--w2)] flex items-center justify-center text-[var(--m)] hover:bg-[var(--w3)] transition-colors cursor-pointer text-lg">×</button>
+          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--sand)] flex items-center justify-center text-[var(--ocean-deep)] hover:bg-[var(--sand-dark)] transition-colors cursor-pointer text-lg">×</button>
         </div>
 
         {/* Tab bar */}
-        <div className="flex gap-1 px-6 pt-4 pb-2 bg-white border-b border-[var(--w3)]">
+        <div className="flex gap-1 px-6 pt-4 pb-2 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/40">
           {tabs.map((t, i) => (
             <button
               key={t}
               onClick={() => setActiveTab(i)}
-              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--k)] text-white" : "text-[var(--ml)] hover:bg-[var(--w2)]"}`}
+              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--ocean)] text-white" : "text-[var(--ml)] hover:bg-[var(--sand)]"}`}
             >
               {t}
             </button>
@@ -68,100 +68,129 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
 function HomePreview() {
   return (
     <div className="space-y-4">
-      {/* Browser chrome */}
       <BrowserFrame url="bossaeletricas.com.br">
-        {/* Nav */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--k)] border-b border-[rgba(246,244,238,.06)]">
-          <span className="font-serif text-[13px] font-bold text-[var(--g)] italic">Bossa</span>
+        {/* Nav — warm sand */}
+        <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
+          <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
           <div className="flex gap-4">
             {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-              <span key={l} className="text-[8px] text-[rgba(246,244,238,.3)]">{l}</span>
+              <span key={l} className="text-[8px] text-[var(--sand-dark)]">{l}</span>
             ))}
           </div>
-          <div className="bg-[var(--g)] text-[var(--k)] text-[7px] font-bold px-2.5 py-1 rounded-md">Agendar Test Drive</div>
+          <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[7px] font-bold px-2.5 py-1 rounded-md">Agendar Test Drive</div>
         </div>
 
-        {/* Hero */}
+        {/* Hero — beach scene */}
         <div className="relative overflow-hidden">
-          {/* Copacabana background */}
-          <div className="h-56 md:h-72 relative" style={{ background: "linear-gradient(135deg, #141410 0%, #1a2a10 40%, #141410 100%)" }}>
-            {/* Calçadão pattern (simplified) */}
-            <svg className="absolute bottom-0 left-0 right-0 h-8 opacity-[.07]" viewBox="0 0 200 20" preserveAspectRatio="none">
-              <pattern id="calc" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M0,10 Q5,0 10,10 Q15,20 20,10" fill="none" stroke="white" strokeWidth="1" />
+          <div className="h-56 md:h-72 relative" style={{ background: "linear-gradient(170deg, var(--sky-light) 0%, var(--sky) 35%, var(--ocean) 65%, var(--sand) 85%, var(--sand-dark) 100%)" }}>
+
+            {/* Sun with glow */}
+            <div className="absolute top-5 right-10 w-12 h-12 rounded-full bg-[var(--y)] shadow-[0_0_40px_rgba(247,178,103,.6),0_0_80px_rgba(240,224,48,.3)]" />
+
+            {/* Cristo Redentor silhouette */}
+            <svg className="absolute bottom-12 left-[15%] opacity-[.15]" width="60" height="90" viewBox="0 0 60 90">
+              <circle cx="30" cy="8" r="4" fill="var(--ocean-deep)" />
+              <line x1="30" y1="12" x2="30" y2="50" stroke="var(--ocean-deep)" strokeWidth="3.5" strokeLinecap="round" />
+              <line x1="12" y1="25" x2="48" y2="25" stroke="var(--ocean-deep)" strokeWidth="3" strokeLinecap="round" />
+              <path d="M20,90 Q30,45 40,90Z" fill="var(--ocean-deep)" />
+            </svg>
+
+            {/* Palm tree left */}
+            <svg className="absolute bottom-0 left-1 opacity-20" width="50" height="80" viewBox="0 0 50 80">
+              <path d="M22,80 Q20,50 25,25" stroke="var(--palm)" strokeWidth="3" fill="none" strokeLinecap="round" />
+              <path d="M25,25 Q10,15 2,22" stroke="var(--palm)" strokeWidth="2" fill="none" />
+              <path d="M25,25 Q15,10 5,8" stroke="var(--palm)" strokeWidth="2" fill="none" />
+              <path d="M25,25 Q35,10 45,12" stroke="var(--palm)" strokeWidth="2" fill="none" />
+              <path d="M25,25 Q38,18 48,25" stroke="var(--palm)" strokeWidth="2" fill="none" />
+              <path d="M25,25 Q20,8 18,2" stroke="var(--palm)" strokeWidth="2" fill="none" />
+            </svg>
+
+            {/* Palm tree right */}
+            <svg className="absolute bottom-0 right-2 opacity-15" width="45" height="70" viewBox="0 0 45 70">
+              <path d="M25,70 Q27,42 22,18" stroke="var(--palm)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+              <path d="M22,18 Q8,10 2,16" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+              <path d="M22,18 Q12,5 5,2" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+              <path d="M22,18 Q32,5 40,8" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+              <path d="M22,18 Q35,12 42,18" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+            </svg>
+
+            {/* Ocean waves */}
+            <svg className="absolute bottom-6 left-0 right-0 h-5 opacity-30" viewBox="0 0 400 20" preserveAspectRatio="none">
+              <path d="M0,10 Q25,2 50,10 Q75,18 100,10 Q125,2 150,10 Q175,18 200,10 Q225,2 250,10 Q275,18 300,10 Q325,2 350,10 Q375,18 400,10 L400,20 L0,20Z" fill="white" />
+            </svg>
+            <svg className="absolute bottom-3 left-0 right-0 h-5 opacity-20" viewBox="0 0 400 20" preserveAspectRatio="none">
+              <path d="M0,12 Q30,4 60,12 Q90,20 120,12 Q150,4 180,12 Q210,20 240,12 Q270,4 300,12 Q330,20 360,12 Q390,4 400,12 L400,20 L0,20Z" fill="white" />
+            </svg>
+
+            {/* Calçadão de Copacabana pattern — sand area */}
+            <svg className="absolute bottom-0 left-0 right-0 h-6 opacity-20" viewBox="0 0 200 12" preserveAspectRatio="none">
+              <pattern id="copa" width="24" height="12" patternUnits="userSpaceOnUse">
+                <path d="M0,6 Q6,0 12,6 Q18,12 24,6" fill="none" stroke="var(--ocean-deep)" strokeWidth="1.2" />
               </pattern>
-              <rect width="200" height="20" fill="url(#calc)" />
+              <rect width="200" height="12" fill="url(#copa)" />
             </svg>
-
-            {/* Mountains silhouette */}
-            <svg className="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-[.08]" width="300" height="100" viewBox="0 0 300 100">
-              <path d="M50,100 Q80,20 150,5 Q220,20 250,100Z" fill="white" />
-            </svg>
-
-            {/* Sun */}
-            <div className="absolute top-6 right-8 w-8 h-8 rounded-full bg-[var(--y)] opacity-60 shadow-[0_0_30px_rgba(240,224,48,.4)]" />
 
             {/* Content */}
-            <div className="relative z-10 px-6 pt-12 md:pt-16 md:px-10">
-              <div className="flex items-center gap-1.5 mb-4">
-                <div className="w-1 h-1 rounded-full bg-[var(--g)]" style={{ animation: "blink 1.5s infinite" }} />
-                <span className="text-[7px] tracking-[2px] uppercase text-[rgba(125,194,66,.6)]">Menos trânsito, mais pôr do sol</span>
+            <div className="relative z-10 px-6 pt-10 md:pt-14 md:px-10">
+              <div className="flex items-center gap-1.5 mb-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[var(--y)]" style={{ animation: "blink 1.5s infinite" }} />
+                <span className="text-[7px] tracking-[2px] uppercase text-white/80 font-semibold drop-shadow-sm">Menos trânsito, mais pôr do sol</span>
               </div>
-              <h2 className="font-serif text-[28px] md:text-[40px] font-bold leading-[.9] tracking-[-1px] mb-3">
+              <h2 className="font-serif text-[28px] md:text-[40px] font-bold leading-[.9] tracking-[-1px] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,.15)]">
                 <span className="text-white block">Liberdade</span>
                 <span className="text-[var(--y)] italic block">Elétrica.</span>
               </h2>
-              <p className="text-[10px] text-[rgba(246,244,238,.4)] max-w-[200px] leading-relaxed mb-5">
+              <p className="text-[10px] text-white/70 max-w-[200px] leading-relaxed mb-4 drop-shadow-sm">
                 Criada no Rio, para os cariocas. Encontre sua Bossa perfeita.
               </p>
               <div className="flex gap-2">
-                <div className="bg-[var(--g)] text-[var(--k)] text-[9px] font-bold px-3 py-2 rounded-lg">Encontre sua Bossa →</div>
-                <div className="border border-[rgba(246,244,238,.15)] text-[rgba(246,244,238,.4)] text-[9px] px-3 py-2 rounded-lg">Agendar Test Drive</div>
+                <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[9px] font-bold px-3 py-2 rounded-lg shadow-md">Encontre sua Bossa →</div>
+                <div className="border border-white/40 text-white/80 text-[9px] px-3 py-2 rounded-lg backdrop-blur-sm bg-white/10">Agendar Test Drive</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Category carousel */}
-        <div className="px-4 py-5 bg-[var(--w)]">
-          <p className="text-[8px] tracking-[2px] uppercase text-[var(--ml)] font-semibold mb-3">Nossos modelos</p>
-          <div className="grid grid-cols-4 gap-2">
+        {/* Nossos Modelos — polaroids on sand */}
+        <div className="px-4 py-5 bg-gradient-to-b from-[var(--sand)] to-[var(--sand-light)]">
+          <p className="text-[8px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold mb-4">Nossos modelos</p>
+          <div className="grid grid-cols-4 gap-3 pt-2">
             {[
               { name: "Prime T", price: "R$ 12.990", emoji: "🛵", cat: "Scooter" },
               { name: "Bossa Neo", price: "R$ 9.990", emoji: "🛵", cat: "Scooter" },
               { name: "Bossa Grid", price: "R$ 7.990", emoji: "🚲", cat: "E-Bike" },
               { name: "Bossa Cargo", price: "R$ 14.990", emoji: "🛵", cat: "Cargo" },
-            ].map((p) => (
-              <PolaroidCard key={p.name} {...p} />
+            ].map((p, i) => (
+              <PolaroidCard key={p.name} {...p} index={i} />
             ))}
           </div>
         </div>
 
-        {/* Quiz CTA */}
-        <div className="mx-4 mb-4 p-4 bg-[var(--k)] rounded-xl flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[var(--g)] flex items-center justify-center text-lg">🎯</div>
+        {/* Quiz CTA — sunset warm */}
+        <div className="mx-4 mb-4 p-4 bg-gradient-to-r from-[var(--sunset)] to-[var(--sunset-warm)] rounded-xl flex items-center gap-3 shadow-md">
+          <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-lg">🏖️</div>
           <div className="flex-1">
-            <p className="text-[10px] font-bold text-white">Encontre sua Bossa Perfeita</p>
-            <p className="text-[8px] text-[rgba(246,244,238,.4)]">Quiz interativo com filtros guiados</p>
+            <p className="text-[10px] font-bold text-[var(--ocean-deep)]">Encontre sua Bossa Perfeita</p>
+            <p className="text-[8px] text-[var(--ocean-deep)]/60">Quiz interativo com filtros guiados</p>
           </div>
-          <div className="text-[8px] text-[var(--g)] font-bold">Começar →</div>
+          <div className="text-[8px] text-[var(--ocean-deep)] font-bold">Começar →</div>
         </div>
 
-        {/* Calculator preview */}
-        <div className="mx-4 mb-4 p-4 bg-[var(--gll)] rounded-xl border border-[var(--gl)]">
-          <p className="text-[9px] font-bold text-[var(--gd)] mb-2">⚡ Calculadora de Economia</p>
+        {/* Calculator — sky light */}
+        <div className="mx-4 mb-4 p-4 bg-gradient-to-br from-[var(--sky-soft)]/40 to-[var(--sand-light)] rounded-xl border border-[var(--sky-soft)]">
+          <p className="text-[9px] font-bold text-[var(--ocean)] mb-2">⚡ Calculadora de Economia</p>
           <div className="grid grid-cols-3 gap-2">
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--gl)]">
+            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
               <p className="text-[7px] text-[var(--ml)]">Gasolina/mês</p>
-              <p className="text-[12px] font-bold text-red-500">-R$ 480</p>
+              <p className="text-[12px] font-bold text-[var(--coral)]">-R$ 480</p>
             </div>
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--gl)]">
+            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
               <p className="text-[7px] text-[var(--ml)]">Elétrica/mês</p>
-              <p className="text-[12px] font-bold text-[var(--gd)]">R$ 35</p>
+              <p className="text-[12px] font-bold text-[var(--ocean)]">R$ 35</p>
             </div>
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--gl)]">
+            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
               <p className="text-[7px] text-[var(--ml)]">Economia/ano</p>
-              <p className="text-[12px] font-bold text-[var(--gd)]">R$ 5.340</p>
+              <p className="text-[12px] font-bold text-[var(--ocean)]">R$ 5.340</p>
             </div>
           </div>
         </div>
@@ -435,26 +464,31 @@ function BrowserFrame({ url, children }: { url: string; children: React.ReactNod
 
 function MiniNav({ active }: { active: string }) {
   return (
-    <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--k)] border-b border-[rgba(246,244,238,.06)]">
-      <span className="font-serif text-[13px] font-bold text-[var(--g)] italic">Bossa</span>
+    <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
+      <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
       <div className="flex gap-4">
         {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--g)] font-semibold" : "text-[rgba(246,244,238,.3)]"}`}>{l}</span>
+          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--ocean)] font-semibold" : "text-[var(--sand-dark)]"}`}>{l}</span>
         ))}
       </div>
     </div>
   );
 }
 
-function PolaroidCard({ name, price, emoji, cat }: { name: string; price: string; emoji: string; cat: string }) {
+const polaroidRotations = ["rotate-[-3deg]", "rotate-[2deg]", "rotate-[-1deg]", "rotate-[3deg]"];
+
+function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; price: string; emoji: string; cat: string; index?: number }) {
+  const rot = polaroidRotations[index % polaroidRotations.length];
   return (
-    <div className="bg-white rounded-lg p-2 shadow-md border border-[var(--w3)] transform hover:rotate-[-2deg] hover:scale-105 transition-all duration-200 cursor-pointer">
-      <div className="bg-[var(--gll)] rounded-md h-16 flex items-center justify-center mb-1.5">
-        <span className="text-[24px]">{emoji}</span>
+    <div className={`bg-white rounded-sm p-1.5 pb-3 shadow-[2px_3px_12px_rgba(139,94,60,.15)] ${rot} hover:rotate-0 hover:scale-110 transition-all duration-200 cursor-pointer relative`}>
+      {/* Tape */}
+      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--sunset)]/40 rounded-sm z-10" />
+      <div className="bg-gradient-to-br from-[var(--sky-soft)] to-[var(--sand)] rounded-sm h-16 flex items-center justify-center mb-1.5">
+        <span className="text-[24px] drop-shadow-sm">{emoji}</span>
       </div>
-      <p className="text-[8px] font-serif font-bold text-[var(--k)] italic">{name}</p>
-      <p className="text-[7px] text-[var(--ml)]">{cat}</p>
-      <p className="text-[9px] text-[var(--gd)] font-bold">{price}</p>
+      <p className="text-[8px] font-serif font-bold text-[var(--ocean-deep)] italic text-center">{name}</p>
+      <p className="text-[7px] text-[var(--sand-dark)] text-center">{cat}</p>
+      <p className="text-[9px] text-[var(--ocean)] font-bold text-center">{price}</p>
     </div>
   );
 }
