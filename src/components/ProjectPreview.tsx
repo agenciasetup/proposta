@@ -239,8 +239,8 @@ function HomePreview() {
           <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/40 to-[var(--sand)] p-5 flex items-center justify-center min-h-[120px] relative">
             {/* Polaroid-style photo */}
             <div className="bg-white p-2 pb-5 shadow-[3px_4px_14px_rgba(139,94,60,.15)] rotate-[-2deg]">
-              <div className="w-28 h-20 rounded-sm overflow-hidden">
-                <Image src={MOTO_PHOTOS[2].src} alt="Bossa VIP" width={200} height={140} className="w-full h-full object-cover" />
+              <div className="w-28 h-28 rounded-md overflow-hidden bg-white flex items-center justify-center p-1">
+                <Image src={MOTO_PHOTOS[2].src} alt="Bossa VIP" width={200} height={200} className="w-full h-full object-contain" />
               </div>
               <p className="text-[7px] text-center text-[var(--k)] mt-1 font-serif italic">Bossa na orla</p>
             </div>
@@ -407,8 +407,8 @@ function ProdutoPreview() {
 
       <div className="md:flex">
         {/* Image carousel — sand/sky background */}
-        <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)] p-6 flex items-center justify-center min-h-[200px] relative">
-          <Image src={MOTO_PHOTOS[0].src} alt="Bossa Prime T" width={300} height={300} className="w-[80%] h-auto object-contain" />
+        <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)] p-8 flex items-center justify-center min-h-[200px] relative">
+          <Image src={MOTO_PHOTOS[0].src} alt="Bossa Prime T" width={300} height={300} className="w-full h-auto object-contain rounded-xl" />
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
             {[0, 1, 2, 3].map((d) => (
               <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--bossa-dark)]" : "bg-[var(--sand-dark)]"}`} />
@@ -417,8 +417,8 @@ function ProdutoPreview() {
           {/* Polaroid frame */}
           <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-[2px_3px_10px_rgba(139,94,60,.15)] rounded-sm">
             <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-[var(--bossa)]/40 rounded-sm z-10" />
-            <div className="w-12 h-12 rounded-sm overflow-hidden">
-              <Image src={MOTO_PHOTOS[1].src} alt="Bossa Neo" width={80} height={80} className="w-full h-full object-cover" />
+            <div className="w-12 h-12 rounded-md overflow-hidden bg-white flex items-center justify-center p-0.5">
+              <Image src={MOTO_PHOTOS[1].src} alt="Bossa Neo" width={80} height={80} className="w-full h-full object-contain" />
             </div>
             <p className="text-[5px] text-center text-[var(--k)] mt-0.5 font-serif italic">Prime T</p>
           </div>
@@ -485,9 +485,9 @@ function ProdutoPreview() {
             <p className="text-[8px] text-[var(--k)] font-semibold mb-2">Você também pode gostar</p>
             <div className="flex gap-2">
               {[{ name: "Bossa Neo", img: MOTO_PHOTOS[1].src }, { name: "Bossa VIP", img: MOTO_PHOTOS[2].src }].map((r) => (
-                <div key={r.name} className="flex-1 bg-white rounded-lg p-2 text-center border border-[var(--sand-dark)]/30 overflow-hidden">
-                  <div className="h-12 flex items-center justify-center overflow-hidden rounded">
-                    <Image src={r.img} alt={r.name} width={80} height={80} className="w-full h-full object-cover" />
+                <div key={r.name} className="flex-1 bg-white rounded-xl p-2 text-center border border-[var(--sand-dark)]/30">
+                  <div className="h-14 flex items-center justify-center p-1">
+                    <Image src={r.img} alt={r.name} width={80} height={80} className="w-full h-full object-contain" />
                   </div>
                   <p className="text-[8px] font-semibold text-[var(--k)] mt-1">{r.name}</p>
                 </div>
@@ -567,7 +567,7 @@ function AdminPreview() {
               { name: "Bossa X", price: "R$ 18.990", status: "Sob encomenda", img: MOTO_PHOTOS[0].src },
             ].map((row) => (
               <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--sand-dark)]/15 last:border-0 hover:bg-[var(--sand-light)] transition-colors">
-                <div className="w-8 h-8 rounded overflow-hidden shrink-0"><Image src={row.img} alt={row.name} width={40} height={40} className="w-full h-full object-cover" /></div>
+                <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 bg-white flex items-center justify-center p-0.5 border border-[var(--sand-dark)]/20"><Image src={row.img} alt={row.name} width={40} height={40} className="w-full h-full object-contain" /></div>
                 <span className="text-[10px] font-medium text-[var(--k)] flex-1">{row.name}</span>
                 <span className="text-[10px] text-[var(--k)] font-semibold">{row.price}</span>
                 <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--bossa-light)]/40 text-[var(--k)] border border-[var(--bossa-light)]"}`}>{row.status}</span>
@@ -632,9 +632,9 @@ function PolaroidCard({ name, price, img, cat, index = 0 }: { name: string; pric
     <div className={`bg-white rounded-sm p-1.5 pb-3 shadow-[2px_3px_12px_rgba(139,94,60,.15)] ${rot} hover:rotate-0 hover:scale-110 transition-all duration-200 cursor-pointer relative`}>
       {/* Tape */}
       <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--bossa)]/40 rounded-sm z-10" />
-      <div className="bg-[var(--off)] rounded-sm h-16 flex items-center justify-center mb-1.5 border border-[var(--w3)] overflow-hidden">
+      <div className="bg-white rounded-md mb-1.5 border border-[var(--w3)] overflow-hidden aspect-square flex items-center justify-center p-1">
         {img ? (
-          <Image src={img} alt={name} width={120} height={120} className="w-full h-full object-cover" />
+          <Image src={img} alt={name} width={120} height={120} className="w-full h-full object-contain" />
         ) : (
           <span className="text-[24px] drop-shadow-sm">🚲</span>
         )}
@@ -649,9 +649,9 @@ function PolaroidCard({ name, price, img, cat, index = 0 }: { name: string; pric
 function CatalogCard({ name, price, parcela, img, badge }: { name: string; price: string; parcela: string; img?: string; badge: string | null }) {
   return (
     <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-      <div className="bg-gradient-to-br from-[var(--bossa-light)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative overflow-hidden">
+      <div className="bg-white h-24 flex items-center justify-center relative overflow-hidden p-2">
         {img ? (
-          <Image src={img} alt={name} width={160} height={120} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+          <Image src={img} alt={name} width={160} height={160} className="w-full h-full object-contain group-hover:scale-110 transition-transform" />
         ) : (
           <span className="text-[28px] group-hover:scale-110 transition-transform">🛵</span>
         )}
