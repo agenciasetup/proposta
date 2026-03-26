@@ -174,7 +174,7 @@ function HomePreview() {
             </div>
           </div>
         </div>
-        <ConceptTag>Fundo preto da marca. Verde Bossa como destaque. Silhuetas de Copacabana, Cristo, palmeiras. Areia na base.</ConceptTag>
+        <ConceptTag>Fundo preto da marca. Verde Bossa como destaque. Silhuetas de Copacabana, Cristo, palmeiras. Areia na base. Também pode ser um slide com fotos REAIS da Bossa.</ConceptTag>
       </div>
 
       {/* ── PRODUTOS em Polaroids ── */}
