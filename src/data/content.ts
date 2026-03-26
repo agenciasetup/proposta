@@ -40,7 +40,7 @@ export const BRIEFING = {
   items: [
     {
       icon: "🏖️",
-      iconBg: "linear-gradient(135deg,#c8e8f8,#c0e8cc)",
+      iconBg: "linear-gradient(135deg,#c8e8f8,#f4f4a0)",
       titulo: "Identidade Carioca",
       subtitulo: "Uma marca do Rio merece um site que mostra isso",
       descricao:

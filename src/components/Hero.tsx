@@ -1,9 +1,16 @@
 "use client";
+import Image from "next/image";
 import { HERO } from "@/data/content";
 import Reveal from "./RevealOnScroll";
 
 const chipColors = ["bossa", "dark", "bossa", "dark"];
 const tagColors = ["bossa", "bossa", "dark", "dark", "bossa", "muted"];
+
+const motos = [
+  { src: "/Bossa-Hero-fundo-branco-Photoroom.jpg", alt: "Bossa Hero" },
+  { src: "/Bossa-Neo-Branca-fundo-branco-Photoroom.jpg", alt: "Bossa Neo Branca" },
+  { src: "/Bossa-VIP-marrom.webp", alt: "Bossa VIP" },
+];
 
 export default function Hero() {
   return (
@@ -71,26 +78,32 @@ export default function Hero() {
               </Reveal>
             </div>
 
-            {/* Right card — desktop only */}
+            {/* Right — motorcycle photos grid (desktop) */}
             <div className="hidden lg:block">
               <Reveal delay={0.28}>
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-[var(--k)]/5 shadow-[0_4px_24px_rgba(20,20,16,.06)]">
-                  <p className="text-[14px] text-[var(--m)] leading-[1.7] mb-5">
-                    {HERO.greeting.split("Entendemos o que a Bossa precisa").map((part, i) =>
-                      i === 0 ? <span key={i}>{part}<b className="text-[var(--k)] font-medium">Entendemos o que a Bossa precisa</b></span> : <span key={i}>{part}</span>
-                    )}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {HERO.tags.map((tag, i) => {
-                      const c = tagColors[i % tagColors.length];
-                      const cls = {
-                        bossa: "bg-[var(--bossa)]/15 text-[var(--bossa-dark)] border-[var(--bossa)]/25",
-                        dark: "bg-[var(--k)]/5 text-[var(--k)]/50 border-[var(--k)]/10",
-                        muted: "bg-[var(--w2)] text-[var(--m)] border-[var(--w3)]",
-                      }[c];
-                      return <span key={i} className={`px-3 py-1.5 rounded-lg text-[11px] font-semibold border ${cls}`}>{tag}</span>;
-                    })}
+                <div className="grid grid-cols-2 gap-3">
+                  {/* Large photo top-left spanning full width */}
+                  <div className="col-span-2 rounded-2xl overflow-hidden border border-[var(--k)]/5 shadow-[0_4px_24px_rgba(20,20,16,.06)] bg-white">
+                    <Image
+                      src={motos[0].src}
+                      alt={motos[0].alt}
+                      width={600}
+                      height={600}
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
+                  {/* Two smaller photos below */}
+                  {motos.slice(1).map((moto, i) => (
+                    <div key={i} className="rounded-2xl overflow-hidden border border-[var(--k)]/5 shadow-[0_4px_24px_rgba(20,20,16,.06)] bg-white">
+                      <Image
+                        src={moto.src}
+                        alt={moto.alt}
+                        width={300}
+                        height={300}
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             </div>
@@ -98,10 +111,26 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Light card — mobile/tablet only */}
+      {/* Motorcycle photos — mobile/tablet */}
       <div className="bg-[var(--w)] px-6 -mt-6 rounded-t-[20px] relative z-10 pb-12 lg:hidden">
         <Reveal>
-          <div className="bg-white rounded-2xl p-5 shadow-[var(--shadow)] border border-[var(--k)]/5 max-w-lg mx-auto">
+          <div className="grid grid-cols-3 gap-2 max-w-lg mx-auto">
+            {motos.map((moto, i) => (
+              <div key={i} className="rounded-xl overflow-hidden border border-[var(--k)]/5 shadow-[var(--shadow)] bg-white">
+                <Image
+                  src={moto.src}
+                  alt={moto.alt}
+                  width={300}
+                  height={300}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.07}>
+          <div className="bg-white rounded-2xl p-5 shadow-[var(--shadow)] border border-[var(--k)]/5 max-w-lg mx-auto mt-4">
             <p className="text-[13px] text-[var(--m)] leading-[1.7] mb-4">
               {HERO.greeting.split("Entendemos o que a Bossa precisa").map((part, i) =>
                 i === 0 ? <span key={i}>{part}<b className="text-[var(--k)] font-medium">Entendemos o que a Bossa precisa</b></span> : <span key={i}>{part}</span>
