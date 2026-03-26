@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta — Bossa Liberdade Elétrica</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#7DC242;--gd:#5a9e2a;--gl:#c6e89a;--gll:#edf7d8;--glll:#f5fbee;
+  --y:#F0E030;--ydk:#b8ab00;
+  --b:#1A4A7A;--bl:#deeaf8;--bll:#f0f5fb;
+  --k:#141410;--k2:#2c2c20;
+  --w:#F7F5EF;--w2:#EDEADE;--w3:#E2DFCF;--w4:#d4d0bc;
+  --card:#FFFFFF;
+  --m:#6B6A56;--ml:#9A9880;
+  --shadow:0 1px 4px rgba(20,20,16,.07), 0 4px 16px rgba(20,20,16,.05);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;background:#e8e4d4;}
+body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--k);overflow-x:hidden;}
+
+/* WEB WRAPPER */
+.wrapper{max-width:480px;margin:0 auto;background:var(--w);position:relative;}
+@media(min-width:520px){
+  html{background:linear-gradient(135deg,#ddd9c8 0%,#e8e4d4 50%,#ddd9c8 100%);}
+  .wrapper{box-shadow:0 0 60px rgba(20,20,16,.15),0 0 0 1px rgba(20,20,16,.06);min-height:100vh;}
+}
+
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--g);z-index:999;transition:width .1s linear;width:0%;max-width:480px;}
+@media(min-width:520px){#prog{left:50%;transform:translateX(-50%);}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}
+
+/* NAV */
+nav{background:var(--card);border-bottom:1px solid var(--w3);padding:13px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nl{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--k);}
+.nl i{color:var(--g);}
+.nt{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ml);}
+
+/* HERO — faixa escura compacta no topo, claro embaixo */
+.hero{background:var(--w);position:relative;overflow:hidden;}
+.hero-dark{background:var(--k);padding:44px 24px 64px;position:relative;overflow:hidden;}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(125,194,66,.1);pointer-events:none;}
+.r1{width:400px;height:400px;top:-80px;right:-120px;animation:spin 44s linear infinite;}
+.r2{width:240px;height:240px;top:-20px;right:-40px;border-color:rgba(125,194,66,.15);animation:spin 28s linear infinite reverse;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-dot{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--g);opacity:.5;animation:blink 2.2s infinite;}
+.hd1{top:20%;left:14%;}
+.hd2{top:55%;right:10%;animation-delay:.7s;}
+@keyframes blink{0%,100%{opacity:.15;}50%{opacity:.7;}}
+
+.hero-pill{display:inline-flex;align-items:center;gap:7px;margin-bottom:22px;width:fit-content;}
+.hero-pill-dot{width:5px;height:5px;border-radius:50%;background:var(--g);animation:blink 1.5s infinite;}
+.hero-pill span{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(125,194,66,.75);}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(46px,13vw,64px);font-weight:700;line-height:.92;letter-spacing:-2px;margin-bottom:18px;}
+.l1{display:block;color:var(--w);}
+.l2{display:block;color:var(--y);font-style:italic;}
+.l3{display:block;color:rgba(246,244,238,.22);}
+.hero-sub{font-size:14px;line-height:1.8;color:rgba(246,244,238,.45);max-width:300px;margin-bottom:32px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:7px;}
+.hp{padding:7px 14px;border-radius:40px;font-size:11px;font-weight:500;border:1px solid transparent;}
+.hp.g{background:rgba(125,194,66,.13);border-color:rgba(125,194,66,.25);color:var(--g);}
+.hp.y{background:rgba(240,224,48,.1);border-color:rgba(240,224,48,.2);color:var(--y);}
+.hp.b{background:rgba(26,74,122,.3);border-color:rgba(26,74,122,.45);color:#7BAAD4;}
+.hp.n{background:rgba(246,244,238,.06);border-color:rgba(246,244,238,.1);color:rgba(246,244,238,.35);}
+
+/* HERO LIGHT PART */
+.hero-light{background:var(--w);padding:0 24px 48px;margin-top:-24px;border-radius:20px 20px 0 0;position:relative;z-index:2;}
+.hero-light-inner{background:var(--card);border-radius:16px;padding:20px;box-shadow:var(--shadow);margin-top:0;border:1px solid var(--w3);}
+.hl-greeting{font-size:13px;color:var(--m);line-height:1.7;margin-bottom:16px;}
+.hl-greeting b{color:var(--k);font-weight:500;}
+.hl-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.hlc{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:600;}
+.hlc.g{background:var(--gll);color:var(--gd);border:1px solid var(--gl);}
+.hlc.b{background:var(--bl);color:var(--b);border:1px solid #c0d8f0;}
+.hlc.y{background:#fafacc;color:var(--ydk);border:1px solid #e8e040;}
+.hlc.n{background:var(--w2);color:var(--m);border:1px solid var(--w3);}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--w3);}
+.sc{background:var(--w);padding:20px 16px;}
+.sc.hl{background:var(--g);}
+.sc label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ml);display:block;margin-bottom:6px;}
+.sc.hl label{color:rgba(20,20,16,.45);}
+.sc strong{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--k);display:block;line-height:1;}
+.sc small{font-size:11px;color:var(--ml);margin-top:2px;display:block;}
+.sc.hl small{color:rgba(20,20,16,.38);}
+
+/* SECTION */
+.sec{padding:52px 24px;}
+.tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gd);font-weight:600;margin-bottom:10px;opacity:.8;}
+h2{font-family:'Fraunces',serif;font-size:clamp(32px,9vw,44px);font-weight:700;line-height:.97;letter-spacing:-1.5px;color:var(--k);margin-bottom:12px;}
+h2 i{font-style:italic;color:var(--b);}
+.lead{font-size:14px;line-height:1.8;color:var(--m);}
+
+/* BRIEFING */
+.bsec{background:var(--w);}
+.blist{margin-top:32px;display:flex;flex-direction:column;gap:3px;}
+.bc{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--w3);transition:box-shadow .2s,transform .18s;}
+.bc:active{transform:scale(.99);}
+.bc:hover{box-shadow:0 4px 20px rgba(20,20,16,.11);}
+.bc-head{padding:16px;cursor:pointer;display:flex;align-items:center;gap:12px;position:relative;}
+.bc-head::after{content:'↓';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--w4);transition:transform .3s,color .3s;}
+.bc.open .bc-head::after{transform:translateY(-50%) rotate(180deg);color:var(--g);}
+.bc-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;transition:transform .28s;}
+.bc:hover .bc-ico{transform:rotate(-7deg) scale(1.1);}
+.bc-txt h3{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--k);margin-bottom:1px;}
+.bc-txt p{font-size:11px;color:var(--ml);}
+.bc-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+.bc-body.open{max-height:380px;}
+.bc-foot{padding:0 15px 15px;}
+.bc-foot p{font-size:12px;color:var(--m);line-height:1.7;}
+
+/* RIO VISUAL */
+.rio{height:180px;background:linear-gradient(180deg,#2e6699 0%,#4080b0 42%,#226640 55%,#226640 68%,#d6c896 68%);border-radius:10px 10px 0 0;margin:0 15px;position:relative;overflow:hidden;}
+.rio-sun{position:absolute;top:14px;right:24px;width:30px;height:30px;border-radius:50%;background:var(--y);box-shadow:0 0 28px rgba(240,224,48,.5);}
+.rio-sea{position:absolute;bottom:30%;left:0;right:0;height:10%;background:#1a4a7a;opacity:.45;}
+.rio-sand{position:absolute;bottom:0;left:0;right:0;height:32%;background:#d6c896;}
+.rio-tiles{position:absolute;bottom:0;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,#b0a07a 0,#b0a07a 6px,#d6c896 6px,#d6c896 9px);}
+.rio-label{position:absolute;top:12px;left:12px;font-family:'Fraunces',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.8);font-weight:700;}
+.rio-palm1{position:absolute;bottom:29%;left:6%;font-size:20px;}
+.rio-palm2{position:absolute;bottom:29%;right:5%;font-size:20px;}
+.rio-bike{position:absolute;bottom:9px;right:16px;font-size:21px;}
+.rio-mountain{position:absolute;bottom:29%;}
+
+/* FILTER */
+.fdemo{background:var(--w2);padding:12px;border-radius:0 0 10px 10px;margin:0 15px;}
+.fd-bar{background:var(--card);border-radius:7px;padding:7px 10px;display:flex;justify-content:space-between;margin-bottom:8px;border:1px solid var(--w3);}
+.fd-bar span{font-size:10px;color:var(--ml);}
+.fd-count{color:var(--g);font-weight:600;}
+.fd-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
+.ft{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:500;cursor:pointer;transition:all .18s;border:1.5px solid transparent;user-select:none;}
+.ft.on{background:var(--g);color:var(--k);border-color:var(--g);}
+.ft.off{background:var(--card);color:var(--ml);border-color:var(--w3);}
+.fd-res{display:flex;gap:5px;}
+.fdc{background:var(--card);border-radius:7px;padding:8px;flex:1;text-align:center;transition:all .3s;border:1px solid var(--w3);}
+.fdc.hide{opacity:.18;transform:scale(.9);}
+.fdc span{font-size:15px;display:block;margin-bottom:2px;}
+.fdc b{font-size:10px;color:var(--k);display:block;font-weight:500;}
+.fdc small{font-size:9px;color:var(--ml);}
+
+/* ADMIN */
+.admviz{background:var(--w2);border-radius:0 0 10px 10px;margin:0 15px;overflow:hidden;}
+.admviz-bar{background:var(--w3);padding:5px 10px;display:flex;align-items:center;gap:4px;}
+.ad-dot{width:6px;height:6px;border-radius:50%;}
+.admviz-url{flex:1;text-align:center;font-size:8px;color:var(--ml);}
+.admviz-body{display:flex;}
+.admviz-side{width:34px;background:var(--k);padding:7px 4px;display:flex;flex-direction:column;gap:4px;align-items:center;}
+.adsi{width:22px;height:22px;border-radius:5px;background:rgba(246,244,238,.07);display:flex;align-items:center;justify-content:center;font-size:10px;}
+.adsi.a{background:var(--g);}
+.admviz-main{flex:1;padding:8px;background:var(--w);}
+.adstat{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px;}
+.adsc{background:var(--w2);border-radius:5px;padding:5px 7px;border:1px solid var(--w3);}
+.adsc label{font-size:7px;color:var(--ml);display:block;text-transform:uppercase;letter-spacing:.3px;}
+.adsc strong{font-size:15px;font-weight:700;color:var(--k);}
+.adsc.g strong{color:var(--gd);}
+.adrow{background:var(--w2);border-radius:5px;padding:6px 8px;display:flex;align-items:center;gap:6px;margin-bottom:3px;border:1px solid var(--w3);cursor:pointer;transition:background .18s;}
+.adrow:hover{background:var(--gll);}
+.adrow p{font-size:10px;color:var(--k);flex:1;font-weight:500;}
+.adbadge{background:var(--gll);color:var(--gd);font-size:8px;font-weight:600;padding:2px 6px;border-radius:5px;border:1px solid var(--gl);}
+
+/* MKT VIZ */
+.mktviz{background:var(--w2);border-radius:0 0 10px 10px;margin:0 15px;padding:12px;}
+.mkt-plat{display:flex;gap:5px;margin-bottom:9px;}
+.mktp{flex:1;border-radius:7px;padding:7px;display:flex;flex-direction:column;align-items:center;gap:2px;}
+.mktp.go{background:#fff;border:1px solid var(--w3);}
+.mktp.fb{background:#1877F2;}.mktp.ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.mktp span{font-size:16px;}.mktp p{font-size:8px;font-weight:600;}
+.mktp.go p{color:#333;}.mktp.fb p,.mktp.ig p{color:#fff;}
+.mkt-flow{display:flex;align-items:center;gap:4px;margin-bottom:8px;}
+.mkt-box{flex:1;background:var(--card);border-radius:6px;padding:6px 8px;border:1px solid var(--w3);}
+.mkt-box.src{border-color:var(--gl);background:var(--gll);}
+.mkt-box.dst{border-color:#c0d8f0;background:var(--bl);}
+.mkt-box label{font-size:7px;color:var(--ml);display:block;text-transform:uppercase;letter-spacing:.3px;}
+.mkt-box p{font-size:9px;font-weight:600;color:var(--k);}
+.mkt-box.src p{color:var(--gd);}.mkt-box.dst p{color:var(--b);}
+.mkt-arr{font-size:11px;color:var(--w4);}
+.sync-row{display:flex;align-items:center;gap:5px;}
+.sync-dot{width:5px;height:5px;border-radius:50%;background:var(--g);animation:pls 1.5s infinite;}
+@keyframes pls{0%,100%{opacity:.3;transform:scale(.8);}50%{opacity:1;transform:scale(1.2);}}
+.sync-row p{font-size:9px;color:var(--gd);font-weight:500;}
+
+/* DIVIDER */
+.div-line{height:1px;background:var(--w3);margin:0 24px;}
+
+/* ENTREGAS */
+.entsec{background:var(--w2);}
+.entsec .tag{color:var(--gd);}
+.elist{margin-top:32px;display:flex;flex-direction:column;gap:3px;}
+.el{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--w3);cursor:pointer;transition:box-shadow .2s,transform .18s;}
+.el:hover{box-shadow:0 4px 20px rgba(20,20,16,.1);}
+.el:active{transform:scale(.99);}
+.el-head{padding:16px;display:flex;align-items:center;gap:12px;position:relative;}
+.el-head::after{content:'↓';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--w4);transition:transform .3s,color .3s;}
+.el.open .el-head::after{transform:translateY(-50%) rotate(180deg);color:var(--g);}
+.el-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;transition:transform .28s;}
+.el:hover .el-ico{transform:rotate(-6deg) scale(1.1);}
+.e1 .el-ico{background:var(--gll);}.e2 .el-ico{background:var(--bl);}
+.e3 .el-ico{background:#fafacc;}.e4 .el-ico{background:#fce4ec;}
+.el-txt h3{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--k);margin-bottom:1px;}
+.el-txt p{font-size:11px;color:var(--ml);}
+.el-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+.el-body.open{max-height:600px;}
+.el-inner{padding:0 15px 16px;}
+.el-desc{font-size:12px;color:var(--m);line-height:1.7;margin-bottom:10px;}
+.el-chips{display:flex;flex-wrap:wrap;gap:4px;}
+.ec{font-size:9px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--w2);color:var(--m);border:1px solid var(--w3);}
+
+/* MINI SITE BOSSA */
+.mini-site{background:#f0f8e6;border-radius:10px;overflow:hidden;margin-bottom:12px;border:1px solid var(--gl);}
+.msn{background:var(--k);padding:7px 11px;display:flex;align-items:center;justify-content:space-between;}
+.msn-logo{font-family:'Fraunces',serif;font-style:italic;font-size:12px;color:var(--g);font-weight:700;}
+.msn-links{display:flex;gap:7px;}
+.msn-links span{font-size:8px;color:rgba(246,244,238,.3);}
+.ms-hero{background:linear-gradient(135deg,#141410,#1e2e0a);padding:14px 11px;display:flex;align-items:center;justify-content:space-between;}
+.ms-hero-t h4{font-family:'Fraunces',serif;font-size:13px;color:var(--w);font-style:italic;line-height:1.1;margin-bottom:3px;}
+.ms-hero-t p{font-size:8px;color:rgba(246,244,238,.4);}
+.ms-cta{background:var(--g);color:var(--k);font-size:8px;font-weight:700;padding:5px 9px;border-radius:5px;white-space:nowrap;}
+.ms-filters{background:#fff;padding:6px 11px;display:flex;gap:4px;border-bottom:1px solid var(--w3);}
+.msft{font-size:8px;padding:3px 7px;border-radius:10px;font-weight:600;}
+.msft.a{background:var(--g);color:var(--k);}
+.msft.i{background:var(--w2);color:var(--ml);border:1px solid var(--w3);}
+.ms-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:7px 11px;}
+.ms-card{background:#fff;border-radius:6px;padding:7px;text-align:center;border:1px solid var(--w3);}
+.ms-card span{font-size:14px;display:block;}
+.ms-card b{font-size:7px;color:var(--k);display:block;margin:1px 0;font-weight:600;}
+.ms-card small{font-size:7px;color:var(--g);font-weight:600;}
+.ms-feat{background:var(--k);padding:5px 11px;display:flex;gap:6px;}
+.ms-feat-chip{font-size:7px;color:rgba(246,244,238,.3);border:1px solid rgba(246,244,238,.1);padding:2px 6px;border-radius:10px;}
+
+/* MINI ADMIN */
+.mini-admin{background:var(--w);border-radius:10px;overflow:hidden;margin-bottom:12px;border:1px solid var(--w3);}
+.man{background:var(--k);padding:7px 11px;display:flex;align-items:center;gap:7px;}
+.man-logo{font-family:'Fraunces',serif;font-size:10px;color:var(--g);font-style:italic;}
+.man-tag{font-size:7px;color:rgba(246,244,238,.28);margin-left:auto;}
+.ma-body{display:flex;min-height:128px;}
+.ma-side{background:#0c0c08;width:34px;padding:7px 5px;display:flex;flex-direction:column;gap:4px;align-items:center;border-right:1px solid rgba(246,244,238,.04);}
+.masi{width:20px;height:20px;border-radius:4px;background:rgba(246,244,238,.05);display:flex;align-items:center;justify-content:center;font-size:10px;}
+.masi.a{background:var(--g);}
+.ma-main{flex:1;padding:8px;background:var(--w);}
+.ma-hdr{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:var(--ml);font-weight:600;margin-bottom:7px;}
+.ma-kpis{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:7px;}
+.ma-kpi{background:var(--w2);border-radius:5px;padding:5px 7px;border:1px solid var(--w3);}
+.ma-kpi label{font-size:7px;color:var(--ml);display:block;}
+.ma-kpi strong{font-size:16px;font-weight:700;color:var(--k);}
+.ma-kpi.g strong{color:var(--gd);}
+.ma-table{display:flex;flex-direction:column;gap:3px;}
+.ma-row{background:var(--w2);border-radius:5px;padding:5px 7px;display:flex;align-items:center;gap:6px;border:1px solid var(--w3);cursor:pointer;transition:background .18s;}
+.ma-row:hover{background:var(--gll);}
+.ma-row span{font-size:11px;}
+.ma-row-n{flex:1;font-size:9px;color:var(--k);font-weight:500;}
+.ma-row-p{font-size:9px;color:var(--gd);font-weight:600;}
+.ma-row-btn{background:var(--gll);border:1px solid var(--gl);color:var(--gd);font-size:7px;font-weight:700;padding:2px 5px;border-radius:4px;}
+.ma-add{background:var(--gll);border:1.5px dashed var(--gl);border-radius:5px;padding:5px;text-align:center;}
+.ma-add span{font-size:9px;color:var(--gd);font-weight:600;}
+
+/* MINI INTEGRACOES */
+.mini-int{background:var(--w);border-radius:10px;overflow:hidden;margin-bottom:12px;border:1px solid var(--w3);padding:13px;}
+.mint-title{font-size:8px;text-transform:uppercase;letter-spacing:2px;color:var(--ml);margin-bottom:11px;font-weight:600;}
+.mint-flow{display:flex;flex-direction:column;gap:7px;}
+.mint-step{display:flex;align-items:center;gap:7px;}
+.mint-box{flex:1;border-radius:7px;padding:7px 9px;border:1px solid var(--w3);background:var(--w2);}
+.mint-box.src{border-color:var(--gl);background:var(--gll);}
+.mint-box.dst-s{border-color:#c0d8f0;background:var(--bl);}
+.mint-box label{font-size:7px;color:var(--ml);display:block;text-transform:uppercase;letter-spacing:.3px;margin-bottom:1px;}
+.mint-box p{font-size:10px;font-weight:600;color:var(--k);}
+.mint-box.src p{color:var(--gd);}.mint-box.dst-s p{color:var(--b);}
+.mint-arrow{font-size:11px;color:var(--w4);}
+.mint-divider{height:1px;background:var(--w3);margin:2px 0;}
+.mint-badge{display:inline-flex;align-items:center;gap:4px;background:var(--gll);border:1px solid var(--gl);border-radius:8px;padding:3px 8px;margin-top:9px;}
+.mint-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--g);animation:pls 1.5s infinite;}
+.mint-badge p{font-size:9px;color:var(--gd);font-weight:600;}
+
+/* MINI GOOGLE MERCHANT */
+.mini-mkt{background:var(--w);border-radius:10px;overflow:hidden;margin-bottom:12px;border:1px solid var(--w3);}
+.mm-gbar{background:#fff;padding:7px 11px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #e8e0d0;}
+.mm-gl{font-size:10px;font-weight:700;color:#4285F4;letter-spacing:-.5px;}
+.mm-gl b{color:#EA4335;}
+.mm-search{flex:1;background:#f2f2f2;border-radius:20px;padding:4px 9px;font-size:8px;color:#888;border:1px solid #e0e0e0;}
+.mm-body{padding:7px 11px;}
+.mm-rl{font-size:7px;color:#888;margin-bottom:5px;}
+.mm-cards{display:flex;gap:5px;}
+.mm-card{flex:1;border:1px solid #e0d8cc;border-radius:7px;overflow:hidden;background:#fff;}
+.mm-card-img{height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.mmc1 .mm-card-img{background:#f0f8e6;}.mmc2 .mm-card-img{background:#e8f0f9;}.mmc3 .mm-card-img{background:#f5f3e6;}
+.mm-card-info{padding:5px 6px;}
+.mm-card-info b{font-size:7px;color:#222;display:block;font-weight:600;}
+.mm-card-info p{font-size:8px;color:#0a9928;font-weight:700;margin-top:1px;}
+.mm-card-info small{font-size:6px;color:#888;display:block;}
+.mm-foot{background:var(--gll);padding:5px 11px;display:flex;align-items:center;gap:4px;border-top:1px solid var(--gl);}
+.mm-foot-dot{width:4px;height:4px;border-radius:50%;background:var(--g);animation:pls 1.7s infinite;}
+.mm-foot p{font-size:8px;color:var(--gd);font-weight:500;}
+
+/* PRAZO */
+.prazo{background:var(--y);padding:40px 24px;}
+.prazo-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:rgba(20,20,16,.35);margin-bottom:9px;}
+.prazo h3{font-family:'Fraunces',serif;font-size:clamp(26px,8vw,38px);font-weight:700;color:var(--k);line-height:1.05;letter-spacing:-1px;margin-bottom:9px;}
+.prazo p{font-size:13px;color:rgba(20,20,16,.5);line-height:1.75;margin-bottom:22px;}
+.prazo-num{display:flex;align-items:baseline;gap:6px;}
+.prazo-num strong{font-family:'Fraunces',serif;font-size:84px;font-weight:700;color:var(--k);line-height:1;letter-spacing:-3px;}
+.prazo-num div{display:flex;flex-direction:column;}
+.prazo-num span{font-size:10px;color:rgba(20,20,16,.35);text-transform:uppercase;letter-spacing:1.5px;}
+
+/* TIMELINE */
+.tlsec{background:var(--w);}
+.tl{margin-top:32px;position:relative;}
+.tl::before{content:'';position:absolute;left:20px;top:10px;bottom:0;width:1px;background:var(--w3);}
+.tli{display:flex;gap:16px;padding-bottom:26px;cursor:pointer;}
+.tli:last-child{padding-bottom:0;}
+.tli-dot{width:42px;height:42px;border-radius:50%;background:var(--w2);border:1.5px solid var(--w3);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;transition:all .28s;}
+.tli-dot span{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--ml);transition:color .28s;}
+.tli.act .tli-dot{background:var(--g);border-color:var(--g);transform:scale(1.08);box-shadow:0 3px 14px rgba(125,194,66,.28);}
+.tli.act .tli-dot span{color:var(--k);}
+.tli-b{padding-top:9px;flex:1;}
+.tli-sem{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ml);font-weight:600;margin-bottom:3px;transition:color .28s;}
+.tli.act .tli-sem{color:var(--gd);}
+.tli-b h3{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--w4);margin-bottom:2px;transition:color .28s;}
+.tli.act .tli-b h3{color:var(--k);}
+.tli-b p{font-size:12px;color:var(--w3);line-height:1.6;transition:color .28s;}
+.tli.act .tli-b p{color:var(--m);}
+.tli-tags{display:flex;flex-wrap:wrap;gap:4px;max-height:0;overflow:hidden;transition:max-height .4s ease,margin-top .28s;}
+.tli.act .tli-tags{max-height:60px;margin-top:8px;}
+.tli-tag{background:var(--gll);color:var(--gd);font-size:9px;font-weight:600;padding:3px 8px;border-radius:10px;border:1px solid var(--gl);}
+
+/* INVESTIMENTO */
+.invsec{background:var(--w2);}
+.invsec .tag{color:var(--gd);}
+.inv-cards{margin-top:32px;display:flex;flex-direction:column;gap:10px;}
+.ic{border-radius:16px;padding:24px 20px;position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;}
+.ic:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(20,20,16,.1);}
+.ic.dk{background:var(--k);}
+.ic.gr{background:var(--g);}
+.ic-glyph{position:absolute;top:-8px;right:-6px;font-family:'Fraunces',serif;font-size:84px;font-weight:700;opacity:.05;color:var(--w);line-height:1;pointer-events:none;}
+.ic.gr .ic-glyph{color:var(--k);}
+.ic-lbl{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:13px;display:block;}
+.dk .ic-lbl{color:rgba(246,244,238,.3);}.gr .ic-lbl{color:rgba(20,20,16,.4);}
+.ic-val{font-family:'Fraunces',serif;font-size:44px;font-weight:700;line-height:1;margin-bottom:3px;letter-spacing:-.5px;}
+.dk .ic-val{color:var(--w);}.gr .ic-val{color:var(--k);}
+.ic-sub{font-size:12px;margin-bottom:18px;}
+.dk .ic-sub{color:rgba(246,244,238,.3);}.gr .ic-sub{color:rgba(20,20,16,.38);}
+.ic-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.ic-list li{font-size:12px;display:flex;gap:8px;align-items:flex-start;line-height:1.4;}
+.ic-list li::before{content:'✓';flex-shrink:0;font-weight:700;margin-top:1px;}
+.dk .ic-list li{color:rgba(246,244,238,.5);}.dk .ic-list li::before{color:var(--g);}
+.gr .ic-list li{color:rgba(20,20,16,.6);}.gr .ic-list li::before{color:rgba(20,20,16,.8);}
+.mens{background:var(--card);border-radius:14px;padding:20px;box-shadow:var(--shadow);border-left:4px solid var(--b);}
+.mens h4{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--k);margin-bottom:5px;}
+.mens p{font-size:12px;color:var(--m);line-height:1.65;margin-bottom:13px;}
+.mens-val strong{font-family:'Fraunces',serif;font-size:34px;font-weight:700;color:var(--b);}
+.mens-val span{font-size:13px;color:var(--ml);}
+
+/* CTA */
+.ctasec{background:var(--k);padding:52px 24px 60px;}
+.ctasec .tag{color:rgba(125,194,66,.7);}
+.ctasec h2{color:var(--w);}
+.ctasec h2 i{color:var(--y);}
+.ctasec .lead{color:rgba(246,244,238,.4);margin-bottom:28px;}
+.btn-wpp{display:flex;align-items:center;justify-content:center;gap:11px;background:var(--g);color:var(--k);padding:18px 22px;border-radius:13px;font-size:15px;font-weight:700;text-decoration:none;transition:all .22s;position:relative;overflow:hidden;}
+.btn-wpp:hover{background:var(--gl);}
+.btn-wpp:active{transform:scale(.97);}
+.btn-wpp svg{width:21px;height:21px;flex-shrink:0;}
+.cta-note{font-size:11px;color:rgba(246,244,238,.2);text-align:center;margin-top:12px;line-height:1.7;}
+
+footer{background:var(--k);border-top:1px solid rgba(246,244,238,.05);padding:18px 24px;}
+footer p{font-size:11px;color:rgba(246,244,238,.22);}
+footer b{color:rgba(246,244,238,.4);}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<div id="prog"></div>
+
+<nav>
+  <div class="nl"><i>Bossa</i> Elétrica</div>
+  <span class="nt">Proposta 2025</span>
+</nav>
+
+<!-- HERO: faixa escura compacta + curva pra claro -->
+<div class="hero">
+  <div class="hero-dark">
+    <div class="hero-ring r1"></div>
+    <div class="hero-ring r2"></div>
+    <div class="hero-dot hd1"></div>
+    <div class="hero-dot hd2"></div>
+    <div class="hero-pill reveal">
+      <div class="hero-pill-dot"></div>
+      <span>Proposta personalizada</span>
+    </div>
+    <h1 class="reveal d1">
+      <span class="l1">Um site</span>
+      <span class="l2">à altura</span>
+      <span class="l3">da Bossa.</span>
+    </h1>
+    <p class="hero-sub reveal d2">Sua marca tem identidade, personalidade e um público fiel. Seu site vai começar a refletir isso.</p>
+    <div class="hero-pills reveal d3">
+      <span class="hp g">Site completo</span>
+      <span class="hp b">Painel admin</span>
+      <span class="hp y">Integrações</span>
+      <span class="hp n">45 dias</span>
+    </div>
+  </div>
+
+  <div class="hero-light">
+    <div class="hero-light-inner reveal">
+      <p class="hl-greeting">Preparamos essa proposta com base no briefing que você compartilhou. <b>Entendemos o que a Bossa precisa</b> e o que ficou faltando até agora.</p>
+      <div class="hl-chips">
+        <span class="hlc g">SprintHub integrado</span>
+        <span class="hlc g">Bling integrado</span>
+        <span class="hlc b">Google Merchant</span>
+        <span class="hlc b">Meta Catalog</span>
+        <span class="hlc y">45 dias de entrega</span>
+        <span class="hlc n">Mobile-first</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="sc reveal"><label>Investimento</label><strong>R$ 15k</strong><small>Em duas etapas</small></div>
+  <div class="sc hl reveal d1"><label>Prazo</label><strong>45 dias</strong><small>Semanal</small></div>
+  <div class="sc reveal d1"><label>Manutenção</label><strong>R$ 990</strong><small>Por mês</small></div>
+  <div class="sc reveal d2"><label>Suporte pós-entrega</label><strong>30 dias</strong><small>Incluídos</small></div>
+</div>
+
+<!-- BRIEFING -->
+<div class="bsec">
+  <section class="sec">
+    <p class="tag reveal">Entendemos o que vocês precisam</p>
+    <h2 class="reveal">O objetivo está<br><i>claro</i> pra nós</h2>
+    <p class="lead reveal">Vocês não precisam de mais um site genérico. Precisam de algo que fale com o carioca, que a equipe opere sem precisar chamar ninguém, e que a marca apareça como merece.</p>
+    <div class="blist reveal">
+
+      <div class="bc" id="bc0">
+        <div class="bc-head" onclick="tBC(0)">
+          <div class="bc-ico" style="background:linear-gradient(135deg,#c8e8f8,#c0e8cc);">🏖️</div>
+          <div class="bc-txt"><h3>Identidade Carioca</h3><p>Uma marca do Rio merece um site que mostra isso</p></div>
+        </div>
+        <div class="bc-body" id="bv0">
+          <div class="rio">
+            <div class="rio-sun"></div>
+            <svg class="rio-mountain" viewBox="0 0 200 100" width="200" style="left:50%;transform:translateX(-50%);">
+              <path d="M40,95 Q55,28 100,8 Q145,28 160,95Z" fill="#226633"/>
+              <path d="M60,95 Q70,48 100,22 Q130,48 140,95Z" fill="#338844"/>
+              <path d="M78,95 Q84,62 100,38 Q116,62 122,95Z" fill="#44aa55" opacity=".85"/>
+            </svg>
+            <div class="rio-sea"></div>
+            <div class="rio-sand"></div>
+            <div class="rio-tiles"></div>
+            <div class="rio-label">Criada no Rio.</div>
+            <div class="rio-palm1">🌴</div><div class="rio-palm2">🌴</div>
+            <div class="rio-bike">🛵</div>
+          </div>
+          <div class="bc-foot" style="margin:0 15px;padding-top:10px;"><p>O design vai conversar com quem conhece o Rio de verdade. Referências de Copacabana, a paleta da cidade, elementos que fazem sentido com a identidade da Bossa.</p></div>
+        </div>
+      </div>
+
+      <div class="bc" id="bc1">
+        <div class="bc-head" onclick="tBC(1)">
+          <div class="bc-ico" style="background:var(--w2);">🎛️</div>
+          <div class="bc-txt"><h3>Filtros inteligentes</h3><p>30+ atributos. O cliente chega no modelo certo</p></div>
+        </div>
+        <div class="bc-body" id="bv1">
+          <div class="fdemo" style="margin:0 15px;border-radius:10px;">
+            <div class="fd-bar"><span>Filtrar modelos</span><span class="fd-count" id="fdc">3 modelos</span></div>
+            <div class="fd-tags">
+              <span class="ft on" onclick="tf(this,'s')">🛵 Scooter</span>
+              <span class="ft off" onclick="tf(this,'b')">🚲 Bike</span>
+              <span class="ft on" onclick="tf(this,'d')">Dobrável</span>
+              <span class="ft off" onclick="tf(this,'r')">Bat. removível</span>
+              <span class="ft on" onclick="tf(this,'a')">60km+ autonomia</span>
+            </div>
+            <div class="fd-res">
+              <div class="fdc" id="fc0"><span>🛵</span><b>Prime T</b><small>R$ 12.990</small></div>
+              <div class="fdc" id="fc1"><span>🛵</span><b>Bossa Neo</b><small>R$ 9.990</small></div>
+              <div class="fdc" id="fc2"><span>🚲</span><b>Bossa Grid</b><small>R$ 7.990</small></div>
+            </div>
+          </div>
+          <div class="bc-foot" style="padding-top:10px;"><p>Categoria, faixa de preço, autonomia, potência, velocidade, passageiros, peso, dobrável, pedal, bateria removível, NFC, alarme, bluetooth e muito mais. O cliente encontra o modelo certo sem precisar ligar.</p></div>
+        </div>
+      </div>
+
+      <div class="bc" id="bc2">
+        <div class="bc-head" onclick="tBC(2)">
+          <div class="bc-ico" style="background:var(--gll);">⚙️</div>
+          <div class="bc-txt"><h3>Autonomia total</h3><p>Painel simples, sem precisar chamar ninguém</p></div>
+        </div>
+        <div class="bc-body" id="bv2">
+          <div class="admviz" style="margin:0 15px;border-radius:10px;">
+            <div class="admviz-bar"><div class="ad-dot" style="background:#ff5f57;"></div><div class="ad-dot" style="background:#ffbd2e;"></div><div class="ad-dot" style="background:#28ca41;"></div><span class="admviz-url">admin.bossaeletricas.com.br</span></div>
+            <div class="admviz-body">
+              <div class="admviz-side"><div class="adsi a">🏠</div><div class="adsi">🛵</div><div class="adsi">📊</div><div class="adsi">⚙️</div></div>
+              <div class="admviz-main">
+                <div class="adstat"><div class="adsc g"><label>Produtos</label><strong>24</strong></div><div class="adsc"><label>Leads hoje</label><strong>7</strong></div></div>
+                <div class="adrow"><span style="font-size:12px;">🛵</span><p>Bossa Prime T</p><span class="adbadge">Editar</span></div>
+                <div class="adrow"><span style="font-size:12px;">🚲</span><p>Bossa Neo</p><span class="adbadge">Editar</span></div>
+                <div class="adrow" style="border-style:dashed;border-color:var(--gl);"><span style="font-size:12px;">➕</span><p style="color:var(--gd);">Novo produto</p><span class="adbadge">Criar</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bc-foot" style="padding-top:10px;"><p>Cadastrar produto, trocar preço, atualizar foto. Tudo em poucos cliques, sem entender de código, sem depender de agência para tarefas simples do dia a dia.</p></div>
+        </div>
+      </div>
+
+      <div class="bc" id="bc3">
+        <div class="bc-head" onclick="tBC(3)">
+          <div class="bc-ico" style="background:var(--bl);">🔗</div>
+          <div class="bc-txt"><h3>SprintHub + Bling integrados</h3><p>CRM e ERP conectados ao site</p></div>
+        </div>
+        <div class="bc-body" id="bv3">
+          <div class="mktviz" style="margin:0 15px;border-radius:10px;">
+            <div class="mkt-plat"><div class="mktp go"><span>🔍</span><p>Google</p></div><div class="mktp fb"><span>📘</span><p>Facebook</p></div><div class="mktp ig"><span>📸</span><p>Instagram</p></div></div>
+            <div class="mkt-flow">
+              <div class="mkt-box src"><label>Origem</label><p>Painel Bossa</p></div>
+              <span class="mkt-arr">→</span>
+              <div class="mkt-box dst"><label>CRM</label><p>SprintHub</p></div>
+              <span class="mkt-arr">→</span>
+              <div class="mkt-box"><label>ERP</label><p>Bling</p></div>
+            </div>
+            <div class="sync-row"><div class="sync-dot"></div><p>Sincronização automática ativa</p></div>
+          </div>
+          <div class="bc-foot" style="padding-top:10px;"><p>Lead no site entra direto no SprintHub. Produto no painel sincroniza com o Bling. Google Merchant e Meta Catalog alimentados automaticamente.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="div-line"></div>
+
+<!-- ENTREGAS -->
+<div class="entsec">
+  <section class="sec">
+    <p class="tag reveal">Quatro entregas</p>
+    <h2 class="reveal">Um produto<br><i>completo.</i></h2>
+    <p class="lead reveal">Cada bloco foi pensado com base no briefing que vocês compartilharam. Toque para visualizar.</p>
+    <div class="elist reveal">
+
+      <div class="el e1" onclick="tEl(0)">
+        <div class="el-head"><div class="el-ico">🏄</div><div class="el-txt"><h3>Site Completo</h3><p>Design único, mobile-first, SEO e interativo</p></div></div>
+        <div class="el-body" id="el0">
+          <div class="el-inner">
+            <div class="mini-site">
+              <div class="msn"><span class="msn-logo">Bossa</span><div class="msn-links"><span>Modelos</span><span>Test Drive</span><span>Blog</span></div></div>
+              <div class="ms-hero"><div class="ms-hero-t"><h4>Encontre sua<br>Bossa Perfeita</h4><p>Criada no Rio, para os cariocas</p></div><div class="ms-cta">Descobrir →</div></div>
+              <div class="ms-filters"><span class="msft a">Todos</span><span class="msft i">Scooter</span><span class="msft i">Bike</span><span class="msft i">Cargo</span></div>
+              <div class="ms-cards">
+                <div class="ms-card"><span>🛵</span><b>Prime T</b><small>R$ 12.990</small></div>
+                <div class="ms-card"><span>🛵</span><b>Bossa Neo</b><small>R$ 9.990</small></div>
+                <div class="ms-card"><span>🚲</span><b>Bossa Grid</b><small>R$ 7.990</small></div>
+              </div>
+              <div class="ms-feat">
+                <span class="ms-feat-chip">Calculadora de economia</span>
+                <span class="ms-feat-chip">Comparativo de modelos</span>
+                <span class="ms-feat-chip">Test Drive</span>
+              </div>
+            </div>
+            <p class="el-desc">Home com hero, carrosséis por categoria, quiz "Encontre sua Bossa Perfeita", comparativo de modelos, calculadora de economia, agendamento de test drive, blog, localização das lojas, FAQ e formulário de contato. Tudo nas cores da Bossa.</p>
+            <div class="el-chips"><span class="ec">Mobile-first</span><span class="ec">SEO</span><span class="ec">Catálogo 30+ filtros</span><span class="ec">Comparativo</span><span class="ec">Calculadora</span><span class="ec">Blog</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="el e2" onclick="tEl(1)">
+        <div class="el-head"><div class="el-ico">⚙️</div><div class="el-txt"><h3>Painel Administrativo</h3><p>Exclusivo da Bossa, simples de operar</p></div></div>
+        <div class="el-body" id="el1">
+          <div class="el-inner">
+            <div class="mini-admin">
+              <div class="man"><span class="man-logo">Bossa Admin</span><span class="man-tag">Bem-vinda, equipe!</span></div>
+              <div class="ma-body">
+                <div class="ma-side"><div class="masi a">🏠</div><div class="masi">🛵</div><div class="masi">💬</div><div class="masi">📊</div></div>
+                <div class="ma-main">
+                  <div class="ma-hdr">Painel de produtos</div>
+                  <div class="ma-kpis"><div class="ma-kpi g"><label>Ativos</label><strong>24</strong></div><div class="ma-kpi"><label>Leads hoje</label><strong>7</strong></div></div>
+                  <div class="ma-table">
+                    <div class="ma-row"><span>🛵</span><span class="ma-row-n">Bossa Prime T</span><span class="ma-row-p">R$ 12.990</span><span class="ma-row-btn">Editar</span></div>
+                    <div class="ma-row"><span>🛵</span><span class="ma-row-n">Bossa Neo</span><span class="ma-row-p">R$ 9.990</span><span class="ma-row-btn">Editar</span></div>
+                    <div class="ma-row"><span>🚲</span><span class="ma-row-n">Bossa Grid</span><span class="ma-row-p">R$ 7.990</span><span class="ma-row-btn">Editar</span></div>
+                    <div class="ma-add"><span>+ Cadastrar novo modelo</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="el-desc">Painel com as cores e identidade da Bossa. Adicionar produto, atualizar preço, trocar foto, marcar como "sob encomenda" ou ativar/desativar. Sem código, sem agência para o dia a dia.</p>
+            <div class="el-chips"><span class="ec">Cadastro de produtos</span><span class="ec">Edição de preços</span><span class="ec">Upload de fotos</span><span class="ec">Gestão de leads</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="el e3" onclick="tEl(2)">
+        <div class="el-head"><div class="el-ico">🔗</div><div class="el-txt"><h3>SprintHub e Bling</h3><p>CRM e ERP conectados automaticamente</p></div></div>
+        <div class="el-body" id="el2">
+          <div class="el-inner">
+            <div class="mini-int">
+              <p class="mint-title">Fluxo automatizado de dados</p>
+              <div class="mint-flow">
+                <div class="mint-step">
+                  <div class="mint-box src"><label>Lead no site</label><p>Formulário Bossa</p></div>
+                  <span class="mint-arrow">→</span>
+                  <div class="mint-box dst-s"><label>CRM</label><p>SprintHub</p></div>
+                </div>
+                <div class="mint-divider"></div>
+                <div class="mint-step">
+                  <div class="mint-box src"><label>Produto no painel</label><p>Painel Bossa</p></div>
+                  <span class="mint-arrow">→</span>
+                  <div class="mint-box"><label>ERP</label><p>Bling</p></div>
+                </div>
+              </div>
+              <div class="mint-badge"><div class="mint-badge-dot"></div><p>100% automático, sem retrabalho manual</p></div>
+            </div>
+            <p class="el-desc">Lead pelo site entra direto no SprintHub — ele dispara as mensagens de boas-vindas automaticamente. Produto cadastrado no painel sincroniza com o Bling.</p>
+            <div class="el-chips"><span class="ec">SprintHub</span><span class="ec">Bling</span><span class="ec">Webhooks</span><span class="ec">Automático</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="el e4" onclick="tEl(3)">
+        <div class="el-head"><div class="el-ico">🛒</div><div class="el-txt"><h3>Google Merchant e Meta</h3><p>Seus produtos aparecendo em todo lugar</p></div></div>
+        <div class="el-body" id="el3">
+          <div class="el-inner">
+            <div class="mini-mkt">
+              <div class="mm-gbar"><span class="mm-gl">G<b>o</b>ogle</span><div class="mm-search">scooter elétrica rio de janeiro</div></div>
+              <div class="mm-body">
+                <p class="mm-rl">Google Shopping — produtos da Bossa</p>
+                <div class="mm-cards">
+                  <div class="mm-card mmc1"><div class="mm-card-img">🛵</div><div class="mm-card-info"><b>Prime T</b><p>R$ 12.990</p><small>bossaeletricas.com.br</small></div></div>
+                  <div class="mm-card mmc2"><div class="mm-card-img">🛵</div><div class="mm-card-info"><b>Bossa Neo</b><p>R$ 9.990</p><small>bossaeletricas.com.br</small></div></div>
+                  <div class="mm-card mmc3"><div class="mm-card-img">🚲</div><div class="mm-card-info"><b>Bossa Grid</b><p>R$ 7.990</p><small>bossaeletricas.com.br</small></div></div>
+                </div>
+              </div>
+              <div class="mm-foot"><div class="mm-foot-dot"></div><p>Feed atualizado automaticamente via painel</p></div>
+            </div>
+            <p class="el-desc">Produto cadastrado no painel aparece no Google Shopping, Facebook e Instagram automaticamente. Feed sempre atualizado, sem trabalho extra. Resolve o bloqueio do Google Merchant de uma vez.</p>
+            <div class="el-chips"><span class="ec">Google Merchant</span><span class="ec">Meta Catalog</span><span class="ec">Instagram Shopping</span><span class="ec">WhatsApp Catalog</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- PRAZO -->
+<div class="prazo reveal">
+  <p class="prazo-tag">Sem enrolação</p>
+  <h3>Em 45 dias, o site está no ar.</h3>
+  <p>Acompanhamento semanal e aprovação em cada etapa. Você não fica no escuro, cada entrega é validada antes da próxima começar.</p>
+  <div class="prazo-num"><strong>45</strong><div><span>dias</span><span>corridos</span></div></div>
+</div>
+
+<!-- TIMELINE -->
+<div class="tlsec">
+  <section class="sec">
+    <p class="tag reveal">Como funciona</p>
+    <h2 class="reveal">Semana<br>a <i>semana</i></h2>
+    <p class="lead reveal">Toque em cada etapa para ver o que acontece naquele momento.</p>
+    <div class="tl reveal">
+      <div class="tli act" onclick="sTL(0)">
+        <div class="tli-dot"><span>1</span></div>
+        <div class="tli-b"><p class="tli-sem">Semanas 1 e 2</p><h3>Design e Identidade</h3><p>Visual aprovado antes de escrever uma linha de código.</p><div class="tli-tags"><span class="tli-tag">Paleta Bossa</span><span class="tli-tag">Tipografia</span><span class="tli-tag">Layout</span><span class="tli-tag">Aprovação</span></div></div>
+      </div>
+      <div class="tli" onclick="sTL(1)">
+        <div class="tli-dot"><span>2</span></div>
+        <div class="tli-b"><p class="tli-sem">Semanas 2 e 3</p><h3>Site e Catálogo</h3><p>Home, filtros, produtos, comparativo e calculadora.</p><div class="tli-tags"><span class="tli-tag">30+ filtros</span><span class="tli-tag">Comparativo</span><span class="tli-tag">Calculadora</span><span class="tli-tag">Test Drive</span></div></div>
+      </div>
+      <div class="tli" onclick="sTL(2)">
+        <div class="tli-dot"><span>3</span></div>
+        <div class="tli-b"><p class="tli-sem">Semana 4</p><h3>Painel e Integrações</h3><p>Admin, SprintHub, Bling e Google Merchant ativos.</p><div class="tli-tags"><span class="tli-tag">Painel admin</span><span class="tli-tag">SprintHub</span><span class="tli-tag">Bling</span><span class="tli-tag">Google Merchant</span></div></div>
+      </div>
+      <div class="tli" onclick="sTL(3)">
+        <div class="tli-dot"><span>4</span></div>
+        <div class="tli-b"><p class="tli-sem">Semanas 5 e 6</p><h3>Testes e Entrega</h3><p>Revisão completa, treinamento e lançamento.</p><div class="tli-tags"><span class="tli-tag">Testes mobile</span><span class="tli-tag">Treinamento</span><span class="tli-tag">Lançamento</span><span class="tli-tag">30d suporte</span></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- INVESTIMENTO -->
+<div class="invsec">
+  <section class="sec">
+    <p class="tag reveal">Investimento</p>
+    <h2 class="reveal">Transparente do<br>início <i>ao fim</i></h2>
+    <p class="lead reveal">Dois pagamentos simples. Sem surpresas no meio do caminho.</p>
+    <div class="inv-cards reveal">
+      <div class="ic dk">
+        <div class="ic-glyph">50%</div>
+        <span class="ic-lbl">Entrada na assinatura</span>
+        <div class="ic-val">R$ 7.500</div>
+        <div class="ic-sub">Para começar em até 48 horas</div>
+        <ul class="ic-list">
+          <li>Projeto começa imediatamente</li>
+          <li>Design aprovado antes de codar</li>
+          <li>Acompanhamento semanal</li>
+          <li>Revisões ilimitadas no design</li>
+        </ul>
+      </div>
+      <div class="ic gr">
+        <div class="ic-glyph">50%</div>
+        <span class="ic-lbl">Na entrega do site</span>
+        <div class="ic-val">R$ 7.500</div>
+        <div class="ic-sub">Site publicado e funcionando</div>
+        <ul class="ic-list">
+          <li>Todas as integrações ativas</li>
+          <li>Treinamento do painel com a equipe</li>
+          <li>30 dias de suporte incluídos</li>
+          <li>Domínio e código em nome de vocês</li>
+        </ul>
+      </div>
+      <div class="mens">
+        <h4>Manutenção mensal</h4>
+        <p>Hospedagem, monitoramento, segurança e até 2 horas de ajustes por mês. Tudo numa mensalidade única, sem susto no boleto.</p>
+        <div class="mens-val"><strong>R$ 990</strong><span>/mês</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA -->
+<div class="ctasec">
+  <p class="tag reveal">Pronto para começar</p>
+  <h2 class="reveal">Vamos construir<br>a <i>nova Bossa?</i></h2>
+  <p class="lead reveal">Toque no botão abaixo. A gente responde em até 24 horas com o contrato e os próximos passos.</p>
+  <a class="btn-wpp reveal" href="https://wa.me/5511932597969?text=Ol%C3%A1%2C%20Filipe!%20Vi%20a%20proposta%20da%20Bossa%20El%C3%A9trica%20e%20gostaria%20de%20aceitar%20e%20come%C3%A7ar%20o%20projeto.">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Aceitar proposta
+  </a>
+  <p class="cta-note">Você vai direto para o WhatsApp. Proposta válida por 15 dias.</p>
+</div>
+
+<footer>
+  <p>Preparado por <b>Agência Setup</b> &nbsp;·&nbsp; Filipe &nbsp;·&nbsp; 2025</p>
+</footer>
+
+</div><!-- /wrapper -->
+
+<script>
+var prog=document.getElementById('prog');
+window.addEventListener('scroll',function(){
+  var s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(s/h*100)+'%';
+});
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in');});},{threshold:.09});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+function tBC(i){
+  var b=document.getElementById('bv'+i),c=document.getElementById('bc'+i),op=b.classList.contains('open');
+  document.querySelectorAll('.bc-body').forEach(function(x){x.classList.remove('open');});
+  document.querySelectorAll('.bc').forEach(function(x){x.classList.remove('open');});
+  if(!op){b.classList.add('open');c.classList.add('open');}
+}
+var fs={s:true,b:false,d:true,r:false,a:true};
+function tf(el,t){
+  el.classList.toggle('on');el.classList.toggle('off');fs[t]=!fs[t];
+  var sb=fs.s||!fs.b,bb=fs.b||!fs.s;
+  document.getElementById('fc0').className='fdc'+(sb?'':' hide');
+  document.getElementById('fc1').className='fdc'+(sb?'':' hide');
+  document.getElementById('fc2').className='fdc'+(bb?'':' hide');
+  var v=document.querySelectorAll('.fdc:not(.hide)').length;
+  document.getElementById('fdc').textContent=v+' modelo'+(v!==1?'s':'');
+}
+function tEl(i){
+  var b=document.getElementById('el'+i),el=document.querySelectorAll('.el')[i],op=b.classList.contains('open');
+  document.querySelectorAll('.el-body').forEach(function(x){x.classList.remove('open');});
+  document.querySelectorAll('.el').forEach(function(x){x.classList.remove('open');});
+  if(!op){b.classList.add('open');el.classList.add('open');}
+}
+function sTL(i){
+  document.querySelectorAll('.tli').forEach(function(x){x.classList.remove('act');});
+  document.querySelectorAll('.tli')[i].classList.add('act');
+}
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    document.querySelectorAll('.hero .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('in');},i*120);});
+  },100);
+});
+</script>
+</body>
+</html>
