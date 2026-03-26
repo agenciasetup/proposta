@@ -205,32 +205,31 @@ function HomePreview() {
 function CatalogoPreview() {
   return (
     <BrowserFrame url="bossaeletricas.com.br/modelos">
-      {/* Nav mini */}
       <MiniNav active="Modelos" />
 
       <div className="flex">
         {/* Sidebar filters */}
-        <div className="w-44 bg-white border-r border-[var(--w3)] p-3 hidden md:block">
-          <p className="text-[9px] font-bold text-[var(--k)] mb-3">Filtros</p>
+        <div className="w-44 bg-[var(--sand-light)] border-r border-[var(--sand-dark)]/30 p-3 hidden md:block">
+          <p className="text-[9px] font-bold text-[var(--ocean-deep)] mb-3">Filtros</p>
 
           <FilterGroup title="Categoria" options={["Scooter", "E-Bike", "Cargo"]} active={[0]} />
           <FilterGroup title="Preço" options={["Até R$ 8k", "R$ 8k–12k", "Acima de R$ 12k"]} active={[1]} />
           <FilterGroup title="Autonomia" options={["Até 40km", "40–80km", "80km+"]} active={[2]} />
           <FilterGroup title="Características" options={["Dobrável", "Bat. removível", "NFC", "Bluetooth"]} active={[0, 3]} />
 
-          <div className="mt-3 pt-3 border-t border-[var(--w3)]">
+          <div className="mt-3 pt-3 border-t border-[var(--sand-dark)]/30">
             <p className="text-[7px] text-[var(--ml)]">30+ filtros disponíveis</p>
-            <p className="text-[7px] text-[var(--gd)] font-semibold">Ver todos os filtros ↓</p>
+            <p className="text-[7px] text-[var(--ocean)] font-semibold">Ver todos os filtros ↓</p>
           </div>
         </div>
 
         {/* Products grid */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 p-4 bg-gradient-to-b from-white to-[var(--sand-light)]">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-[9px] text-[var(--ml)]">Mostrando <b className="text-[var(--k)]">8 modelos</b></p>
+            <p className="text-[9px] text-[var(--ml)]">Mostrando <b className="text-[var(--ocean-deep)]">8 modelos</b></p>
             <div className="flex gap-1">
-              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--g)] text-[var(--k)] font-semibold">Scooter</span>
-              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--w2)] text-[var(--ml)]">Dobrável</span>
+              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--ocean)] text-white font-semibold">Scooter</span>
+              <span className="text-[8px] px-2 py-1 rounded-md bg-[var(--sand)] text-[var(--ocean-deep)]">Dobrável</span>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
@@ -262,41 +261,42 @@ function ProdutoPreview() {
       <MiniNav active="Modelos" />
 
       <div className="md:flex">
-        {/* Image carousel */}
-        <div className="md:w-1/2 bg-[var(--gll)] p-6 flex items-center justify-center min-h-[200px] relative">
+        {/* Image carousel — sand/sky background */}
+        <div className="md:w-1/2 bg-gradient-to-br from-[var(--sky-soft)]/50 to-[var(--sand)] p-6 flex items-center justify-center min-h-[200px] relative">
           <span className="text-[64px]">🛵</span>
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
             {[0, 1, 2, 3].map((d) => (
-              <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--g)]" : "bg-[var(--w3)]"}`} />
+              <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--ocean)]" : "bg-[var(--sand-dark)]"}`} />
             ))}
           </div>
           {/* Polaroid frame */}
-          <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-md rounded-sm">
-            <div className="w-12 h-12 bg-[var(--gll)] rounded-sm flex items-center justify-center text-lg">🛵</div>
-            <p className="text-[5px] text-center text-[var(--m)] mt-0.5 font-serif italic">Prime T</p>
+          <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-[2px_3px_10px_rgba(139,94,60,.15)] rounded-sm">
+            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-[var(--sunset)]/40 rounded-sm z-10" />
+            <div className="w-12 h-12 bg-gradient-to-br from-[var(--sky-soft)] to-[var(--sand)] rounded-sm flex items-center justify-center text-lg">🛵</div>
+            <p className="text-[5px] text-center text-[var(--ocean)] mt-0.5 font-serif italic">Prime T</p>
           </div>
         </div>
 
         {/* Product info */}
-        <div className="md:w-1/2 p-5">
-          <p className="text-[8px] text-[var(--gd)] font-semibold mb-1">SCOOTER ELÉTRICA</p>
-          <h3 className="font-serif text-[24px] font-bold text-[var(--k)] leading-tight mb-2">Bossa Prime T</h3>
+        <div className="md:w-1/2 p-5 bg-[var(--sand-light)]">
+          <p className="text-[8px] text-[var(--ocean)] font-semibold mb-1">SCOOTER ELÉTRICA</p>
+          <h3 className="font-serif text-[24px] font-bold text-[var(--ocean-deep)] leading-tight mb-2">Bossa Prime T</h3>
 
           <div className="flex items-baseline gap-3 mb-4">
             <div>
-              <p className="text-[8px] text-[var(--gd)] font-semibold">PIX</p>
-              <p className="font-serif text-[22px] font-bold text-[var(--gd)]">R$ 12.490</p>
+              <p className="text-[8px] text-[var(--ocean)] font-semibold">PIX</p>
+              <p className="font-serif text-[22px] font-bold text-[var(--ocean)]">R$ 12.490</p>
             </div>
             <div>
               <p className="text-[8px] text-[var(--ml)]">OU</p>
-              <p className="text-[14px] font-bold text-[var(--k)]">12× R$ 1.249</p>
+              <p className="text-[14px] font-bold text-[var(--ocean-deep)]">12× R$ 1.249</p>
             </div>
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1 mb-3 border-b border-[var(--w3)]">
+          <div className="flex gap-1 mb-3 border-b border-[var(--sand-dark)]/30">
             {["Descrição", "Especificações", "Agendar"].map((t, i) => (
-              <button key={t} onClick={() => setTab(i)} className={`px-3 py-2 text-[9px] font-semibold cursor-pointer border-b-2 transition-colors ${tab === i ? "border-[var(--g)] text-[var(--k)]" : "border-transparent text-[var(--ml)]"}`}>{t}</button>
+              <button key={t} onClick={() => setTab(i)} className={`px-3 py-2 text-[9px] font-semibold cursor-pointer border-b-2 transition-colors ${tab === i ? "border-[var(--ocean)] text-[var(--ocean-deep)]" : "border-transparent text-[var(--ml)]"}`}>{t}</button>
             ))}
           </div>
 
@@ -318,9 +318,9 @@ function ProdutoPreview() {
                 ["Freio", "Disco"],
                 ["NFC", "Sim"],
               ].map(([k, v]) => (
-                <div key={k} className="bg-[var(--w2)] rounded-md px-2 py-1.5 border border-[var(--w3)]">
+                <div key={k} className="bg-white rounded-md px-2 py-1.5 border border-[var(--sand-dark)]/30">
                   <p className="text-[7px] text-[var(--ml)]">{k}</p>
-                  <p className="text-[10px] font-semibold text-[var(--k)]">{v}</p>
+                  <p className="text-[10px] font-semibold text-[var(--ocean-deep)]">{v}</p>
                 </div>
               ))}
             </div>
@@ -328,19 +328,19 @@ function ProdutoPreview() {
 
           {tab === 2 && (
             <div className="space-y-2">
-              <div className="bg-[var(--g)] text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Agendar Test Drive</div>
-              <div className="border border-[var(--w3)] text-[var(--k)] text-center py-2.5 rounded-lg text-[10px] font-bold">Reservar / Encomendar</div>
+              <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-center py-2.5 rounded-lg text-[10px] font-bold">Agendar Test Drive</div>
+              <div className="border border-[var(--ocean)] text-[var(--ocean)] text-center py-2.5 rounded-lg text-[10px] font-bold">Reservar / Encomendar</div>
             </div>
           )}
 
           {/* Related */}
-          <div className="mt-5 pt-4 border-t border-[var(--w3)]">
-            <p className="text-[8px] text-[var(--ml)] font-semibold mb-2">Você também pode gostar</p>
+          <div className="mt-5 pt-4 border-t border-[var(--sand-dark)]/30">
+            <p className="text-[8px] text-[var(--ocean)] font-semibold mb-2">Você também pode gostar</p>
             <div className="flex gap-2">
               {[{ name: "Bossa Neo", emoji: "🛵" }, { name: "Bossa Grid", emoji: "🚲" }].map((r) => (
-                <div key={r.name} className="flex-1 bg-[var(--w2)] rounded-lg p-2 text-center border border-[var(--w3)]">
+                <div key={r.name} className="flex-1 bg-white rounded-lg p-2 text-center border border-[var(--sand-dark)]/30">
                   <span className="text-lg">{r.emoji}</span>
-                  <p className="text-[8px] font-semibold text-[var(--k)]">{r.name}</p>
+                  <p className="text-[8px] font-semibold text-[var(--ocean-deep)]">{r.name}</p>
                 </div>
               ))}
             </div>
@@ -495,22 +495,22 @@ function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; pr
 
 function CatalogCard({ name, price, parcela, emoji, badge }: { name: string; price: string; parcela: string; emoji: string; badge: string | null }) {
   return (
-    <div className="bg-white rounded-xl border border-[var(--w3)] overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-      <div className="bg-[var(--gll)] h-20 flex items-center justify-center relative">
+    <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+      <div className="bg-gradient-to-br from-[var(--sky-soft)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative">
         <span className="text-[28px] group-hover:scale-110 transition-transform">{emoji}</span>
         {badge && (
-          <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--bl)] text-[var(--b)]" : "bg-[var(--y)] text-[var(--k)]"}`}>
+          <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--sky-soft)] text-[var(--ocean-deep)]" : "bg-[var(--y)] text-[var(--ocean-deep)]"}`}>
             {badge}
           </span>
         )}
       </div>
       <div className="p-2">
-        <p className="text-[9px] font-bold text-[var(--k)]">{name}</p>
-        <p className="text-[10px] font-bold text-[var(--gd)]">{price}</p>
+        <p className="text-[9px] font-bold text-[var(--ocean-deep)]">{name}</p>
+        <p className="text-[10px] font-bold text-[var(--ocean)]">{price}</p>
         <p className="text-[7px] text-[var(--ml)]">{parcela}</p>
         <div className="flex gap-1 mt-2">
-          <div className="flex-1 bg-[var(--g)] text-[var(--k)] text-[7px] font-bold text-center py-1 rounded-md">Test Drive</div>
-          <div className="flex-1 border border-[var(--w3)] text-[var(--m)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
+          <div className="flex-1 bg-[var(--y)] text-[var(--ocean-deep)] text-[7px] font-bold text-center py-1 rounded-md">Test Drive</div>
+          <div className="flex-1 border border-[var(--ocean)]/30 text-[var(--ocean)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
         </div>
       </div>
     </div>
