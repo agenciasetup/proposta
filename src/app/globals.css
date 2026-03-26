@@ -24,6 +24,20 @@
   --m: #6B6A56;
   --ml: #9A9880;
   --shadow: 0 1px 4px rgba(20,20,16,.07), 0 4px 16px rgba(20,20,16,.05);
+
+  /* Beach palette */
+  --sky: #4DA8DA;
+  --sky-light: #87CEEB;
+  --sky-soft: #B8DFF0;
+  --sand: #F5E6C8;
+  --sand-dark: #E8D5A3;
+  --sand-light: #FFF8ED;
+  --ocean: #1B9AAA;
+  --ocean-deep: #0E6B7A;
+  --sunset: #F7B267;
+  --sunset-warm: #F79D65;
+  --coral: #FF7F6B;
+  --palm: #4A7C2E;
 }
 
 @theme inline {

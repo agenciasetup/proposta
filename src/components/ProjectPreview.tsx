@@ -13,30 +13,30 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8" onClick={onClose}>
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      {/* Backdrop — ocean tint */}
+      <div className="absolute inset-0 bg-[var(--ocean)]/40 backdrop-blur-sm" />
 
       {/* Modal */}
       <div
         className="relative w-full max-w-4xl max-h-[90vh] bg-[var(--w)] rounded-3xl overflow-hidden shadow-2xl animate-[slideUp_.4s_ease]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--w3)] bg-white">
+        {/* Header — warm sand */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--sand-dark)]/40 bg-[var(--sand-light)]">
           <div>
-            <p className="text-[9px] tracking-[2px] uppercase text-[var(--gd)] font-semibold">Prévia do projeto</p>
-            <h3 className="font-serif text-lg font-bold text-[var(--k)]">Como o site vai ficar</h3>
+            <p className="text-[9px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold">Prévia do projeto</p>
+            <h3 className="font-serif text-lg font-bold text-[var(--ocean-deep)]">Como o site vai ficar</h3>
           </div>
-          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--w2)] flex items-center justify-center text-[var(--m)] hover:bg-[var(--w3)] transition-colors cursor-pointer text-lg">×</button>
+          <button onClick={onClose} className="w-9 h-9 rounded-full bg-[var(--sand)] flex items-center justify-center text-[var(--ocean-deep)] hover:bg-[var(--sand-dark)] transition-colors cursor-pointer text-lg">×</button>
         </div>
 
         {/* Tab bar */}
-        <div className="flex gap-1 px-6 pt-4 pb-2 bg-white border-b border-[var(--w3)]">
+        <div className="flex gap-1 px-6 pt-4 pb-2 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/40">
           {tabs.map((t, i) => (
             <button
               key={t}
               onClick={() => setActiveTab(i)}
-              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--k)] text-white" : "text-[var(--ml)] hover:bg-[var(--w2)]"}`}
+              className={`px-4 py-2 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${activeTab === i ? "bg-[var(--ocean)] text-white" : "text-[var(--ml)] hover:bg-[var(--sand)]"}`}
             >
               {t}
             </button>
@@ -435,26 +435,31 @@ function BrowserFrame({ url, children }: { url: string; children: React.ReactNod
 
 function MiniNav({ active }: { active: string }) {
   return (
-    <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--k)] border-b border-[rgba(246,244,238,.06)]">
-      <span className="font-serif text-[13px] font-bold text-[var(--g)] italic">Bossa</span>
+    <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
+      <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
       <div className="flex gap-4">
         {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--g)] font-semibold" : "text-[rgba(246,244,238,.3)]"}`}>{l}</span>
+          <span key={l} className={`text-[8px] ${l === active ? "text-[var(--ocean)] font-semibold" : "text-[var(--sand-dark)]"}`}>{l}</span>
         ))}
       </div>
     </div>
   );
 }
 
-function PolaroidCard({ name, price, emoji, cat }: { name: string; price: string; emoji: string; cat: string }) {
+const polaroidRotations = ["rotate-[-3deg]", "rotate-[2deg]", "rotate-[-1deg]", "rotate-[3deg]"];
+
+function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; price: string; emoji: string; cat: string; index?: number }) {
+  const rot = polaroidRotations[index % polaroidRotations.length];
   return (
-    <div className="bg-white rounded-lg p-2 shadow-md border border-[var(--w3)] transform hover:rotate-[-2deg] hover:scale-105 transition-all duration-200 cursor-pointer">
-      <div className="bg-[var(--gll)] rounded-md h-16 flex items-center justify-center mb-1.5">
-        <span className="text-[24px]">{emoji}</span>
+    <div className={`bg-white rounded-sm p-1.5 pb-3 shadow-[2px_3px_12px_rgba(139,94,60,.15)] ${rot} hover:rotate-0 hover:scale-110 transition-all duration-200 cursor-pointer relative`}>
+      {/* Tape */}
+      <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--sunset)]/40 rounded-sm z-10" />
+      <div className="bg-gradient-to-br from-[var(--sky-soft)] to-[var(--sand)] rounded-sm h-16 flex items-center justify-center mb-1.5">
+        <span className="text-[24px] drop-shadow-sm">{emoji}</span>
       </div>
-      <p className="text-[8px] font-serif font-bold text-[var(--k)] italic">{name}</p>
-      <p className="text-[7px] text-[var(--ml)]">{cat}</p>
-      <p className="text-[9px] text-[var(--gd)] font-bold">{price}</p>
+      <p className="text-[8px] font-serif font-bold text-[var(--ocean-deep)] italic text-center">{name}</p>
+      <p className="text-[7px] text-[var(--sand-dark)] text-center">{cat}</p>
+      <p className="text-[9px] text-[var(--ocean)] font-bold text-center">{price}</p>
     </div>
   );
 }
