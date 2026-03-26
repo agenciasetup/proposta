@@ -130,30 +130,30 @@ function HomePreview() {
 
       {/* ── HERO concept ── */}
       <SectionLabel label="Hero — Banner principal" desc="Primeira coisa que o visitante vê. Praia, marca e CTA." />
-      <div className="rounded-xl overflow-hidden border border-[var(--k)]/20 relative">
-        <div className="h-48 relative bg-[var(--k)] overflow-hidden">
+      <div className="rounded-xl overflow-hidden border border-[var(--k)]/10 relative">
+        <div className="h-48 relative bg-[var(--off)] overflow-hidden">
           {/* Bossa green glow top-right */}
-          <div className="absolute -top-6 -right-6 w-40 h-40 rounded-full opacity-30" style={{ background: "radial-gradient(circle, var(--bossa) 0%, transparent 70%)" }} />
+          <div className="absolute -top-6 -right-6 w-44 h-44 rounded-full opacity-20" style={{ background: "radial-gradient(circle, var(--bossa) 0%, transparent 70%)" }} />
           {/* Sand gradient at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 h-16" style={{ background: "linear-gradient(to top, var(--sand-dark) 0%, var(--sand)/50 40%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-12" style={{ background: "linear-gradient(to top, var(--sand) 0%, transparent 100%)" }} />
           {/* Cristo silhouette */}
-          <svg className="absolute bottom-8 left-[12%] opacity-[.12]" width="50" height="75" viewBox="0 0 50 75">
-            <circle cx="25" cy="6" r="3.5" fill="var(--bossa)" />
-            <line x1="25" y1="10" x2="25" y2="40" stroke="var(--bossa)" strokeWidth="3" strokeLinecap="round" />
-            <line x1="10" y1="20" x2="40" y2="20" stroke="var(--bossa)" strokeWidth="2.5" strokeLinecap="round" />
-            <path d="M16,75 Q25,38 34,75Z" fill="var(--bossa)" />
+          <svg className="absolute bottom-8 left-[12%] opacity-[.07]" width="50" height="75" viewBox="0 0 50 75">
+            <circle cx="25" cy="6" r="3.5" fill="var(--k)" />
+            <line x1="25" y1="10" x2="25" y2="40" stroke="var(--k)" strokeWidth="3" strokeLinecap="round" />
+            <line x1="10" y1="20" x2="40" y2="20" stroke="var(--k)" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M16,75 Q25,38 34,75Z" fill="var(--k)" />
           </svg>
           {/* Palm silhouette */}
-          <svg className="absolute bottom-0 right-4 opacity-[.1]" width="40" height="60" viewBox="0 0 40 60">
-            <path d="M18,60 Q16,35 20,15" stroke="var(--bossa)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-            <path d="M20,15 Q7,8 2,14" stroke="var(--bossa)" strokeWidth="1.5" fill="none" />
-            <path d="M20,15 Q12,2 5,0" stroke="var(--bossa)" strokeWidth="1.5" fill="none" />
-            <path d="M20,15 Q30,3 38,6" stroke="var(--bossa)" strokeWidth="1.5" fill="none" />
+          <svg className="absolute bottom-0 right-4 opacity-[.06]" width="40" height="60" viewBox="0 0 40 60">
+            <path d="M18,60 Q16,35 20,15" stroke="var(--k)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+            <path d="M20,15 Q7,8 2,14" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M20,15 Q12,2 5,0" stroke="var(--k)" strokeWidth="1.5" fill="none" />
+            <path d="M20,15 Q30,3 38,6" stroke="var(--k)" strokeWidth="1.5" fill="none" />
           </svg>
           {/* Copacabana wave pattern */}
-          <svg className="absolute bottom-2 left-0 right-0 h-4 opacity-[.08]" viewBox="0 0 200 10" preserveAspectRatio="none">
+          <svg className="absolute bottom-2 left-0 right-0 h-4 opacity-[.05]" viewBox="0 0 200 10" preserveAspectRatio="none">
             <pattern id="copa-hero" width="20" height="10" patternUnits="userSpaceOnUse">
-              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--bossa)" strokeWidth="1" />
+              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--k)" strokeWidth="1" />
             </pattern>
             <rect width="200" height="10" fill="url(#copa-hero)" />
           </svg>
@@ -161,20 +161,20 @@ function HomePreview() {
           <div className="relative z-10 px-5 pt-8">
             <div className="flex items-center gap-1.5 mb-3">
               <div className="w-1.5 h-1.5 rounded-full bg-[var(--bossa)]" style={{ animation: "blink 1.5s infinite" }} />
-              <span className="text-[7px] tracking-[2px] uppercase text-[var(--bossa)]/60 font-semibold">Menos trânsito, mais pôr do sol</span>
+              <span className="text-[7px] tracking-[2px] uppercase text-[var(--k)]/40 font-semibold">Menos trânsito, mais pôr do sol</span>
             </div>
             <h2 className="font-serif text-[24px] md:text-[32px] font-bold leading-[.9] tracking-[-1px] mb-2">
-              <span className="text-[var(--off)] block">Liberdade</span>
+              <span className="text-[var(--k)] block">Liberdade</span>
               <span className="text-[var(--bossa)] italic block">Elétrica.</span>
             </h2>
-            <p className="text-[9px] text-[var(--off)]/50 max-w-[180px] leading-relaxed mb-3">Criada no Rio, para os cariocas.</p>
+            <p className="text-[9px] text-[var(--k)]/40 max-w-[180px] leading-relaxed mb-3">Criada no Rio, para os cariocas.</p>
             <div className="flex gap-2">
               <div className="bg-[var(--bossa)] text-[var(--k)] text-[8px] font-bold px-2.5 py-1.5 rounded-lg">Encontre sua Bossa →</div>
-              <div className="border border-[var(--off)]/15 text-[var(--off)]/50 text-[8px] px-2.5 py-1.5 rounded-lg">Test Drive</div>
+              <div className="border border-[var(--k)]/15 text-[var(--k)]/50 text-[8px] px-2.5 py-1.5 rounded-lg">Test Drive</div>
             </div>
           </div>
         </div>
-        <ConceptTag>Fundo preto da marca. Verde Bossa como destaque. Silhuetas de Copacabana, Cristo, palmeiras. Areia na base. Também pode ser um slide com fotos REAIS da Bossa.</ConceptTag>
+        <ConceptTag>Fundo off-white da marca. Verde Bossa e preto como destaque. Silhuetas de Copacabana, Cristo, palmeiras. Também pode ser um slide com fotos REAIS da Bossa.</ConceptTag>
       </div>
 
       {/* ── PRODUTOS em Polaroids ── */}
