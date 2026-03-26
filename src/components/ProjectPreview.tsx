@@ -67,134 +67,258 @@ export default function ProjectPreview({ onClose }: { onClose: () => void }) {
    ════════════════════════════════════════════════ */
 function HomePreview() {
   return (
-    <div className="space-y-4">
-      <BrowserFrame url="bossaeletricas.com.br">
-        {/* Nav — warm sand */}
-        <div className="flex items-center justify-between px-4 py-2.5 bg-[var(--sand-light)] border-b border-[var(--sand-dark)]/30">
-          <span className="font-serif text-[13px] font-bold text-[var(--ocean)] italic">Bossa</span>
-          <div className="flex gap-4">
-            {["Modelos", "Test Drive", "Comparar", "Blog", "Contato"].map((l) => (
-              <span key={l} className="text-[8px] text-[var(--sand-dark)]">{l}</span>
+    <div className="space-y-5">
+
+      {/* ── Intro note ── */}
+      <div className="bg-[var(--bossa)]/15 border border-[var(--bossa)]/40 rounded-xl p-4 text-center">
+        <p className="text-[11px] text-[var(--ocean-deep)] leading-relaxed">
+          Isso aqui é só um exemplo dos <b>elementos que teremos na página</b>, pensando nas cores da marca e na comunicação carioca. Não é o layout final — é a <b>direção visual</b>.
+        </p>
+      </div>
+
+      {/* ── Paleta de cores + praia HTML ── */}
+      <SectionLabel label="Paleta do site" desc="As cores que vão guiar todo o design" />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
+        {/* Mini beach scene with the 3 colors */}
+        <div className="h-28 relative" style={{ background: "linear-gradient(180deg, var(--sky) 0%, var(--sky-light) 40%, var(--ocean) 55%, var(--ocean) 60%, var(--sand) 65%, var(--sand-dark) 100%)" }}>
+          <div className="absolute top-3 right-6 w-10 h-10 rounded-full bg-[var(--bossa)] shadow-[0_0_30px_rgba(229,229,67,.5)]" />
+          {/* Cristo */}
+          <svg className="absolute bottom-8 left-[20%] opacity-20" width="40" height="55" viewBox="0 0 40 55">
+            <circle cx="20" cy="5" r="3" fill="white" />
+            <line x1="20" y1="8" x2="20" y2="32" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="16" x2="32" y2="16" stroke="white" strokeWidth="2" strokeLinecap="round" />
+            <path d="M12,55 Q20,30 28,55Z" fill="white" />
+          </svg>
+          {/* Palm */}
+          <svg className="absolute bottom-0 right-4 opacity-25" width="35" height="50" viewBox="0 0 35 50">
+            <path d="M15,50 Q14,30 17,12" stroke="var(--palm)" strokeWidth="2" fill="none" />
+            <path d="M17,12 Q5,6 1,10" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+            <path d="M17,12 Q10,2 4,0" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+            <path d="M17,12 Q27,4 33,8" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
+          </svg>
+          {/* Waves */}
+          <svg className="absolute bottom-[38%] left-0 right-0 h-3 opacity-30" viewBox="0 0 400 12" preserveAspectRatio="none">
+            <path d="M0,6 Q20,0 40,6 Q60,12 80,6 Q100,0 120,6 Q140,12 160,6 Q180,0 200,6 Q220,12 240,6 Q260,0 280,6 Q300,12 320,6 Q340,0 360,6 Q380,12 400,6" fill="none" stroke="white" strokeWidth="1.5" />
+          </svg>
+          {/* Copacabana sidewalk */}
+          <svg className="absolute bottom-0 left-0 right-0 h-4 opacity-15" viewBox="0 0 200 10" preserveAspectRatio="none">
+            <pattern id="copa-pal" width="20" height="10" patternUnits="userSpaceOnUse">
+              <path d="M0,5 Q5,0 10,5 Q15,10 20,5" fill="none" stroke="var(--ocean-deep)" strokeWidth="1" />
+            </pattern>
+            <rect width="200" height="10" fill="url(#copa-pal)" />
+          </svg>
+        </div>
+        {/* Color swatches */}
+        <div className="grid grid-cols-3 bg-white">
+          <div className="p-3 text-center border-r border-[var(--sand-dark)]/20">
+            <div className="w-8 h-8 rounded-full bg-[var(--bossa)] mx-auto mb-1.5 shadow-sm" />
+            <p className="text-[8px] font-bold text-[var(--ocean-deep)]">Verde Bossa</p>
+            <p className="text-[7px] text-[var(--ml)]">#E5E543</p>
+          </div>
+          <div className="p-3 text-center border-r border-[var(--sand-dark)]/20">
+            <div className="w-8 h-8 rounded-full bg-[var(--sand)] mx-auto mb-1.5 shadow-sm border border-[var(--sand-dark)]/30" />
+            <p className="text-[8px] font-bold text-[var(--ocean-deep)]">Areia</p>
+            <p className="text-[7px] text-[var(--ml)]">#F5E6C8</p>
+          </div>
+          <div className="p-3 text-center">
+            <div className="w-8 h-8 rounded-full bg-[var(--sky)] mx-auto mb-1.5 shadow-sm" />
+            <p className="text-[8px] font-bold text-[var(--ocean-deep)]">Céu / Oceano</p>
+            <p className="text-[7px] text-[var(--ml)]">#4DA8DA</p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── HERO concept ── */}
+      <SectionLabel label="Hero — Banner principal" desc="Primeira coisa que o visitante vê. Praia, marca e CTA." />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30 relative">
+        <div className="h-44 relative" style={{ background: "linear-gradient(170deg, var(--sky-light) 0%, var(--sky) 35%, var(--ocean) 65%, var(--sand) 85%, var(--sand-dark) 100%)" }}>
+          <div className="absolute top-4 right-8 w-10 h-10 rounded-full bg-[var(--bossa)] shadow-[0_0_30px_rgba(229,229,67,.5)]" />
+          {/* Cristo */}
+          <svg className="absolute bottom-10 left-[12%] opacity-15" width="50" height="75" viewBox="0 0 50 75">
+            <circle cx="25" cy="6" r="3.5" fill="white" />
+            <line x1="25" y1="10" x2="25" y2="40" stroke="white" strokeWidth="3" strokeLinecap="round" />
+            <line x1="10" y1="20" x2="40" y2="20" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M16,75 Q25,38 34,75Z" fill="white" />
+          </svg>
+          {/* Waves */}
+          <svg className="absolute bottom-4 left-0 right-0 h-4 opacity-25" viewBox="0 0 400 16" preserveAspectRatio="none">
+            <path d="M0,8 Q25,1 50,8 Q75,15 100,8 Q125,1 150,8 Q175,15 200,8 Q225,1 250,8 Q275,15 300,8 Q325,1 350,8 Q375,15 400,8 L400,16 L0,16Z" fill="white" />
+          </svg>
+          {/* Content */}
+          <div className="relative z-10 px-5 pt-8">
+            <h2 className="font-serif text-[24px] md:text-[32px] font-bold leading-[.9] tracking-[-1px] mb-2 drop-shadow-[0_2px_6px_rgba(0,0,0,.12)]">
+              <span className="text-white block">Liberdade</span>
+              <span className="text-[var(--bossa)] italic block">Elétrica.</span>
+            </h2>
+            <p className="text-[9px] text-white/70 max-w-[180px] leading-relaxed mb-3">Criada no Rio, para os cariocas.</p>
+            <div className="flex gap-2">
+              <div className="bg-[var(--bossa)] text-[var(--ocean-deep)] text-[8px] font-bold px-2.5 py-1.5 rounded-lg shadow-md">Encontre sua Bossa →</div>
+              <div className="border border-white/40 text-white/80 text-[8px] px-2.5 py-1.5 rounded-lg bg-white/10">Test Drive</div>
+            </div>
+          </div>
+        </div>
+        <ConceptTag>Elementos de Copacabana, Cristo, palmeiras, ondas do mar. Cores quentes de praia.</ConceptTag>
+      </div>
+
+      {/* ── PRODUTOS em Polaroids ── */}
+      <SectionLabel label="Produtos — Polaroids com fita" desc="Cada modelo vai aparecer como uma foto polaroid, com rotação e fita adesiva." />
+      <div className="bg-gradient-to-b from-[var(--sand)] to-[var(--sand-light)] rounded-xl p-5 border border-[var(--sand-dark)]/30">
+        <div className="grid grid-cols-4 gap-3 pt-1">
+          {[
+            { name: "Bossa City", price: "12× R$ 770", emoji: "🚲", cat: "500W" },
+            { name: "Bossa Vip", price: "12× R$ 880", emoji: "🚲", cat: "1000W" },
+            { name: "Bossa Pro Duo", price: "12× R$ 1.075", emoji: "🚲", cat: "1000W" },
+            { name: "Bossa Pro", price: "12× R$ 905", emoji: "🚲", cat: "1000W" },
+          ].map((p, i) => (
+            <PolaroidCard key={p.name} {...p} index={i} />
+          ))}
+        </div>
+        <ConceptTag>Produtos reais da Bossa. Fotos de verdade no lugar dos emojis. Hover com rotação e zoom.</ConceptTag>
+      </div>
+
+      {/* ── CALCULADORA DE ECONOMIA ── */}
+      <SectionLabel label="Calculadora de Economia" desc="O visitante descobre quanto economiza saindo da gasolina." />
+      <div className="rounded-xl overflow-hidden border border-[var(--bossa)]/30 bg-gradient-to-br from-[var(--bossa)]/10 via-white to-[var(--sky-soft)]/20">
+        <div className="p-5">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-8 h-8 rounded-full bg-[var(--bossa)]/20 flex items-center justify-center text-sm">⚡</div>
+            <div>
+              <p className="text-[11px] font-bold text-[var(--ocean-deep)]">Quanto você economiza?</p>
+              <p className="text-[8px] text-[var(--ml)]">Compare gasolina vs elétrica</p>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-2.5 mb-3">
+            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--coral)]/20">
+              <p className="text-[7px] text-[var(--ml)] mb-1">Gasolina/mês</p>
+              <p className="text-[16px] font-bold text-[var(--coral)]">R$ 480</p>
+              <div className="w-full h-1 rounded-full bg-[var(--coral)]/20 mt-1.5"><div className="w-[85%] h-full rounded-full bg-[var(--coral)]" /></div>
+            </div>
+            <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-[var(--ocean)]/20">
+              <p className="text-[7px] text-[var(--ml)] mb-1">Elétrica/mês</p>
+              <p className="text-[16px] font-bold text-[var(--ocean)]">R$ 35</p>
+              <div className="w-full h-1 rounded-full bg-[var(--ocean)]/20 mt-1.5"><div className="w-[7%] h-full rounded-full bg-[var(--ocean)]" /></div>
+            </div>
+            <div className="bg-[var(--bossa)]/10 rounded-xl p-3 text-center shadow-sm border border-[var(--bossa)]/30">
+              <p className="text-[7px] text-[var(--ocean)] mb-1">Economia/ano</p>
+              <p className="text-[16px] font-bold text-[var(--ocean-deep)]">R$ 5.340</p>
+              <p className="text-[7px] text-[var(--bossa)] font-bold mt-1">93% menos!</p>
+            </div>
+          </div>
+        </div>
+        <ConceptTag>Interativo: o visitante coloca o km/dia e vê a economia real. Visual com barras comparativas.</ConceptTag>
+      </div>
+
+      {/* ── SOBRE A MARCA ── */}
+      <SectionLabel label="Sobre a Bossa" desc="Seção contando a história da marca, com fotos das motos na praia." />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30 bg-[var(--sand-light)]">
+        <div className="md:flex">
+          <div className="md:w-1/2 bg-gradient-to-br from-[var(--sky-soft)]/40 to-[var(--sand)] p-5 flex items-center justify-center min-h-[120px] relative">
+            {/* Polaroid-style photo */}
+            <div className="bg-white p-2 pb-5 shadow-[3px_4px_14px_rgba(139,94,60,.15)] rotate-[-2deg]">
+              <div className="w-28 h-20 bg-gradient-to-br from-[var(--sky-light)] to-[var(--sand)] rounded-sm flex items-center justify-center relative overflow-hidden">
+                <span className="text-[32px]">🛵</span>
+                <svg className="absolute bottom-0 left-0 right-0 h-3 opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0,5 Q12,0 25,5 Q38,10 50,5 Q62,0 75,5 Q88,10 100,5 L100,10 L0,10Z" fill="var(--ocean)" />
+                </svg>
+              </div>
+              <p className="text-[7px] text-center text-[var(--ocean)] mt-1 font-serif italic">Bossa na orla</p>
+            </div>
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-3 bg-[var(--bossa)]/40 rounded-sm" />
+          </div>
+          <div className="md:w-1/2 p-5">
+            <p className="text-[8px] text-[var(--bossa)] font-bold tracking-[2px] uppercase mb-1">Desde 2021</p>
+            <p className="font-serif text-[16px] font-bold text-[var(--ocean-deep)] leading-tight mb-2">O que torna a <i className="text-[var(--ocean)]">Bossa</i> única?</p>
+            <p className="text-[9px] text-[var(--m)] leading-relaxed">
+              Nascida em Copacabana com DNA carioca. A primeira marca de bikes elétricas que entende o Rio de verdade.
+            </p>
+            <div className="flex gap-2 mt-3">
+              <div className="bg-[var(--bossa)]/15 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--ocean-deep)]">Rio de Janeiro</div>
+              <div className="bg-[var(--sky-soft)]/40 rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--ocean)]">Copacabana</div>
+              <div className="bg-[var(--sand)] rounded-lg px-2 py-1 text-[7px] font-bold text-[var(--ocean-deep)]">Desde 2021</div>
+            </div>
+          </div>
+        </div>
+        <ConceptTag>Fotos reais da equipe e das motos na praia. Storytelling carioca. Identidade visual do Rio.</ConceptTag>
+      </div>
+
+      {/* ── DEPOIMENTOS ── */}
+      <SectionLabel label="Depoimentos" desc="Feedback real de quem já comprou. Gera confiança." />
+      <div className="grid grid-cols-2 gap-3">
+        {[
+          { name: "Marina R.", local: "Copacabana", texto: "Melhor compra que fiz! Uso todo dia pra ir trabalhar na Zona Sul.", stars: 5 },
+          { name: "Carlos F.", local: "Ipanema", texto: "Economizei mais de R$ 400/mês de gasolina. Não volto mais.", stars: 5 },
+        ].map((d) => (
+          <div key={d.name} className="bg-white rounded-xl p-3.5 border border-[var(--sand-dark)]/25 shadow-sm">
+            <div className="flex gap-1 mb-2">
+              {Array.from({ length: d.stars }).map((_, i) => (
+                <span key={i} className="text-[10px] text-[var(--bossa)]">★</span>
+              ))}
+            </div>
+            <p className="text-[9px] text-[var(--m)] leading-relaxed mb-2 italic">&ldquo;{d.texto}&rdquo;</p>
+            <div className="flex items-center gap-2">
+              <div className="w-5 h-5 rounded-full bg-[var(--sky-soft)] flex items-center justify-center text-[7px] font-bold text-[var(--ocean)]">{d.name[0]}</div>
+              <div>
+                <p className="text-[8px] font-bold text-[var(--ocean-deep)]">{d.name}</p>
+                <p className="text-[7px] text-[var(--ml)]">{d.local}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+        <ConceptTag className="col-span-2">Depoimentos reais com foto, nome e bairro. Carrossel com animação suave.</ConceptTag>
+      </div>
+
+      {/* ── AUTORIDADE — números e notícias ── */}
+      <SectionLabel label="Autoridade" desc="Números da marca, notícias, parceiros. Gera credibilidade." />
+      <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
+        {/* Numbers */}
+        <div className="grid grid-cols-4 gap-0 bg-gradient-to-r from-[var(--ocean-deep)] to-[var(--ocean)]">
+          {[
+            { num: "2.500+", label: "Bikes vendidas" },
+            { num: "4.8", label: "Nota Google" },
+            { num: "6", label: "Modelos" },
+            { num: "2021", label: "Fundação" },
+          ].map((n) => (
+            <div key={n.label} className="p-3 text-center border-r border-white/10 last:border-0">
+              <p className="text-[14px] font-bold text-[var(--bossa)]">{n.num}</p>
+              <p className="text-[7px] text-white/60">{n.label}</p>
+            </div>
+          ))}
+        </div>
+        {/* News / press */}
+        <div className="p-4 bg-white">
+          <p className="text-[8px] text-[var(--ml)] font-semibold mb-2">Na mídia</p>
+          <div className="flex gap-2">
+            {["Globo", "Veja Rio", "TechTudo"].map((m) => (
+              <div key={m} className="flex-1 bg-[var(--sand-light)] rounded-lg p-2 text-center border border-[var(--sand-dark)]/20">
+                <p className="text-[9px] font-bold text-[var(--ocean-deep)]">{m}</p>
+                <p className="text-[7px] text-[var(--ml)]">Matéria publicada</p>
+              </div>
             ))}
           </div>
-          <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[7px] font-bold px-2.5 py-1 rounded-md">Agendar Test Drive</div>
         </div>
+        <ConceptTag>Números reais da Bossa + logos de mídia/parceiros. Seção para gerar autoridade e confiança.</ConceptTag>
+      </div>
 
-        {/* Hero — beach scene */}
-        <div className="relative overflow-hidden">
-          <div className="h-56 md:h-72 relative" style={{ background: "linear-gradient(170deg, var(--sky-light) 0%, var(--sky) 35%, var(--ocean) 65%, var(--sand) 85%, var(--sand-dark) 100%)" }}>
-
-            {/* Sun with glow */}
-            <div className="absolute top-5 right-10 w-12 h-12 rounded-full bg-[var(--y)] shadow-[0_0_40px_rgba(247,178,103,.6),0_0_80px_rgba(240,224,48,.3)]" />
-
-            {/* Cristo Redentor silhouette */}
-            <svg className="absolute bottom-12 left-[15%] opacity-[.15]" width="60" height="90" viewBox="0 0 60 90">
-              <circle cx="30" cy="8" r="4" fill="var(--ocean-deep)" />
-              <line x1="30" y1="12" x2="30" y2="50" stroke="var(--ocean-deep)" strokeWidth="3.5" strokeLinecap="round" />
-              <line x1="12" y1="25" x2="48" y2="25" stroke="var(--ocean-deep)" strokeWidth="3" strokeLinecap="round" />
-              <path d="M20,90 Q30,45 40,90Z" fill="var(--ocean-deep)" />
-            </svg>
-
-            {/* Palm tree left */}
-            <svg className="absolute bottom-0 left-1 opacity-20" width="50" height="80" viewBox="0 0 50 80">
-              <path d="M22,80 Q20,50 25,25" stroke="var(--palm)" strokeWidth="3" fill="none" strokeLinecap="round" />
-              <path d="M25,25 Q10,15 2,22" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q15,10 5,8" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q35,10 45,12" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q38,18 48,25" stroke="var(--palm)" strokeWidth="2" fill="none" />
-              <path d="M25,25 Q20,8 18,2" stroke="var(--palm)" strokeWidth="2" fill="none" />
-            </svg>
-
-            {/* Palm tree right */}
-            <svg className="absolute bottom-0 right-2 opacity-15" width="45" height="70" viewBox="0 0 45 70">
-              <path d="M25,70 Q27,42 22,18" stroke="var(--palm)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-              <path d="M22,18 Q8,10 2,16" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-              <path d="M22,18 Q12,5 5,2" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-              <path d="M22,18 Q32,5 40,8" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-              <path d="M22,18 Q35,12 42,18" stroke="var(--palm)" strokeWidth="1.5" fill="none" />
-            </svg>
-
-            {/* Ocean waves */}
-            <svg className="absolute bottom-6 left-0 right-0 h-5 opacity-30" viewBox="0 0 400 20" preserveAspectRatio="none">
-              <path d="M0,10 Q25,2 50,10 Q75,18 100,10 Q125,2 150,10 Q175,18 200,10 Q225,2 250,10 Q275,18 300,10 Q325,2 350,10 Q375,18 400,10 L400,20 L0,20Z" fill="white" />
-            </svg>
-            <svg className="absolute bottom-3 left-0 right-0 h-5 opacity-20" viewBox="0 0 400 20" preserveAspectRatio="none">
-              <path d="M0,12 Q30,4 60,12 Q90,20 120,12 Q150,4 180,12 Q210,20 240,12 Q270,4 300,12 Q330,20 360,12 Q390,4 400,12 L400,20 L0,20Z" fill="white" />
-            </svg>
-
-            {/* Calçadão de Copacabana pattern — sand area */}
-            <svg className="absolute bottom-0 left-0 right-0 h-6 opacity-20" viewBox="0 0 200 12" preserveAspectRatio="none">
-              <pattern id="copa" width="24" height="12" patternUnits="userSpaceOnUse">
-                <path d="M0,6 Q6,0 12,6 Q18,12 24,6" fill="none" stroke="var(--ocean-deep)" strokeWidth="1.2" />
-              </pattern>
-              <rect width="200" height="12" fill="url(#copa)" />
-            </svg>
-
-            {/* Content */}
-            <div className="relative z-10 px-6 pt-10 md:pt-14 md:px-10">
-              <div className="flex items-center gap-1.5 mb-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-[var(--y)]" style={{ animation: "blink 1.5s infinite" }} />
-                <span className="text-[7px] tracking-[2px] uppercase text-white/80 font-semibold drop-shadow-sm">Menos trânsito, mais pôr do sol</span>
-              </div>
-              <h2 className="font-serif text-[28px] md:text-[40px] font-bold leading-[.9] tracking-[-1px] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,.15)]">
-                <span className="text-white block">Liberdade</span>
-                <span className="text-[var(--y)] italic block">Elétrica.</span>
-              </h2>
-              <p className="text-[10px] text-white/70 max-w-[200px] leading-relaxed mb-4 drop-shadow-sm">
-                Criada no Rio, para os cariocas. Encontre sua Bossa perfeita.
-              </p>
-              <div className="flex gap-2">
-                <div className="bg-[var(--y)] text-[var(--ocean-deep)] text-[9px] font-bold px-3 py-2 rounded-lg shadow-md">Encontre sua Bossa →</div>
-                <div className="border border-white/40 text-white/80 text-[9px] px-3 py-2 rounded-lg backdrop-blur-sm bg-white/10">Agendar Test Drive</div>
-              </div>
+      {/* ── Blog preview ── */}
+      <SectionLabel label="Blog Bossa" desc="Conteúdo para SEO e engajamento. Lifestyle carioca + mobilidade." />
+      <div className="grid grid-cols-3 gap-2">
+        {[
+          { title: "5 trilhas elétricas no Rio", tag: "Lifestyle" },
+          { title: "Guia: como escolher sua bike", tag: "Guia" },
+          { title: "Manutenção: cuidados básicos", tag: "Dica" },
+        ].map((post) => (
+          <div key={post.title} className="bg-white rounded-xl overflow-hidden border border-[var(--sand-dark)]/25 shadow-sm">
+            <div className="h-14 bg-gradient-to-br from-[var(--sky-soft)]/50 to-[var(--sand)]/60 flex items-center justify-center">
+              <span className="text-[18px]">📝</span>
+            </div>
+            <div className="p-2">
+              <span className="text-[6px] font-bold px-1.5 py-0.5 rounded bg-[var(--bossa)]/20 text-[var(--ocean-deep)]">{post.tag}</span>
+              <p className="text-[8px] font-bold text-[var(--ocean-deep)] mt-1 leading-snug">{post.title}</p>
             </div>
           </div>
-        </div>
+        ))}
+      </div>
 
-        {/* Nossos Modelos — polaroids on sand */}
-        <div className="px-4 py-5 bg-gradient-to-b from-[var(--sand)] to-[var(--sand-light)]">
-          <p className="text-[8px] tracking-[2px] uppercase text-[var(--ocean)] font-semibold mb-4">Nossos modelos</p>
-          <div className="grid grid-cols-4 gap-3 pt-2">
-            {[
-              { name: "Prime T", price: "R$ 12.990", emoji: "🛵", cat: "Scooter" },
-              { name: "Bossa Neo", price: "R$ 9.990", emoji: "🛵", cat: "Scooter" },
-              { name: "Bossa Grid", price: "R$ 7.990", emoji: "🚲", cat: "E-Bike" },
-              { name: "Bossa Cargo", price: "R$ 14.990", emoji: "🛵", cat: "Cargo" },
-            ].map((p, i) => (
-              <PolaroidCard key={p.name} {...p} index={i} />
-            ))}
-          </div>
-        </div>
-
-        {/* Quiz CTA — sunset warm */}
-        <div className="mx-4 mb-4 p-4 bg-gradient-to-r from-[var(--sunset)] to-[var(--sunset-warm)] rounded-xl flex items-center gap-3 shadow-md">
-          <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-lg">🏖️</div>
-          <div className="flex-1">
-            <p className="text-[10px] font-bold text-[var(--ocean-deep)]">Encontre sua Bossa Perfeita</p>
-            <p className="text-[8px] text-[var(--ocean-deep)]/60">Quiz interativo com filtros guiados</p>
-          </div>
-          <div className="text-[8px] text-[var(--ocean-deep)] font-bold">Começar →</div>
-        </div>
-
-        {/* Calculator — sky light */}
-        <div className="mx-4 mb-4 p-4 bg-gradient-to-br from-[var(--sky-soft)]/40 to-[var(--sand-light)] rounded-xl border border-[var(--sky-soft)]">
-          <p className="text-[9px] font-bold text-[var(--ocean)] mb-2">⚡ Calculadora de Economia</p>
-          <div className="grid grid-cols-3 gap-2">
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
-              <p className="text-[7px] text-[var(--ml)]">Gasolina/mês</p>
-              <p className="text-[12px] font-bold text-[var(--coral)]">-R$ 480</p>
-            </div>
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
-              <p className="text-[7px] text-[var(--ml)]">Elétrica/mês</p>
-              <p className="text-[12px] font-bold text-[var(--ocean)]">R$ 35</p>
-            </div>
-            <div className="bg-white rounded-lg p-2 text-center border border-[var(--sky-soft)]">
-              <p className="text-[7px] text-[var(--ml)]">Economia/ano</p>
-              <p className="text-[12px] font-bold text-[var(--ocean)]">R$ 5.340</p>
-            </div>
-          </div>
-        </div>
-      </BrowserFrame>
     </div>
   );
 }
@@ -513,6 +637,26 @@ function CatalogCard({ name, price, parcela, emoji, badge }: { name: string; pri
           <div className="flex-1 border border-[var(--ocean)]/30 text-[var(--ocean)] text-[7px] font-bold text-center py-1 rounded-md">Comparar</div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function SectionLabel({ label, desc }: { label: string; desc: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <div className="w-1.5 h-1.5 rounded-full bg-[var(--bossa)]" />
+      <div>
+        <p className="text-[10px] font-bold text-[var(--ocean-deep)]">{label}</p>
+        <p className="text-[8px] text-[var(--ml)]">{desc}</p>
+      </div>
+    </div>
+  );
+}
+
+function ConceptTag({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`px-4 py-2 bg-[var(--bossa)]/8 border-t border-[var(--bossa)]/20 ${className}`}>
+      <p className="text-[8px] text-[var(--ocean-deep)]/70 italic leading-relaxed">{children}</p>
     </div>
   );
 }
