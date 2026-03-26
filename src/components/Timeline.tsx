@@ -21,7 +21,7 @@ export default function Timeline() {
               <h2 className="font-serif text-[clamp(32px,7vw,52px)] font-bold leading-[.97] tracking-[-1.5px] text-[var(--k)] mb-4">
                 {TIMELINE.titulo}
                 <br />
-                <i className="text-[var(--b)] italic">{TIMELINE.tituloDestaque}</i>
+                <i className="text-[var(--gd)] italic">{TIMELINE.tituloDestaque}</i>
               </h2>
             </Reveal>
             <Reveal>

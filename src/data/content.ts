@@ -64,7 +64,7 @@ export const BRIEFING = {
     },
     {
       icon: "🔗",
-      iconBg: "var(--bl)",
+      iconBg: "var(--gll)",
       titulo: "SprintHub + Bling integrados",
       subtitulo: "CRM e ERP conectados ao site",
       descricao:

@@ -5,7 +5,7 @@ import Reveal from "./RevealOnScroll";
 
 const colorMap: Record<string, string> = {
   green: "bg-[var(--gll)]",
-  blue: "bg-[var(--bl)]",
+  blue: "bg-[var(--gll)]",
   yellow: "bg-[#fafacc]",
   pink: "bg-[#fce4ec]",
 };
@@ -24,7 +24,7 @@ export default function Entregas() {
           </Reveal>
           <Reveal>
             <h2 className="font-serif text-[clamp(32px,7vw,52px)] font-bold leading-[.97] tracking-[-1.5px] text-[var(--k)] mb-4">
-              {ENTREGAS.titulo} <i className="text-[var(--b)] italic">{ENTREGAS.tituloDestaque}</i>
+              {ENTREGAS.titulo} <i className="text-[var(--gd)] italic">{ENTREGAS.tituloDestaque}</i>
             </h2>
           </Reveal>
           <Reveal>

@@ -6,12 +6,6 @@ import Reveal from "./RevealOnScroll";
 const chipColors = ["bossa", "dark", "bossa", "dark"];
 const tagColors = ["bossa", "bossa", "dark", "dark", "bossa", "muted"];
 
-const motos = [
-  { src: "/Bossa-Hero-fundo-branco-Photoroom.jpg", alt: "Bossa Hero" },
-  { src: "/Bossa-Neo-Branca-fundo-branco-Photoroom.jpg", alt: "Bossa Neo Branca" },
-  { src: "/Bossa-VIP-marrom.webp", alt: "Bossa VIP" },
-];
-
 export default function Hero() {
   return (
     <div className="relative overflow-hidden">
@@ -78,59 +72,40 @@ export default function Hero() {
               </Reveal>
             </div>
 
-            {/* Right — motorcycle photos grid (desktop) */}
-            <div className="hidden lg:block">
+            {/* Right — moto image (desktop) */}
+            <div className="hidden lg:flex lg:justify-center">
               <Reveal delay={0.28}>
-                <div className="grid grid-cols-2 gap-3">
-                  {/* Large photo top-left spanning full width */}
-                  <div className="col-span-2 rounded-2xl overflow-hidden border border-[var(--k)]/5 shadow-[0_4px_24px_rgba(20,20,16,.06)] bg-white">
-                    <Image
-                      src={motos[0].src}
-                      alt={motos[0].alt}
-                      width={600}
-                      height={600}
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
-                  {/* Two smaller photos below */}
-                  {motos.slice(1).map((moto, i) => (
-                    <div key={i} className="rounded-2xl overflow-hidden border border-[var(--k)]/5 shadow-[0_4px_24px_rgba(20,20,16,.06)] bg-white">
-                      <Image
-                        src={moto.src}
-                        alt={moto.alt}
-                        width={300}
-                        height={300}
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
+                <Image
+                  src="/moto.png"
+                  alt="Bossa Elétrica"
+                  width={500}
+                  height={500}
+                  className="w-full max-w-[460px] h-auto drop-shadow-[0_12px_40px_rgba(20,20,16,.12)]"
+                  priority
+                />
               </Reveal>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Motorcycle photos — mobile/tablet */}
+      {/* Mobile moto + greeting card */}
       <div className="bg-[var(--w)] px-6 -mt-6 rounded-t-[20px] relative z-10 pb-12 lg:hidden">
         <Reveal>
-          <div className="grid grid-cols-3 gap-2 max-w-lg mx-auto">
-            {motos.map((moto, i) => (
-              <div key={i} className="rounded-xl overflow-hidden border border-[var(--k)]/5 shadow-[var(--shadow)] bg-white">
-                <Image
-                  src={moto.src}
-                  alt={moto.alt}
-                  width={300}
-                  height={300}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            ))}
+          <div className="flex justify-center -mt-8 mb-4">
+            <Image
+              src="/moto.png"
+              alt="Bossa Elétrica"
+              width={320}
+              height={320}
+              className="w-[70%] max-w-[280px] h-auto drop-shadow-[0_8px_24px_rgba(20,20,16,.1)]"
+              priority
+            />
           </div>
         </Reveal>
 
         <Reveal delay={0.07}>
-          <div className="bg-white rounded-2xl p-5 shadow-[var(--shadow)] border border-[var(--k)]/5 max-w-lg mx-auto mt-4">
+          <div className="bg-white rounded-2xl p-5 shadow-[var(--shadow)] border border-[var(--k)]/5 max-w-lg mx-auto">
             <p className="text-[13px] text-[var(--m)] leading-[1.7] mb-4">
               {HERO.greeting.split("Entendemos o que a Bossa precisa").map((part, i) =>
                 i === 0 ? <span key={i}>{part}<b className="text-[var(--k)] font-medium">Entendemos o que a Bossa precisa</b></span> : <span key={i}>{part}</span>

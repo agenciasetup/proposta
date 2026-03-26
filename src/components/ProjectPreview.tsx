@@ -1,5 +1,12 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
+
+const MOTO_PHOTOS = [
+  { src: "/Bossa-Hero-fundo-branco-Photoroom.jpg", alt: "Bossa Hero" },
+  { src: "/Bossa-Neo-Branca-fundo-branco-Photoroom.jpg", alt: "Bossa Neo Branca" },
+  { src: "/Bossa-VIP-marrom.webp", alt: "Bossa VIP" },
+];
 
 /* ─────────────────────────────────────────────
    Miniatura interativa do site da Bossa
@@ -182,10 +189,10 @@ function HomePreview() {
       <div className="bg-gradient-to-b from-[var(--sand)] to-[var(--sand-light)] rounded-xl p-5 border border-[var(--sand-dark)]/30">
         <div className="grid grid-cols-4 gap-3 pt-1">
           {[
-            { name: "Bossa City", price: "12× R$ 770", emoji: "🚲", cat: "500W" },
-            { name: "Bossa Vip", price: "12× R$ 880", emoji: "🚲", cat: "1000W" },
-            { name: "Bossa Pro Duo", price: "12× R$ 1.075", emoji: "🚲", cat: "1000W" },
-            { name: "Bossa Pro", price: "12× R$ 905", emoji: "🚲", cat: "1000W" },
+            { name: "Bossa Hero", price: "12× R$ 770", cat: "500W", img: MOTO_PHOTOS[0].src },
+            { name: "Bossa Vip", price: "12× R$ 880", cat: "1000W", img: MOTO_PHOTOS[2].src },
+            { name: "Bossa Neo", price: "12× R$ 1.075", cat: "1000W", img: MOTO_PHOTOS[1].src },
+            { name: "Bossa Pro", price: "12× R$ 905", cat: "1000W", img: MOTO_PHOTOS[0].src },
           ].map((p, i) => (
             <PolaroidCard key={p.name} {...p} index={i} />
           ))}
@@ -232,11 +239,8 @@ function HomePreview() {
           <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/40 to-[var(--sand)] p-5 flex items-center justify-center min-h-[120px] relative">
             {/* Polaroid-style photo */}
             <div className="bg-white p-2 pb-5 shadow-[3px_4px_14px_rgba(139,94,60,.15)] rotate-[-2deg]">
-              <div className="w-28 h-20 bg-gradient-to-br from-[var(--bossa)] to-[var(--sand)] rounded-sm flex items-center justify-center relative overflow-hidden">
-                <span className="text-[32px]">🛵</span>
-                <svg className="absolute bottom-0 left-0 right-0 h-3 opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0,5 Q12,0 25,5 Q38,10 50,5 Q62,0 75,5 Q88,10 100,5 L100,10 L0,10Z" fill="var(--bossa-dark)" />
-                </svg>
+              <div className="w-28 h-20 rounded-sm overflow-hidden">
+                <Image src={MOTO_PHOTOS[2].src} alt="Bossa VIP" width={200} height={140} className="w-full h-full object-cover" />
               </div>
               <p className="text-[7px] text-center text-[var(--k)] mt-1 font-serif italic">Bossa na orla</p>
             </div>
@@ -375,12 +379,12 @@ function CatalogoPreview() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
             {[
-              { name: "Prime T", price: "R$ 12.990", parcela: "12× R$ 1.249", emoji: "🛵", badge: null },
-              { name: "Bossa Neo", price: "R$ 9.990", parcela: "12× R$ 949", emoji: "🛵", badge: null },
-              { name: "Bossa Grid", price: "R$ 7.990", parcela: "12× R$ 749", emoji: "🚲", badge: null },
-              { name: "Bossa Cargo", price: "R$ 14.990", parcela: "12× R$ 1.399", emoji: "🛵", badge: null },
-              { name: "Bossa Fold", price: "R$ 6.490", parcela: "12× R$ 599", emoji: "🚲", badge: "Dobrável" },
-              { name: "Bossa X", price: "R$ 18.990", parcela: "12× R$ 1.749", emoji: "🛵", badge: "Sob encomenda" },
+              { name: "Prime T", price: "R$ 12.990", parcela: "12× R$ 1.249", img: MOTO_PHOTOS[0].src, badge: null },
+              { name: "Bossa Neo", price: "R$ 9.990", parcela: "12× R$ 949", img: MOTO_PHOTOS[1].src, badge: null },
+              { name: "Bossa Grid", price: "R$ 7.990", parcela: "12× R$ 749", img: MOTO_PHOTOS[2].src, badge: null },
+              { name: "Bossa Cargo", price: "R$ 14.990", parcela: "12× R$ 1.399", img: MOTO_PHOTOS[0].src, badge: null },
+              { name: "Bossa Fold", price: "R$ 6.490", parcela: "12× R$ 599", img: MOTO_PHOTOS[1].src, badge: "Dobrável" },
+              { name: "Bossa X", price: "R$ 18.990", parcela: "12× R$ 1.749", img: MOTO_PHOTOS[2].src, badge: "Sob encomenda" },
             ].map((p) => (
               <CatalogCard key={p.name} {...p} />
             ))}
@@ -404,7 +408,7 @@ function ProdutoPreview() {
       <div className="md:flex">
         {/* Image carousel — sand/sky background */}
         <div className="md:w-1/2 bg-gradient-to-br from-[var(--bossa-light)]/50 to-[var(--sand)] p-6 flex items-center justify-center min-h-[200px] relative">
-          <span className="text-[64px]">🛵</span>
+          <Image src={MOTO_PHOTOS[0].src} alt="Bossa Prime T" width={300} height={300} className="w-[80%] h-auto object-contain" />
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
             {[0, 1, 2, 3].map((d) => (
               <div key={d} className={`w-2 h-2 rounded-full ${d === 0 ? "bg-[var(--bossa-dark)]" : "bg-[var(--sand-dark)]"}`} />
@@ -413,7 +417,9 @@ function ProdutoPreview() {
           {/* Polaroid frame */}
           <div className="absolute top-3 left-3 rotate-[-3deg] bg-white p-1.5 shadow-[2px_3px_10px_rgba(139,94,60,.15)] rounded-sm">
             <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-[var(--bossa)]/40 rounded-sm z-10" />
-            <div className="w-12 h-12 bg-gradient-to-br from-[var(--bossa-light)] to-[var(--sand)] rounded-sm flex items-center justify-center text-lg">🛵</div>
+            <div className="w-12 h-12 rounded-sm overflow-hidden">
+              <Image src={MOTO_PHOTOS[1].src} alt="Bossa Neo" width={80} height={80} className="w-full h-full object-cover" />
+            </div>
             <p className="text-[5px] text-center text-[var(--k)] mt-0.5 font-serif italic">Prime T</p>
           </div>
         </div>
@@ -478,10 +484,12 @@ function ProdutoPreview() {
           <div className="mt-5 pt-4 border-t border-[var(--sand-dark)]/30">
             <p className="text-[8px] text-[var(--k)] font-semibold mb-2">Você também pode gostar</p>
             <div className="flex gap-2">
-              {[{ name: "Bossa Neo", emoji: "🛵" }, { name: "Bossa Grid", emoji: "🚲" }].map((r) => (
-                <div key={r.name} className="flex-1 bg-white rounded-lg p-2 text-center border border-[var(--sand-dark)]/30">
-                  <span className="text-lg">{r.emoji}</span>
-                  <p className="text-[8px] font-semibold text-[var(--k)]">{r.name}</p>
+              {[{ name: "Bossa Neo", img: MOTO_PHOTOS[1].src }, { name: "Bossa VIP", img: MOTO_PHOTOS[2].src }].map((r) => (
+                <div key={r.name} className="flex-1 bg-white rounded-lg p-2 text-center border border-[var(--sand-dark)]/30 overflow-hidden">
+                  <div className="h-12 flex items-center justify-center overflow-hidden rounded">
+                    <Image src={r.img} alt={r.name} width={80} height={80} className="w-full h-full object-cover" />
+                  </div>
+                  <p className="text-[8px] font-semibold text-[var(--k)] mt-1">{r.name}</p>
                 </div>
               ))}
             </div>
@@ -553,13 +561,13 @@ function AdminPreview() {
               <p className="text-[8px] text-[var(--k)] font-semibold">Ver todos →</p>
             </div>
             {[
-              { name: "Bossa Prime T", price: "R$ 12.990", status: "Ativo", emoji: "🛵" },
-              { name: "Bossa Neo", price: "R$ 9.990", status: "Ativo", emoji: "🛵" },
-              { name: "Bossa Grid", price: "R$ 7.990", status: "Ativo", emoji: "🚲" },
-              { name: "Bossa X", price: "R$ 18.990", status: "Sob encomenda", emoji: "🛵" },
+              { name: "Bossa Prime T", price: "R$ 12.990", status: "Ativo", img: MOTO_PHOTOS[0].src },
+              { name: "Bossa Neo", price: "R$ 9.990", status: "Ativo", img: MOTO_PHOTOS[1].src },
+              { name: "Bossa VIP", price: "R$ 7.990", status: "Ativo", img: MOTO_PHOTOS[2].src },
+              { name: "Bossa X", price: "R$ 18.990", status: "Sob encomenda", img: MOTO_PHOTOS[0].src },
             ].map((row) => (
               <div key={row.name} className="px-3 py-2 flex items-center gap-3 border-b border-[var(--sand-dark)]/15 last:border-0 hover:bg-[var(--sand-light)] transition-colors">
-                <span className="text-sm">{row.emoji}</span>
+                <div className="w-8 h-8 rounded overflow-hidden shrink-0"><Image src={row.img} alt={row.name} width={40} height={40} className="w-full h-full object-cover" /></div>
                 <span className="text-[10px] font-medium text-[var(--k)] flex-1">{row.name}</span>
                 <span className="text-[10px] text-[var(--k)] font-semibold">{row.price}</span>
                 <span className={`text-[7px] font-bold px-2 py-0.5 rounded-md ${row.status === "Ativo" ? "bg-[var(--gll)] text-[var(--gd)] border border-[var(--gl)]" : "bg-[var(--bossa-light)]/40 text-[var(--k)] border border-[var(--bossa-light)]"}`}>{row.status}</span>
@@ -618,14 +626,18 @@ function MiniNav({ active }: { active: string }) {
 
 const polaroidRotations = ["rotate-[-3deg]", "rotate-[2deg]", "rotate-[-1deg]", "rotate-[3deg]"];
 
-function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; price: string; emoji: string; cat: string; index?: number }) {
+function PolaroidCard({ name, price, img, cat, index = 0 }: { name: string; price: string; img?: string; cat: string; index?: number }) {
   const rot = polaroidRotations[index % polaroidRotations.length];
   return (
     <div className={`bg-white rounded-sm p-1.5 pb-3 shadow-[2px_3px_12px_rgba(139,94,60,.15)] ${rot} hover:rotate-0 hover:scale-110 transition-all duration-200 cursor-pointer relative`}>
       {/* Tape */}
       <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-[var(--bossa)]/40 rounded-sm z-10" />
-      <div className="bg-[var(--off)] rounded-sm h-16 flex items-center justify-center mb-1.5 border border-[var(--w3)]">
-        <span className="text-[24px] drop-shadow-sm">{emoji}</span>
+      <div className="bg-[var(--off)] rounded-sm h-16 flex items-center justify-center mb-1.5 border border-[var(--w3)] overflow-hidden">
+        {img ? (
+          <Image src={img} alt={name} width={120} height={120} className="w-full h-full object-cover" />
+        ) : (
+          <span className="text-[24px] drop-shadow-sm">🚲</span>
+        )}
       </div>
       <p className="text-[8px] font-serif font-bold text-[var(--k)] italic text-center">{name}</p>
       <p className="text-[7px] text-[var(--ml)] text-center">{cat}</p>
@@ -634,11 +646,15 @@ function PolaroidCard({ name, price, emoji, cat, index = 0 }: { name: string; pr
   );
 }
 
-function CatalogCard({ name, price, parcela, emoji, badge }: { name: string; price: string; parcela: string; emoji: string; badge: string | null }) {
+function CatalogCard({ name, price, parcela, img, badge }: { name: string; price: string; parcela: string; img?: string; badge: string | null }) {
   return (
     <div className="bg-white rounded-xl border border-[var(--sand-dark)]/30 overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
-      <div className="bg-gradient-to-br from-[var(--bossa-light)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative">
-        <span className="text-[28px] group-hover:scale-110 transition-transform">{emoji}</span>
+      <div className="bg-gradient-to-br from-[var(--bossa-light)]/30 to-[var(--sand)]/50 h-20 flex items-center justify-center relative overflow-hidden">
+        {img ? (
+          <Image src={img} alt={name} width={160} height={120} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+        ) : (
+          <span className="text-[28px] group-hover:scale-110 transition-transform">🛵</span>
+        )}
         {badge && (
           <span className={`absolute top-1.5 left-1.5 text-[6px] font-bold px-1.5 py-0.5 rounded-md ${badge === "Sob encomenda" ? "bg-[var(--bossa-light)] text-[var(--k)]" : "bg-[var(--bossa)] text-[var(--k)]"}`}>
             {badge}
