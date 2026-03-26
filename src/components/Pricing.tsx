@@ -52,7 +52,7 @@ export default function Pricing() {
         <div className="max-w-2xl mx-auto">
           {/* Valor total */}
           <Reveal>
-            <div className="bg-[var(--ocean-deep)] rounded-2xl p-8 md:p-10 text-center mb-5 relative overflow-hidden">
+            <div className="bg-[var(--k)] rounded-2xl p-8 md:p-10 text-center mb-5 relative overflow-hidden">
               <div className="absolute -top-2 -right-1.5 font-serif text-[100px] font-bold opacity-5 text-white leading-none pointer-events-none">$</div>
               <p className="text-[10px] tracking-[2.5px] uppercase font-semibold text-[rgba(246,244,238,.3)] mb-3">Valor total do projeto</p>
               <div className="font-serif text-[clamp(48px,10vw,64px)] font-bold text-white leading-none tracking-[-1px] mb-2">{fmt(total)}</div>
@@ -102,7 +102,7 @@ export default function Pricing() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
               {/* Entrada */}
               <Reveal>
-                <div className="bg-[var(--ocean-deep)] rounded-2xl p-6 relative overflow-hidden h-full">
+                <div className="bg-[var(--k)] rounded-2xl p-6 relative overflow-hidden h-full">
                   <div className="absolute -top-2 -right-1.5 font-serif text-[84px] font-bold opacity-5 text-white leading-none pointer-events-none">50%</div>
                   <span className="text-[10px] tracking-[2.5px] uppercase font-semibold text-[rgba(246,244,238,.3)] block mb-3">Entrada — na assinatura</span>
                   <div className="font-serif text-[clamp(28px,6vw,36px)] font-bold text-white leading-none tracking-[-0.5px] mb-1">
@@ -160,7 +160,7 @@ export default function Pricing() {
                       <div className="flex flex-wrap gap-1.5">
                         {PRICING.parcelamento.map((p) => (
                           <button key={p.vezes} onClick={() => setParcelaFinal(p.vezes)}
-                            className={`px-3 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer border ${parcelaFinal === p.vezes ? "bg-[var(--ocean-deep)] text-white border-[var(--k)]" : "bg-[rgba(20,20,16,.06)] text-[rgba(20,20,16,.5)] border-[rgba(20,20,16,.15)] hover:border-[var(--k)] hover:text-[var(--k)]"}`}>
+                            className={`px-3 py-2 rounded-lg text-[11px] font-semibold transition-all cursor-pointer border ${parcelaFinal === p.vezes ? "bg-[var(--k)] text-white border-[var(--k)]" : "bg-[rgba(20,20,16,.06)] text-[rgba(20,20,16,.5)] border-[rgba(20,20,16,.15)] hover:border-[var(--k)] hover:text-[var(--k)]"}`}>
                             {p.label}{p.juros > 0 && <span className="block text-[8px] opacity-60 mt-0.5">+{p.juros * 100}%</span>}
                           </button>
                         ))}
@@ -217,7 +217,7 @@ export default function Pricing() {
 
           {/* Resumo + CTA */}
           <Reveal delay={0.21}>
-            <div className="mt-6 bg-[var(--ocean-deep)] rounded-2xl p-7 md:p-8 relative overflow-hidden">
+            <div className="mt-6 bg-[var(--k)] rounded-2xl p-7 md:p-8 relative overflow-hidden">
               <p className="text-[10px] tracking-[2.5px] uppercase font-semibold text-[rgba(246,244,238,.3)] mb-5">Resumo do seu pedido</p>
               <div className="flex flex-col gap-2.5 mb-6">
                 <div className="flex justify-between text-[15px]">
