@@ -166,11 +166,7 @@ function HomePreview() {
           </svg>
           {/* Content */}
           <div className="relative z-10 px-5 pt-8">
-            <div className="flex items-center gap-1.5 mb-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[var(--bossa)]" style={{ animation: "blink 1.5s infinite" }} />
-              <span className="text-[7px] tracking-[2px] uppercase text-[var(--k)]/40 font-semibold">Menos trânsito, mais pôr do sol</span>
-            </div>
-            <h2 className="font-serif text-[24px] md:text-[32px] font-bold leading-[.9] tracking-[-1px] mb-2">
+            <h2 className="font-serif text-[24px] md:text-[32px] font-bold leading-[.9] tracking-[-1px] mb-2 mt-3">
               <span className="text-[var(--k)] block">Liberdade</span>
               <span className="text-[var(--bossa)] italic block">Elétrica.</span>
             </h2>
@@ -289,15 +285,14 @@ function HomePreview() {
       </div>
 
       {/* ── AUTORIDADE — números e notícias ── */}
-      <SectionLabel label="Autoridade" desc="Números da marca, notícias, parceiros. Gera credibilidade." />
+      <SectionLabel label="Autoridade" desc="Números da marca, mídia e parceiros. Gera credibilidade." />
       <div className="rounded-xl overflow-hidden border border-[var(--sand-dark)]/30">
         {/* Numbers */}
-        <div className="grid grid-cols-4 gap-0 bg-[var(--k)]">
+        <div className="grid grid-cols-3 gap-0 bg-[var(--k)]">
           {[
-            { num: "2.500+", label: "Bikes vendidas" },
-            { num: "4.8", label: "Nota Google" },
-            { num: "6", label: "Modelos" },
-            { num: "2021", label: "Fundação" },
+            { num: "997+", label: "Unidades vendidas" },
+            { num: "4,9 ★", label: "Nota Google" },
+            { num: "+20", label: "Modelos" },
           ].map((n) => (
             <div key={n.label} className="p-3 text-center border-r border-white/10 last:border-0">
               <p className="text-[14px] font-bold text-[var(--bossa)]">{n.num}</p>
@@ -309,15 +304,15 @@ function HomePreview() {
         <div className="p-4 bg-white">
           <p className="text-[8px] text-[var(--ml)] font-semibold mb-2">Na mídia</p>
           <div className="flex gap-2">
-            {["Globo", "Veja Rio", "TechTudo"].map((m) => (
+            {["Jornal 1", "Revista 2", "Mídia 3"].map((m) => (
               <div key={m} className="flex-1 bg-[var(--sand-light)] rounded-lg p-2 text-center border border-[var(--sand-dark)]/20">
                 <p className="text-[9px] font-bold text-[var(--k)]">{m}</p>
-                <p className="text-[7px] text-[var(--ml)]">Matéria publicada</p>
+                <p className="text-[7px] text-[var(--ml)]">Logo ou matéria</p>
               </div>
             ))}
           </div>
         </div>
-        <ConceptTag>Números reais da Bossa + logos de mídia/parceiros. Seção para gerar autoridade e confiança.</ConceptTag>
+        <ConceptTag>Números reais da Bossa + logos de veículos e parceiros. Tudo editável pelo painel.</ConceptTag>
       </div>
 
       {/* ── Blog preview ── */}

@@ -37,13 +37,6 @@ export default function Hero() {
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
             {/* Left */}
             <div>
-              <Reveal>
-                <div className="flex items-center gap-2 mb-6 md:mb-8">
-                  <div className="w-[6px] h-[6px] rounded-full bg-[var(--bossa)]" style={{ animation: "blink 1.5s infinite" }} />
-                  <span className="text-[11px] tracking-[2.5px] uppercase text-[var(--k)]/50">{HERO.pill}</span>
-                </div>
-              </Reveal>
-
               <Reveal delay={0.07}>
                 <h1 className="font-serif text-[clamp(52px,12vw,88px)] font-bold leading-[.90] tracking-[-3px] mb-6 md:mb-8">
                   <span className="block text-[var(--k)]">{HERO.titulo.l1}</span>
