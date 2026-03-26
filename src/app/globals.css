@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+/* ==============================
+   DESIGN TOKENS (Bossa palette)
+   ============================== */
+:root {
+  --g: #7DC242;
+  --gd: #5a9e2a;
+  --gl: #c6e89a;
+  --gll: #edf7d8;
+  --glll: #f5fbee;
+  --y: #F0E030;
+  --ydk: #b8ab00;
+  --b: #1A4A7A;
+  --bl: #deeaf8;
+  --bll: #f0f5fb;
+  --k: #141410;
+  --k2: #2c2c20;
+  --w: #F7F5EF;
+  --w2: #EDEADE;
+  --w3: #E2DFCF;
+  --w4: #d4d0bc;
+  --card: #FFFFFF;
+  --m: #6B6A56;
+  --ml: #9A9880;
+  --shadow: 0 1px 4px rgba(20,20,16,.07), 0 4px 16px rgba(20,20,16,.05);
+}
+
+@theme inline {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+  --color-bossa-green: #7DC242;
+  --color-bossa-green-dark: #5a9e2a;
+  --color-bossa-green-light: #c6e89a;
+  --color-bossa-green-lighter: #edf7d8;
+  --color-bossa-yellow: #F0E030;
+  --color-bossa-yellow-dark: #b8ab00;
+  --color-bossa-blue: #1A4A7A;
+  --color-bossa-blue-light: #deeaf8;
+  --color-bossa-dark: #141410;
+  --color-bossa-dark2: #2c2c20;
+  --color-bossa-warm: #F7F5EF;
+  --color-bossa-warm2: #EDEADE;
+  --color-bossa-warm3: #E2DFCF;
+  --color-bossa-warm4: #d4d0bc;
+  --color-bossa-muted: #6B6A56;
+  --color-bossa-muted-light: #9A9880;
+}
+
+/* ==============================
+   BASE
+   ============================== */
+html {
+  scroll-behavior: smooth;
+  background: #e8e4d4;
+}
+
+body {
+  background: var(--w);
+  color: var(--k);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   WRAPPER (mobile-first, expands on desktop)
+   ============================== */
+.wrapper {
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--w);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    max-width: 680px;
+    box-shadow: 0 0 60px rgba(20,20,16,.15), 0 0 0 1px rgba(20,20,16,.06);
+  }
+  html {
+    background: linear-gradient(135deg, #ddd9c8 0%, #e8e4d4 50%, #ddd9c8 100%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    max-width: 780px;
+  }
+}
+
+/* ==============================
+   PROGRESS BAR
+   ============================== */
+#prog {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  background: var(--g);
+  z-index: 999;
+  transition: width .1s linear;
+  width: 0%;
+  max-width: 780px;
+}
+
+/* ==============================
+   REVEAL ANIMATIONS
+   ============================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.d1 { transition-delay: .07s; }
+.d2 { transition-delay: .14s; }
+.d3 { transition-delay: .21s; }
+.d4 { transition-delay: .28s; }
+
+/* ==============================
+   SHIMMER ANIMATION (for toggles)
+   ============================== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-hint {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(125,194,66,.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
+
+/* ==============================
+   PULSE RING (for interactive elements)
+   ============================== */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: .6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid var(--g);
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+/* ==============================
+   SPIN
+   ============================== */
+@keyframes spin { to { transform: rotate(360deg) } }
+@keyframes blink { 0%,100%{opacity:.15;} 50%{opacity:.7;} }
+@keyframes pls { 0%,100%{opacity:.3;transform:scale(.8);} 50%{opacity:1;transform:scale(1.2);} }
+
+/* ==============================
+   BOUNCE ARROW (incentive to interact)
+   ============================== */
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+.bounce-arrow {
+  animation: bounce-y 1.2s ease-in-out infinite;
+}
+
+/* ==============================
+   TOGGLE SWITCH
+   ============================== */
+.toggle-track {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--w3);
+  position: relative;
+  cursor: pointer;
+  transition: background .3s;
+  flex-shrink: 0;
+}
+.toggle-track.active {
+  background: var(--g);
+}
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  transition: transform .3s;
+}
+.toggle-track.active .toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ==============================
+   TAB SELECTOR
+   ============================== */
+.tab-selector {
+  display: flex;
+  background: var(--w3);
+  border-radius: 12px;
+  padding: 3px;
+  gap: 3px;
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s;
+  border: none;
+  background: transparent;
+  color: var(--ml);
+  position: relative;
+}
+.tab-btn.active {
+  background: var(--card);
+  color: var(--k);
+  box-shadow: var(--shadow);
+}
+.tab-btn .badge {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+  background: var(--g);
+  color: var(--k);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* ==============================
+   ACCORDION
+   ============================== */
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s cubic-bezier(.4, 0, .2, 1);
+}
+.accordion-body.open {
+  max-height: 800px;
+}
+.accordion-arrow {
+  transition: transform .3s, color .3s;
+  color: var(--w4);
+  font-size: 13px;
+}
+.accordion-arrow.open {
+  transform: rotate(180deg);
+  color: var(--g);
+}
+
+/* ==============================
+   FLOATING LABEL (tap to expand hint)
+   ============================== */
+@keyframes float-hint {
+  0%, 100% { transform: translateY(0) scale(1); opacity: .7; }
+  50% { transform: translateY(-3px) scale(1.05); opacity: 1; }
+}
+
+.float-hint {
+  animation: float-hint 2s ease-in-out infinite;
+  font-size: 10px;
+  color: var(--gd);
+  font-weight: 600;
+}
